@@ -1,0 +1,602 @@
+{
+  "1": {
+    "answer": 3,
+    "explanation": "(1350 − 900)/900 × 100 = 50%."
+  },
+  "2": {
+    "answer": 4,
+    "explanation": "Increases: A = 300/1200 = 25%; B = 400/1600 = 25%; C = 450/900 = 50%; D = 300/1500 = 20%. D is lowest."
+  },
+  "3": {
+    "answer": 1,
+    "explanation": "(1200 + 900) : (1600 + 1500) = 2100 : 3100 = 21 : 31."
+  },
+  "4": {
+    "answer": 2,
+    "explanation": "(1500 + 2000 + 1350 + 1800)/4 = 6650/4 = 1662.5."
+  },
+  "5": {
+    "answer": 3,
+    "explanation": "Total for 2023 = 5200. 2000/5200 × 100 = 38.46% ≈ 38%."
+  },
+  "6": {
+    "answer": 2,
+    "explanation": "Operant conditioning — Skinner; insight learning (the ape-and-banana experiments) — Köhler; classical conditioning — Pavlov; trial-and-error (law of effect) — Thorndike."
+  },
+  "7": {
+    "answer": 3,
+    "explanation": "In the standard classification, teaching moves from the memory level (Herbart) through the understanding level (Morrison) to the reflective or thought level (Hunt), which is the highest."
+  },
+  "8": {
+    "answer": 4,
+    "explanation": "Formative evaluation is continuous, diagnostic and feedback-oriented. Certification, grading and end-of-course testing belong to summative evaluation."
+  },
+  "9": {
+    "answer": 1,
+    "explanation": "Revised Bloom taxonomy: Remember → Understand → Apply → Analyse → Evaluate → Create. Hence Understanding, Applying, Evaluating, Creating."
+  },
+  "10": {
+    "answer": 2,
+    "explanation": "The micro-teaching cycle runs plan → teach → feedback → re-plan → re-teach → re-feedback."
+  },
+  "11": {
+    "answer": 2,
+    "explanation": "Grounded theory generates theory inductively from data; ethnography rests on prolonged fieldwork; phenomenology studies lived experience; the case study examines one bounded unit intensively."
+  },
+  "12": {
+    "answer": 3,
+    "explanation": "Quota sampling selects units non-randomly to fill pre-set quotas; the other three are probability designs."
+  },
+  "13": {
+    "answer": 2,
+    "explanation": "Problem identification precedes the literature review, which in turn informs hypothesis formulation, followed by data collection and interpretation."
+  },
+  "14": {
+    "answer": 3,
+    "explanation": "A hypothesis must be testable, clear and theoretically grounded. It need not be confirmed, and vague, unfalsifiable phrasing is a defect."
+  },
+  "15": {
+    "answer": 2,
+    "explanation": "Under the 2018 Regulations, similarity up to 10% is Level 0 and attracts no penalty."
+  },
+  "16": {
+    "answer": 1,
+    "explanation": "Channel faults are technical; jargon creates semantic barriers; prejudice and anxiety are psychological; distance is a physical barrier."
+  },
+  "17": {
+    "answer": 3,
+    "explanation": "Katz and Lazarsfeld's *Personal Influence* developed the two-step flow model from the Erie County study."
+  },
+  "18": {
+    "answer": 2,
+    "explanation": "The formula is Marshall McLuhan's, from *Understanding Media* (1964)."
+  },
+  "19": {
+    "answer": 4,
+    "explanation": "Proxemics, a term introduced by Edward T. Hall, studies spatial distance in communication; chronemics deals with time, haptics with touch, kinesics with body movement."
+  },
+  "20": {
+    "answer": 3,
+    "explanation": "Effective communication requires clarity, feedback and empathy; enforced one-way flow and needless jargon are barriers."
+  },
+  "21": {
+    "answer": 3,
+    "explanation": "Required sum = 3² + 4² + … + 14² = (14 × 15 × 29)/6 − (1² + 2²) = 1015 − 5 = 1010."
+  },
+  "22": {
+    "answer": 1,
+    "explanation": "8000 × (1.1)² = 8000 × 1.21 = Rs. 9,680."
+  },
+  "23": {
+    "answer": 3,
+    "explanation": "(25 × 60 + 15 × 48)/40 = (1500 + 720)/40 = 2220/40 = 55.5."
+  },
+  "24": {
+    "answer": 2,
+    "explanation": "A: 32/√2 = 2⁵/2^0.5 = 2^4.5, so x = 4.5 — correct. B: 60% of 200 = 120; a fourth of it = 30 — correct. C: √625 = 25, not 24 — incorrect. D: (1+2+…+10)/10 = 55/10 = 5.5 — correct."
+  },
+  "25": {
+    "answer": 1,
+    "explanation": "1.25 × 0.80 = 1.00, so the price returns exactly to its original value."
+  },
+  "26": {
+    "answer": 3,
+    "explanation": "*Hetu* is the reason or mark that links *paksha* and *sadhya*, functionally the middle term of the syllogism."
+  },
+  "27": {
+    "answer": 2,
+    "explanation": "*Argumentum ad misericordiam* is the appeal to pity — a fallacy of relevance."
+  },
+  "28": {
+    "answer": 1,
+    "explanation": "Pratyaksha = perception; anumana = inference; shabda = verbal testimony; upamana = comparison."
+  },
+  "29": {
+    "answer": 4,
+    "explanation": "A particular negative proposition ('Some S is not P') is of the O type."
+  },
+  "30": {
+    "answer": 2,
+    "explanation": "A and O are contradictories: they can neither both be true nor both be false."
+  },
+  "31": {
+    "answer": 3,
+    "explanation": "HTTP = HyperText Transfer Protocol."
+  },
+  "32": {
+    "answer": 1,
+    "explanation": "Kilobyte < Megabyte < Gigabyte < Terabyte."
+  },
+  "33": {
+    "answer": 2,
+    "explanation": "SWAYAM hosts MOOCs; Shodhganga is the ETD repository; e-ShodhSindhu is the e-resources consortium; SWAYAM PRABHA runs DTH educational channels."
+  },
+  "34": {
+    "answer": 2,
+    "explanation": "RAM is volatile, ROM is non-volatile, and a compiler translates source code into machine code. A firewall is a security system, not an operating system."
+  },
+  "35": {
+    "answer": 3,
+    "explanation": "IPv6 uses 128-bit addresses, against 32 bits for IPv4."
+  },
+  "36": {
+    "answer": 4,
+    "explanation": "Montreal — ozone-depleting substances; Kyoto — binding GHG targets; Ramsar — wetlands; CITES — trade in endangered species."
+  },
+  "37": {
+    "answer": 3,
+    "explanation": "The 2030 Agenda adopted 17 Sustainable Development Goals with 169 targets."
+  },
+  "38": {
+    "answer": 4,
+    "explanation": "CO, SO₂ and NO are emitted directly (primary). Ground-level ozone and PAN are formed by atmospheric reactions and are therefore secondary pollutants."
+  },
+  "39": {
+    "answer": 3,
+    "explanation": "The NGT was constituted under the National Green Tribunal Act, 2010."
+  },
+  "40": {
+    "answer": 2,
+    "explanation": "Stockholm 1972 → Rio 1992 → Kyoto 1997 → Paris 2015."
+  },
+  "41": {
+    "answer": 3,
+    "explanation": "NEP 2020 proposes HECI as a single umbrella regulator, targets 50% GER by 2035 and recommends discontinuing the M.Phil. It in fact promotes the four-year multidisciplinary undergraduate degree and does not make NET compulsory for all Ph.D. admissions."
+  },
+  "42": {
+    "answer": 3,
+    "explanation": "The UGC was formally established as a statutory body by the UGC Act, 1956 (it had begun functioning in 1953)."
+  },
+  "43": {
+    "answer": 2,
+    "explanation": "UGC — 1956; NAAC — 1994; AICTE given statutory status — 1987; NIRF launched — 2015."
+  },
+  "44": {
+    "answer": 2,
+    "explanation": "PARAKH (Performance Assessment, Review and Analysis of Knowledge for Holistic Development) is the national assessment centre proposed by NEP 2020."
+  },
+  "45": {
+    "answer": 2,
+    "explanation": "Article 46 is the Directive Principle on promoting the educational and economic interests of SCs, STs and other weaker sections."
+  },
+  "46": {
+    "answer": 2,
+    "explanation": "The opening sentence states this directly, adding that the discipline is sustained by a community."
+  },
+  "47": {
+    "answer": 2,
+    "explanation": "The author explicitly denies that it is chiefly a failure of individual will and calls it a failure of shared attention."
+  },
+  "48": {
+    "answer": 3,
+    "explanation": "The passage says the classroom, pressed for time, teaches what can be measured."
+  },
+  "49": {
+    "answer": 1,
+    "explanation": "The passage calls it the most durable lesson the student learns."
+  },
+  "50": {
+    "answer": 2,
+    "explanation": "Such room is said to be not a luxury but the condition under which education becomes possible."
+  },
+  "51": {
+    "answer": 1,
+    "explanation": "*The Duchess of Malfi* — Webster; *'Tis Pity She's a Whore* — Ford; *The Shoemaker's Holiday* — Dekker; *A Woman Killed with Kindness* — Heywood."
+  },
+  "52": {
+    "answer": 2,
+    "explanation": "*Every Man in His Humour* (1598), *Volpone* (1606), *The Alchemist* (1610), *Bartholomew Fair* (1614)."
+  },
+  "53": {
+    "answer": 3,
+    "explanation": "The bargaining or 'proviso' scene between Mirabell and Millamant occurs in Act IV of *The Way of the World* (1700)."
+  },
+  "54": {
+    "answer": 1,
+    "explanation": "A and B are correct; *Gorboduc* (Norton and Sackville) is the first English tragedy in blank verse. *Ralph Roister Doister* is the first regular English **comedy**, and *Gammer Gurton's Needle* is likewise a comedy."
+  },
+  "55": {
+    "answer": 2,
+    "explanation": "Osborne — *Look Back in Anger*; Pinter — *The Birthday Party*; Bond — *Saved*; Churchill — *Top Girls*."
+  },
+  "56": {
+    "answer": 3,
+    "explanation": "Martin Esslin coined the term in his 1961 study *The Theatre of the Absurd*."
+  },
+  "57": {
+    "answer": 4,
+    "explanation": "Karnad — *Tughlaq*; Tendulkar — *Silence! The Court is in Session*; Sircar — *Evam Indrajit*; Dattani — *Final Solutions*."
+  },
+  "58": {
+    "answer": 3,
+    "explanation": "*The Silver Box* (1906) is by John Galsworthy; the other three are Shaw's."
+  },
+  "59": {
+    "answer": 1,
+    "explanation": "*The Faerie Queene* I–III (1590), *Astrophil and Stella* (1591), *Paradise Lost* (1667), *Absalom and Achitophel* (1681), *The Rape of the Lock* (1712; enlarged 1714)."
+  },
+  "60": {
+    "answer": 3,
+    "explanation": "Arnold — \"Dover Beach\"; Hopkins — \"The Windhover\"; Tennyson — \"Ulysses\"; Browning — \"My Last Duchess\"."
+  },
+  "61": {
+    "answer": 2,
+    "explanation": "Johnson's *Life of Cowley* fixed the label on the group; Dryden had earlier remarked only that Donne affects the metaphysics."
+  },
+  "62": {
+    "answer": 4,
+    "explanation": "Chapters XII–XIV of *Biographia Literaria* (1817) set out the distinction."
+  },
+  "63": {
+    "answer": 2,
+    "explanation": "The dedication names Ezra Pound as the better craftsman."
+  },
+  "64": {
+    "answer": 2,
+    "explanation": "The alexandrine is a twelve-syllable line of six iambic feet; it closes the Spenserian stanza."
+  },
+  "65": {
+    "answer": 1,
+    "explanation": "*Ottava rima* has eight lines and rhyme royal seven, so D and E are wrong; A, B and C are accurate."
+  },
+  "66": {
+    "answer": 2,
+    "explanation": "*The North Ship* (Larkin, 1945), *The Hawk in the Rain* (Hughes, 1957), *Death of a Naturalist* (Heaney, 1966), *Fighting Terms* (Gunn, 1954)."
+  },
+  "67": {
+    "answer": 1,
+    "explanation": "*Robinson Crusoe* (1719), *Pamela* (1740), *Tom Jones* (1749), *Tristram Shandy* (1759), *The Castle of Otranto* (1764)."
+  },
+  "68": {
+    "answer": 3,
+    "explanation": "*Vanity Fair: A Novel without a Hero*; *Middlemarch: A Study of Provincial Life*; *Tess of the d'Urbervilles: A Pure Woman Faithfully Presented*; *Hard Times: For These Times*."
+  },
+  "69": {
+    "answer": 2,
+    "explanation": "The phrase occurs in Henry James's Preface to *The Tragic Muse*, criticising loosely constructed novels."
+  },
+  "70": {
+    "answer": 3,
+    "explanation": "A, B and C are correct. *A Passage to India* is by E. M. Forster, and *Nineteen Eighty-Four* appeared in 1949."
+  },
+  "71": {
+    "answer": 1,
+    "explanation": "Raja Rao — *Kanthapura*; Anand — *Untouchable*; Narayan — *The Guide*; Rushdie — *Midnight's Children*."
+  },
+  "72": {
+    "answer": 2,
+    "explanation": "Poe — \"The Fall of the House of Usher\"; Mansfield — \"The Garden Party\"; Joyce — \"The Dead\"; Faulkner — \"A Rose for Emily\"."
+  },
+  "73": {
+    "answer": 4,
+    "explanation": "*The Ordeal of Richard Feverel* (1859) is by George Meredith."
+  },
+  "74": {
+    "answer": 2,
+    "explanation": "*A Suitable Boy* (1993), *The God of Small Things* (1997), *The Inheritance of Loss* (2006), *The White Tiger* (2008)."
+  },
+  "75": {
+    "answer": 3,
+    "explanation": "Bacon — \"Of Studies\"; Swift — \"A Modest Proposal\"; Lamb — \"Dream Children\"; Woolf — \"The Death of the Moth\"."
+  },
+  "76": {
+    "answer": 2,
+    "explanation": "Robert Burton published *The Anatomy of Melancholy* in 1621."
+  },
+  "77": {
+    "answer": 1,
+    "explanation": "A, B and C are accurate. \"On Going a Journey\" is an essay, not a novel, and the Coverley papers belong to *The Spectator*."
+  },
+  "78": {
+    "answer": 4,
+    "explanation": "Arnold — *Culture and Anarchy*; Ruskin — *Unto This Last*; Carlyle — *Sartor Resartus*; Newman — *Apologia Pro Vita Sua*."
+  },
+  "79": {
+    "answer": 2,
+    "explanation": "The lectures were delivered at Newnham and Girton Colleges, Cambridge, in October 1928."
+  },
+  "80": {
+    "answer": 1,
+    "explanation": "Gandhi — *The Story of My Experiments with Truth*; Nehru — *An Autobiography* (1936); Helen Keller — *The Story of My Life*; Mandela — *Long Walk to Freedom*."
+  },
+  "81": {
+    "answer": 2,
+    "explanation": "The morpheme is the minimal meaningful unit; the phoneme is the minimal distinctive sound unit."
+  },
+  "82": {
+    "answer": 3,
+    "explanation": "Saussure — *langue*/*parole*; Chomsky — competence/performance; Austin — illocutionary act; Grice — cooperative principle."
+  },
+  "83": {
+    "answer": 3,
+    "explanation": "/ŋ/ is a voiced velar nasal."
+  },
+  "84": {
+    "answer": 3,
+    "explanation": "RP is conventionally described with 20 vowel phonemes: 12 monophthongs and 8 diphthongs."
+  },
+  "85": {
+    "answer": 1,
+    "explanation": "Grammar-Translation relies on translation and rule statement; the Direct Method excludes the mother tongue; the Audio-Lingual Method uses behaviourist drills; CLT centres on meaning in use."
+  },
+  "86": {
+    "answer": 2,
+    "explanation": "Dell Hymes introduced the term in \"On Communicative Competence\" (1972)."
+  },
+  "87": {
+    "answer": 2,
+    "explanation": "A, B and C are correct. Skinner was a behaviourist who denied innateness, and 'Universal Grammar' is Chomsky's term, not Vygotsky's."
+  },
+  "88": {
+    "answer": 1,
+    "explanation": "Cooing → babbling → one-word (holophrastic) → two-word → telegraphic speech."
+  },
+  "89": {
+    "answer": 3,
+    "explanation": "Idiolect = individual's speech; sociolect = group variety; register = situational variety; pidgin = reduced contact language."
+  },
+  "90": {
+    "answer": 4,
+    "explanation": "Plosion is a segmental articulatory feature. Stress, intonation and tone extend over more than one segment."
+  },
+  "91": {
+    "answer": 3,
+    "explanation": "Macaulay's Minute was dated 2 February 1835 and led to the English Education Act of 1835."
+  },
+  "92": {
+    "answer": 1,
+    "explanation": "Charter Act 1813 — the first grant of one lakh rupees; Wood's Despatch 1854 — the 'Magna Carta'; Hunter Commission 1882 — primary and secondary education; Sadler Commission 1917–19 — university education."
+  },
+  "93": {
+    "answer": 2,
+    "explanation": "A, B and D are correct. The Constitution provided for English only for a transitional period of fifteen years, and the three-language formula belongs to the Kothari Commission line of policy, endorsed in the NPE of 1968."
+  },
+  "94": {
+    "answer": 2,
+    "explanation": "1813 → 1835 → 1854 → 1904 → 1917."
+  },
+  "95": {
+    "answer": 2,
+    "explanation": "Rammohun Roy's 1823 letter to Lord Amherst opposed a proposed Sanskrit college and urged modern European learning."
+  },
+  "96": {
+    "answer": 3,
+    "explanation": "The Central Institute of English was set up at Hyderabad in 1958; 'and Foreign Languages' was added in 1972, and it became the EFL University in 2007."
+  },
+  "97": {
+    "answer": 1,
+    "explanation": "*Summer in Calcutta* (Das), *The Striders* (Ramanujan), *A Time to Change* (Ezekiel), *Relationship* (Mahapatra)."
+  },
+  "98": {
+    "answer": 2,
+    "explanation": "The volume appeared in 1882, five years after Toru Dutt's death in 1877."
+  },
+  "99": {
+    "answer": 2,
+    "explanation": "*Culture and Society 1780–1950* (1958) is Raymond Williams's."
+  },
+  "100": {
+    "answer": 3,
+    "explanation": "Hoggart — *The Uses of Literacy*; Williams — *Culture and Society*; Hall — \"Encoding/Decoding\"; Thompson — *The Making of the English Working Class*."
+  },
+  "101": {
+    "answer": 2,
+    "explanation": "Richard Hoggart founded the CCCS at Birmingham in 1964; Stuart Hall succeeded him as director."
+  },
+  "102": {
+    "answer": 3,
+    "explanation": "The triad appears in Williams's *Marxism and Literature* (1977)."
+  },
+  "103": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. 'Simulacrum' belongs to Baudrillard and the 'public sphere' to Habermas — options D and E reverse them."
+  },
+  "104": {
+    "answer": 2,
+    "explanation": "Barthes's *Mythologies* (1957) analyses the myths of everyday bourgeois culture."
+  },
+  "105": {
+    "answer": 2,
+    "explanation": "*The Uses of Literacy* (1957), *Culture and Society* (1958), *The Making of the English Working Class* (1963), *Understanding Media* (1964), *Subculture* (1979)."
+  },
+  "106": {
+    "answer": 2,
+    "explanation": "*Hamartia* denotes an error or misjudgement; the moral reading as a 'flaw' is a later gloss. *Peripeteia* is reversal and *anagnorisis* recognition."
+  },
+  "107": {
+    "answer": 3,
+    "explanation": "Longinus lists five sources: grandeur of conception, vehement emotion, appropriate figures, noble diction and dignified composition."
+  },
+  "108": {
+    "answer": 1,
+    "explanation": "Sidney — *An Apologie for Poetrie*; Dryden — *Of Dramatick Poesie*; Johnson — *Preface to Shakespeare*; Coleridge — *Biographia Literaria*."
+  },
+  "109": {
+    "answer": 3,
+    "explanation": "The touchstone method — testing new poetry against remembered lines of the masters — is proposed in \"The Study of Poetry\" (1880)."
+  },
+  "110": {
+    "answer": 3,
+    "explanation": "The term appears in \"Hamlet and His Problems\" (1919)."
+  },
+  "111": {
+    "answer": 2,
+    "explanation": "Wimsatt and Beardsley coined both 'intentional fallacy' (1946) and 'affective fallacy' (1949)."
+  },
+  "112": {
+    "answer": 3,
+    "explanation": "A, B and C are correct. 'The heresy of paraphrase' is Cleanth Brooks's phrase, and New Criticism explicitly sets aside biographical evidence."
+  },
+  "113": {
+    "answer": 1,
+    "explanation": "Bharata — *Natyasastra*; Anandavardhana — *Dhvanyaloka*; Mammata — *Kavyaprakasa*; Kuntaka — *Vakroktijivita*."
+  },
+  "114": {
+    "answer": 3,
+    "explanation": "1595 → 1668 → 1765 → 1817 → 1880."
+  },
+  "115": {
+    "answer": 2,
+    "explanation": "The formulation belongs to Arnold's \"The Study of Poetry\"."
+  },
+  "116": {
+    "answer": 3,
+    "explanation": "*Différance* is Derrida's coinage, combining difference and deferral."
+  },
+  "117": {
+    "answer": 1,
+    "explanation": "Barthes — \"The Death of the Author\"; Foucault — \"What Is an Author?\"; Wimsatt and Beardsley — \"The Intentional Fallacy\"; Spivak — \"Can the Subaltern Speak?\"."
+  },
+  "118": {
+    "answer": 2,
+    "explanation": "The mirror stage founds the ego through an illusory unity and thus belongs to the Imaginary order."
+  },
+  "119": {
+    "answer": 2,
+    "explanation": "Bourdieu — habitus; Althusser — interpellation; Deleuze and Guattari — rhizome; Foucault — governmentality."
+  },
+  "120": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. *Orientalism* is Said's and *Gender Trouble* is Judith Butler's."
+  },
+  "121": {
+    "answer": 3,
+    "explanation": "Showalter introduced 'gynocritics' in \"Towards a Feminist Poetics\" (1979)."
+  },
+  "122": {
+    "answer": 1,
+    "explanation": "1929 → 1949 → 1963 → 1970 → 1979."
+  },
+  "123": {
+    "answer": 4,
+    "explanation": "Glotfelty and Fromm edited the volume in 1996; it effectively consolidated ecocriticism as a field."
+  },
+  "124": {
+    "answer": 2,
+    "explanation": "Bill Ashcroft, Gareth Griffiths and Helen Tiffin wrote *The Empire Writes Back*."
+  },
+  "125": {
+    "answer": 4,
+    "explanation": "All three concepts are central to Bhabha's *The Location of Culture* (1994)."
+  },
+  "126": {
+    "answer": 1,
+    "explanation": "MLA 9 sequence: Author → Title of source → Title of container → Version → Number → Publisher → Publication date → Location."
+  },
+  "127": {
+    "answer": 3,
+    "explanation": "*et al.* = and others; *ibid.* = in the same place; *op. cit.* = in the work already cited; *passim* = here and there throughout."
+  },
+  "128": {
+    "answer": 3,
+    "explanation": "Enumerative (or systematic) bibliography lists items; analytical and descriptive bibliography examine books as physical objects."
+  },
+  "129": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. Properly cited use of a source is not plagiarism, and peer review is by definition carried out by others."
+  },
+  "130": {
+    "answer": 2,
+    "explanation": "The *MLA Handbook* is the standard for literary studies; APA is used in the social sciences."
+  },
+  "131": {
+    "answer": 3,
+    "explanation": "Market survey research belongs to commerce and management, not to literary research."
+  },
+  "132": {
+    "answer": 1,
+    "explanation": "Melville — *Moby-Dick*; Hawthorne — *The Scarlet Letter*; Whitman — *Leaves of Grass*; Faulkner — *The Sound and the Fury*."
+  },
+  "133": {
+    "answer": 2,
+    "explanation": "\"Self-Reliance\" appeared in Emerson's *Essays: First Series* (1841)."
+  },
+  "134": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. *Invisible Man* is by Ralph Ellison, and the Harlem Renaissance belongs to the 1920s and early 1930s."
+  },
+  "135": {
+    "answer": 3,
+    "explanation": "Miller — *Death of a Salesman*; Williams — *A Streetcar Named Desire*; O'Neill — *Long Day's Journey into Night*; Albee — *Who's Afraid of Virginia Woolf?*"
+  },
+  "136": {
+    "answer": 1,
+    "explanation": "Atwood — *Surfacing*; White — *Voss*; Achebe — *Things Fall Apart*; Lessing — *The Grass is Singing*."
+  },
+  "137": {
+    "answer": 2,
+    "explanation": "1852 → 1884 → 1922 → 1925 → 1987."
+  },
+  "138": {
+    "answer": 3,
+    "explanation": "*Ariel* was published in 1965, two years after Sylvia Plath's death."
+  },
+  "139": {
+    "answer": 2,
+    "explanation": "Amos Tutuola's *The Palm-Wine Drinkard* appeared in 1952."
+  },
+  "140": {
+    "answer": 1,
+    "explanation": "Soyinka 1986, Walcott 1992, Morrison 1993, Naipaul 2001."
+  },
+  "141": {
+    "answer": 2,
+    "explanation": "The speaker weighs the crown against the violence used to secure it, and is arraigned by his own conscience in his father's remembered eyes."
+  },
+  "142": {
+    "answer": 3,
+    "explanation": "The lie is described as well made and wearing his own face: a self-justification manufactured by him and then lived in as identity."
+  },
+  "143": {
+    "answer": 2,
+    "explanation": "What is done is called architecture which he now inhabits, the doors being of his own making — the past as an irreversible structure."
+  },
+  "144": {
+    "answer": 4,
+    "explanation": "Calling remorse 'furniture I bought' reduces it to another item of his own furnishing, so that even repentance is suspected of self-service."
+  },
+  "145": {
+    "answer": 3,
+    "explanation": "The close refuses both self-pity and consolation; the diction is plain, exact and unforgiving."
+  },
+  "146": {
+    "answer": 2,
+    "explanation": "The author reports the description, notes that critics accept it too meekly, and then denies that the relation is one of mere dependence."
+  },
+  "147": {
+    "answer": 3,
+    "explanation": "Reading well is called a composition performed in a different medium and to a different end — creative, but not the writing of poems."
+  },
+  "148": {
+    "answer": 2,
+    "explanation": "The critic's freedom is likened to the translator's: enormous within a boundary, worthless outside it."
+  },
+  "149": {
+    "answer": 4,
+    "explanation": "The disqualifying move is to decide the meaning in advance and then arrange the evidence."
+  },
+  "150": {
+    "answer": 3,
+    "explanation": "The final sentence names the measure: how much of the text the reading can hold in view without distortion."
+  }
+}

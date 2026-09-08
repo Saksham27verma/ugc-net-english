@@ -1,0 +1,602 @@
+{
+  "1": {
+    "answer": 3,
+    "explanation": "R's total = 2400 + 1600 = 4000; 1600/4000 × 100 = 40%."
+  },
+  "2": {
+    "answer": 2,
+    "explanation": "(3200 + 2800) : (1600 + 2400) = 6000 : 4000 = 3 : 2."
+  },
+  "3": {
+    "answer": 3,
+    "explanation": "S's total = 6000; grand total = 4000 + 4000 + 4000 + 6000 = 18000; 6000/18000 = 33⅓%."
+  },
+  "4": {
+    "answer": 2,
+    "explanation": "(800 + 1200 + 1600 + 2400)/4 = 6000/4 = 1500."
+  },
+  "5": {
+    "answer": 3,
+    "explanation": "(3600 − 2400)/2400 × 100 = 50%."
+  },
+  "6": {
+    "answer": 1,
+    "explanation": "The affective domain ascends: Receiving → Responding → Valuing → Organisation → Characterisation by a value."
+  },
+  "7": {
+    "answer": 2,
+    "explanation": "Glaser — Basic Teaching Model; Suchman — Inquiry Training; Ausubel — Advance Organizer; Bruner — Concept Attainment."
+  },
+  "8": {
+    "answer": 2,
+    "explanation": "Learner-centred teaching rests on active construction of knowledge, facilitation and formative feedback; rote learning and an imposed uniform pace belong to teacher-centred instruction."
+  },
+  "9": {
+    "answer": 2,
+    "explanation": "Andragogy, associated with Malcolm Knowles, is the theory and practice of adult learning, as against pedagogy."
+  },
+  "10": {
+    "answer": 3,
+    "explanation": "A diagnostic test locates specific weaknesses so that remedial teaching can be planned."
+  },
+  "11": {
+    "answer": 2,
+    "explanation": "In a normal curve the three measures of central tendency coincide at the midpoint."
+  },
+  "12": {
+    "answer": 1,
+    "explanation": "Cronbach's alpha estimates internal consistency; content validity concerns item representativeness; Type I error rejects a true null hypothesis; Type II error fails to reject a false one."
+  },
+  "13": {
+    "answer": 4,
+    "explanation": "Chi-square makes no assumption about the shape of the population distribution and is therefore non-parametric."
+  },
+  "14": {
+    "answer": 2,
+    "explanation": "Qualitative work typically uses purposive sampling, interview and observational data, and thick description; statistical generalisation and compulsory randomisation belong to quantitative designs."
+  },
+  "15": {
+    "answer": 3,
+    "explanation": "State H₀ and H₁ → fix the significance level → compute the statistic → decide about H₀."
+  },
+  "16": {
+    "answer": 2,
+    "explanation": "This is Lasswell's formula, given in 1948."
+  },
+  "17": {
+    "answer": 1,
+    "explanation": "Kinesics — body movement; proxemics — space; chronemics — time; haptics — touch."
+  },
+  "18": {
+    "answer": 3,
+    "explanation": "In communication theory 'noise' covers any physical, semantic or psychological interference, not merely audible sound."
+  },
+  "19": {
+    "answer": 3,
+    "explanation": "A, C and D are correct. Non-verbal signs may reinforce as well as contradict speech, and their codes vary considerably across cultures."
+  },
+  "20": {
+    "answer": 4,
+    "explanation": "Gatekeeping, a concept traced to Kurt Lewin and applied to news by David Manning White, is the filtering of messages by editors and other media personnel."
+  },
+  "21": {
+    "answer": 4,
+    "explanation": "AP with a = 1, d = 3, n = 10: S = (10/2)[2(1) + 9(3)] = 5 × 29 = 145."
+  },
+  "22": {
+    "answer": 1,
+    "explanation": "SI = 2000; CI = 10000(1.1² − 1) = 2100; difference = Rs. 100."
+  },
+  "23": {
+    "answer": 3,
+    "explanation": "60% − 40% = 20% of the total = 30 marks, so the total = 150."
+  },
+  "24": {
+    "answer": 2,
+    "explanation": "a : b = 2 : 3 = 8 : 12 and b : c = 4 : 5 = 12 : 15, hence a : c = 8 : 15."
+  },
+  "25": {
+    "answer": 3,
+    "explanation": "A: (2+3+5+7+11)/5 = 5.6 — correct. B: 0.25 = 1/4 — correct. C: 15% of 400 = 60, not 65 — incorrect. D: (3+4) : 4 = 7 : 4 — correct."
+  },
+  "26": {
+    "answer": 1,
+    "explanation": "The five members are pratijna (proposition), hetu (reason), udaharana (example), upanaya (application) and nigamana (conclusion)."
+  },
+  "27": {
+    "answer": 3,
+    "explanation": "The undistributed middle is a defect of syllogistic form; ad hominem, straw man and red herring are informal fallacies of relevance."
+  },
+  "28": {
+    "answer": 2,
+    "explanation": "In an A proposition the subject is distributed and the predicate is not; 'mortal' is the predicate term."
+  },
+  "29": {
+    "answer": 1,
+    "explanation": "Modus ponens affirms the antecedent; modus tollens denies the consequent; the hypothetical syllogism chains conditionals; the disjunctive syllogism eliminates one disjunct."
+  },
+  "30": {
+    "answer": 3,
+    "explanation": "Contraries (A and E) cannot both be true but may both be false; sub-contraries (I and O) cannot both be false."
+  },
+  "31": {
+    "answer": 3,
+    "explanation": "Linux is released under open-source licences; the other three are proprietary."
+  },
+  "32": {
+    "answer": 1,
+    "explanation": "DOI = Digital Object Identifier, a persistent identifier for digital documents."
+  },
+  "33": {
+    "answer": 4,
+    "explanation": ".edu — educational institutions; .gov — government agencies; .org — non-profit bodies; .com — commercial enterprises."
+  },
+  "34": {
+    "answer": 2,
+    "explanation": "A, B and D are correct. Cloud computing depends on network access, and one byte has eight bits."
+  },
+  "35": {
+    "answer": 3,
+    "explanation": "The PARAM series was developed by the Centre for Development of Advanced Computing, Pune."
+  },
+  "36": {
+    "answer": 4,
+    "explanation": "Sulphur hexafluoride has by far the highest global warming potential of the gases listed — of the order of tens of thousands of times that of CO₂ over a century."
+  },
+  "37": {
+    "answer": 1,
+    "explanation": "Chipko — Uttarakhand; Silent Valley — Kerala; Narmada Bachao Andolan — chiefly Madhya Pradesh; Appiko — Karnataka."
+  },
+  "38": {
+    "answer": 2,
+    "explanation": "BOD measures the oxygen consumed by micro-organisms in decomposing organic matter, and so indexes organic pollution of water."
+  },
+  "39": {
+    "answer": 2,
+    "explanation": "A, C and D are correct. Nuclear fission depends on finite uranium reserves, and geothermal energy is treated as renewable."
+  },
+  "40": {
+    "answer": 3,
+    "explanation": "The Environment (Protection) Act was passed in 1986, in the aftermath of the Bhopal disaster."
+  },
+  "41": {
+    "answer": 4,
+    "explanation": "The UGC (Establishment and Operation of Academic Bank of Credits in Higher Education) Regulations were notified in 2021."
+  },
+  "42": {
+    "answer": 3,
+    "explanation": "NIRF ranks institutions; NAAC assesses and accredits institutions; NBA accredits technical programmes; AISHE is the annual statistical survey."
+  },
+  "43": {
+    "answer": 2,
+    "explanation": "The Kothari Commission is formally the Education Commission (1964–66); the Radhakrishnan Commission was the University Education Commission and the Mudaliar Commission the Secondary Education Commission."
+  },
+  "44": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. NIRF ranks public and private institutions alike, and the Radhakrishnan Commission dealt with university education."
+  },
+  "45": {
+    "answer": 2,
+    "explanation": "The 42nd Amendment, 1976 moved education to the Concurrent List."
+  },
+  "46": {
+    "answer": 2,
+    "explanation": "The passage states that the story a technology tells about itself is usually about liberation."
+  },
+  "47": {
+    "answer": 3,
+    "explanation": "The promises are called partial: they name what is added and pass over what is withdrawn."
+  },
+  "48": {
+    "answer": 2,
+    "explanation": "The car both freed the traveller from the timetable and removed the child's street — one instance yielding gain and loss together."
+  },
+  "49": {
+    "answer": 4,
+    "explanation": "Neither can be read off from the device; both follow from the arrangements built around it, which the author calls political."
+  },
+  "50": {
+    "answer": 3,
+    "explanation": "The larger half of the question is who can now do what, and at whose expense."
+  },
+  "51": {
+    "answer": 1,
+    "explanation": "Kyd — *The Spanish Tragedy*; Marlowe — *Doctor Faustus*; Stevenson — *Gammer Gurton's Needle*; Udall — *Ralph Roister Doister*."
+  },
+  "52": {
+    "answer": 3,
+    "explanation": "*The Tempest* keeps to a single day, a single island and a single action, and is regularly cited with *The Comedy of Errors* as Shakespeare's nearest approach to the unities."
+  },
+  "53": {
+    "answer": 3,
+    "explanation": "*All for Love, or The World Well Lost* (1677) is Dryden's blank-verse reworking of the Antony and Cleopatra story."
+  },
+  "54": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. *The Rivals* is Sheridan's, and Goldsmith attacked sentimental comedy in his essay on laughing and sentimental comedy."
+  },
+  "55": {
+    "answer": 2,
+    "explanation": "Beckett — *Waiting for Godot*; Stoppard — *Rosencrantz and Guildenstern Are Dead*; Shaffer — *Equus*; Pinter — *The Homecoming*."
+  },
+  "56": {
+    "answer": 3,
+    "explanation": "*Murder in the Cathedral* (1935) was written for the Canterbury Festival."
+  },
+  "57": {
+    "answer": 1,
+    "explanation": "*Saint Joan* (1923), *Murder in the Cathedral* (1935), *Waiting for Godot* in English (1955), *Look Back in Anger* (1956), *The Birthday Party* (1958)."
+  },
+  "58": {
+    "answer": 2,
+    "explanation": "The tale comes from the *Kathasaritsagara*, which reached Karnad chiefly through Thomas Mann's *The Transposed Heads*."
+  },
+  "59": {
+    "answer": 3,
+    "explanation": "The tales are predominantly in decasyllabic rhyming couplets, with a few exceptions such as the rhyme-royal tales and the prose tales."
+  },
+  "60": {
+    "answer": 3,
+    "explanation": "Coleridge — \"The Rime of the Ancient Mariner\"; Keats — \"Ode to a Nightingale\"; Shelley — \"Ozymandias\"; Blake — \"The Tyger\"."
+  },
+  "61": {
+    "answer": 3,
+    "explanation": "\"The Scholar-Gipsy\" is by Matthew Arnold."
+  },
+  "62": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. *Lycidas* is a pastoral elegy and \"The Flea\" a metaphysical lyric built on a conceit."
+  },
+  "63": {
+    "answer": 2,
+    "explanation": "Hopkins devised sprung rhythm, in which feet are measured by stresses rather than syllables."
+  },
+  "64": {
+    "answer": 2,
+    "explanation": "*Lyrical Ballads* (1798), *Don Juan* (1819–24), *In Memoriam* (1850), *Men and Women* (1855), *The Waste Land* (1922)."
+  },
+  "65": {
+    "answer": 3,
+    "explanation": "Larkin — \"Church Going\"; Hughes — \"The Thought-Fox\"; Heaney — \"Digging\"; Stevie Smith — \"Not Waving but Drowning\"."
+  },
+  "66": {
+    "answer": 2,
+    "explanation": "*Terza rima*, the measure of Dante's *Commedia*, links tercets by the rhyme *aba bcb cdc*."
+  },
+  "67": {
+    "answer": 3,
+    "explanation": "Mary Shelley's *Frankenstein* opens with Walton's letters to Mrs Saville, framing Victor's narrative."
+  },
+  "68": {
+    "answer": 1,
+    "explanation": "Knightley — *Emma*; St John Rivers — *Jane Eyre*; Lydgate — *Middlemarch*; Eustacia Vye — *The Return of the Native*."
+  },
+  "69": {
+    "answer": 4,
+    "explanation": "A, B and C are correct. *Mansfield Park* is Austen's, and *Emma* appeared in 1815 (title page 1816)."
+  },
+  "70": {
+    "answer": 3,
+    "explanation": "Samuel Butler's *The Way of All Flesh* was published posthumously in 1903."
+  },
+  "71": {
+    "answer": 1,
+    "explanation": "*Heart of Darkness* (1899), *Sons and Lovers* (1913), *Ulysses* (1922), *Brave New World* (1932), *Nineteen Eighty-Four* (1949)."
+  },
+  "72": {
+    "answer": 3,
+    "explanation": "Khushwant Singh — *Train to Pakistan*; Mistry — *A Fine Balance*; Ghosh — *The Shadow Lines*; Deshpande — *That Long Silence*."
+  },
+  "73": {
+    "answer": 4,
+    "explanation": "*The Great Indian Novel* (1989) is by Shashi Tharoor."
+  },
+  "74": {
+    "answer": 2,
+    "explanation": "The term, adapted from Franz Roh's art criticism, is chiefly used of the Latin American boom, above all *One Hundred Years of Solitude*."
+  },
+  "75": {
+    "answer": 1,
+    "explanation": "Bacon — *The Advancement of Learning*; Milton — *Areopagitica*; Browne — *Religio Medici*; Walton — *The Compleat Angler*."
+  },
+  "76": {
+    "answer": 3,
+    "explanation": "De Quincey's *Confessions* appeared in the *London Magazine* in 1821."
+  },
+  "77": {
+    "answer": 2,
+    "explanation": "A, B and D are correct. Pater's \"Conclusion\" urges aesthetic intensity rather than moral instruction, and the *Apologia* is autobiography, not fiction."
+  },
+  "78": {
+    "answer": 1,
+    "explanation": "Lytton Strachey published *Eminent Victorians* in 1918."
+  },
+  "79": {
+    "answer": 3,
+    "explanation": "*The Argumentative Indian* (2005) is by Amartya Sen."
+  },
+  "80": {
+    "answer": 4,
+    "explanation": "Charles Lamb wrote the *Essays of Elia* under that pseudonym."
+  },
+  "81": {
+    "answer": 2,
+    "explanation": "Semantics studies meaning; pragmatics studies meaning in context of use."
+  },
+  "82": {
+    "answer": 1,
+    "explanation": "Phoneme — minimal distinctive sound; morpheme — minimal meaningful unit; lexeme — dictionary item; grapheme — minimal unit of writing."
+  },
+  "83": {
+    "answer": 2,
+    "explanation": "/m/ is a voiced bilabial nasal; /f/ is labio-dental, /s/ alveolar and /k/ velar."
+  },
+  "84": {
+    "answer": 3,
+    "explanation": "The distinction is Saussure's, from the *Cours de linguistique générale*."
+  },
+  "85": {
+    "answer": 1,
+    "explanation": "A, B and D are correct. Prescriptive grammar evaluates rather than describes, and speech historically precedes writing."
+  },
+  "86": {
+    "answer": 3,
+    "explanation": "CEFR levels: A1–A2 basic user, B1–B2 independent user, C1–C2 proficient user. B2 is the Vantage or upper-intermediate stage."
+  },
+  "87": {
+    "answer": 3,
+    "explanation": "In TBLT the task is primary and language is acquired through the effort to complete it."
+  },
+  "88": {
+    "answer": 2,
+    "explanation": "Krashen — Monitor Model; Chomsky — Universal Grammar; Halliday — Systemic Functional Grammar; Hymes — communicative competence."
+  },
+  "89": {
+    "answer": 1,
+    "explanation": "Grammar-Translation (nineteenth century) → Direct Method (late nineteenth) → Audio-Lingual (1940s–50s) → CLT (1970s) → Task-Based (1980s onward)."
+  },
+  "90": {
+    "answer": 2,
+    "explanation": "Corder's \"The Significance of Learners' Errors\" (1967) drew the distinction between competence errors and performance mistakes."
+  },
+  "91": {
+    "answer": 2,
+    "explanation": "The Orientalists favoured instruction in and through the classical Indian languages; the Anglicists, led by Macaulay, favoured English and European learning."
+  },
+  "92": {
+    "answer": 3,
+    "explanation": "Wellesley founded Fort William College in 1800 to train servants of the Company in Indian languages."
+  },
+  "93": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. Wood's Despatch dates from 1854, and the Sadler Commission (1917–19) examined university education."
+  },
+  "94": {
+    "answer": 4,
+    "explanation": "Hunter — 1882; Sadler — 1917; Sargent Report — 1944; Radhakrishnan (University Education) Commission — 1948."
+  },
+  "95": {
+    "answer": 2,
+    "explanation": "Bankim Chandra Chatterjee's *Rajmohan's Wife* was serialised in 1864."
+  },
+  "96": {
+    "answer": 3,
+    "explanation": "The formula, developed through the Kothari Commission's recommendations, was adopted in the NPE of 1968."
+  },
+  "97": {
+    "answer": 1,
+    "explanation": "*Rajmohan's Wife* (1864), *Ancient Ballads* (1882), *Gitanjali* in English (1912), *Untouchable* (1935), *Kanthapura* (1938)."
+  },
+  "98": {
+    "answer": 2,
+    "explanation": "K. R. Srinivasa Iyengar's *Indian Writing in English* (1962) is the pioneering survey; M. K. Naik's *A History of Indian English Literature* came later."
+  },
+  "99": {
+    "answer": 2,
+    "explanation": "For Adorno and Horkheimer the culture industry turns art into a standardised commodity that secures conformity."
+  },
+  "100": {
+    "answer": 1,
+    "explanation": "Adorno and Horkheimer — *Dialectic of Enlightenment*; McLuhan — *Understanding Media*; Debord — *The Society of the Spectacle*; Baudrillard — *Simulacra and Simulation*."
+  },
+  "101": {
+    "answer": 2,
+    "explanation": "Hall's 1973 paper names the dominant-hegemonic, negotiated and oppositional readings."
+  },
+  "102": {
+    "answer": 3,
+    "explanation": "A, B and C are correct. Popular culture is central to cultural studies, and 'print capitalism' is Benedict Anderson's concept."
+  },
+  "103": {
+    "answer": 4,
+    "explanation": "*Imagined Communities* (1983) is by Benedict Anderson."
+  },
+  "104": {
+    "answer": 4,
+    "explanation": "The essay (1935–36) is Walter Benjamin's."
+  },
+  "105": {
+    "answer": 2,
+    "explanation": "Shklovsky — Russian Formalism; Adorno — Frankfurt School; Lévi-Strauss — structural anthropology; Derrida — post-structuralism."
+  },
+  "106": {
+    "answer": 2,
+    "explanation": "Plato holds that art imitates the world of appearance, itself a copy of the Forms, and that it feeds the appetitive part of the soul."
+  },
+  "107": {
+    "answer": 3,
+    "explanation": "Horace's poet aims to please and to instruct — *aut prodesse volunt aut delectare poetae*, ideally both."
+  },
+  "108": {
+    "answer": 2,
+    "explanation": "Dryden's Preface to the *Fables* (1700) gives Chaucer this title."
+  },
+  "109": {
+    "answer": 1,
+    "explanation": "Dryden — *Preface to the Fables*; Pope — \"An Essay on Criticism\"; Johnson — *Lives of the Poets*; Shelley — \"A Defence of Poetry\"."
+  },
+  "110": {
+    "answer": 2,
+    "explanation": "The phrase is Wordsworth's, in the Preface to *Lyrical Ballads* (1800)."
+  },
+  "111": {
+    "answer": 2,
+    "explanation": "A, B and C are correct. *Culture and Anarchy* is Arnold's, and it was Wordsworth, not Coleridge, who argued for the identity of poetic and prose language — a claim Coleridge disputed."
+  },
+  "112": {
+    "answer": 3,
+    "explanation": "Leavis's line runs Austen — Eliot — James — Conrad — Lawrence; Dickens is admitted only through *Hard Times* in that study."
+  },
+  "113": {
+    "answer": 2,
+    "explanation": "Frye maps four *mythoi* — comedy, romance, tragedy and irony/satire — onto the seasonal cycle, together with a theory of modes and symbols."
+  },
+  "114": {
+    "answer": 1,
+    "explanation": "*Practical Criticism* (1929), *Seven Types of Ambiguity* (1930), *The Well Wrought Urn* (1947), *The Great Tradition* (1948), *Anatomy of Criticism* (1957)."
+  },
+  "115": {
+    "answer": 2,
+    "explanation": "Bharata lists eight rasas; *shanta* was added later by Abhinavagupta and others to make nine."
+  },
+  "116": {
+    "answer": 3,
+    "explanation": "Saussure's account of the sign, of *langue* and of relational structure underwrites literary structuralism."
+  },
+  "117": {
+    "answer": 1,
+    "explanation": "Genette — narratology; Bakhtin — dialogism; Shklovsky — defamiliarisation; Jauss — horizon of expectations."
+  },
+  "118": {
+    "answer": 2,
+    "explanation": "Stanley Fish published *Is There a Text in This Class?* in 1980."
+  },
+  "119": {
+    "answer": 4,
+    "explanation": "A, B and C are correct. New Historicism denies the autonomy of the text, and 'poetics of culture' is Greenblatt's phrase."
+  },
+  "120": {
+    "answer": 3,
+    "explanation": "*Epistemology of the Closet* (1990) is by Eve Kosofsky Sedgwick."
+  },
+  "121": {
+    "answer": 2,
+    "explanation": "Gramsci used *subalterno* for subordinated groups; the Subaltern Studies collective adapted the term."
+  },
+  "122": {
+    "answer": 1,
+    "explanation": "Bhabha — mimicry; Spivak — strategic essentialism; Pratt — contact zone; Césaire — négritude."
+  },
+  "123": {
+    "answer": 2,
+    "explanation": "*The Wretched of the Earth* (1961), *Orientalism* (1978), *The Empire Writes Back* (1989), *The Location of Culture* (1994), *Provincializing Europe* (2000)."
+  },
+  "124": {
+    "answer": 2,
+    "explanation": "William Rueckert's \"Literature and Ecology: An Experiment in Ecocriticism\" (1978) first used the word; Glotfelty later consolidated the field."
+  },
+  "125": {
+    "answer": 3,
+    "explanation": "Donna Haraway's \"A Cyborg Manifesto\" appeared in 1985."
+  },
+  "126": {
+    "answer": 2,
+    "explanation": "MLA uses the author-page system, e.g. (Bhabha 86)."
+  },
+  "127": {
+    "answer": 2,
+    "explanation": "A variorum edition assembles variant readings and the notes of previous editors."
+  },
+  "128": {
+    "answer": 2,
+    "explanation": "A, B and C are correct. Recension is the systematic review and classification of witnesses, not invention, and a *festschrift* is a volume of essays honouring a scholar."
+  },
+  "129": {
+    "answer": 1,
+    "explanation": "MLA — author-page; APA — author-date; Chicago — notes and bibliography; Turabian — the student adaptation of Chicago."
+  },
+  "130": {
+    "answer": 2,
+    "explanation": "JSTOR archives humanities and social science journals; the other three serve medicine, chemistry and physics."
+  },
+  "131": {
+    "answer": 3,
+    "explanation": "An abstract states the aim, method, principal findings and conclusion in brief compass."
+  },
+  "132": {
+    "answer": 2,
+    "explanation": "Dickinson's characteristic manner combines hymn or common metre with dashes, slant rhyme and irregular capitalisation."
+  },
+  "133": {
+    "answer": 1,
+    "explanation": "Twain — *Huckleberry Finn*; Crane — *The Red Badge of Courage*; Dreiser — *Sister Carrie*; Wharton — *The Age of Innocence*."
+  },
+  "134": {
+    "answer": 3,
+    "explanation": "*For Whom the Bell Tolls* (1940) is set among republican guerrillas in the Spanish Civil War."
+  },
+  "135": {
+    "answer": 1,
+    "explanation": "A, B and C are correct. Frost is not a Confessional poet, and *Leaves of Grass* is Whitman's."
+  },
+  "136": {
+    "answer": 2,
+    "explanation": "Achebe — *Things Fall Apart*; Ngugi — *Petals of Blood*; Soyinka — *Death and the King's Horseman*; Dangarembga — *Nervous Conditions*."
+  },
+  "137": {
+    "answer": 4,
+    "explanation": "Derek Walcott published *Omeros* in 1990."
+  },
+  "138": {
+    "answer": 2,
+    "explanation": "*Voss* (1957) is by Patrick White, Nobel laureate of 1973."
+  },
+  "139": {
+    "answer": 3,
+    "explanation": "Margaret Atwood's *Survival* appeared in 1972."
+  },
+  "140": {
+    "answer": 1,
+    "explanation": "*Things Fall Apart* (1958), *Midnight's Children* (1981), *Beloved* (1987), *Omeros* (1990), *The God of Small Things* (1997)."
+  },
+  "141": {
+    "answer": 2,
+    "explanation": "Attributing the capacity to argue for their lives to the leaves is personification."
+  },
+  "142": {
+    "answer": 3,
+    "explanation": "The light is called an honesty the street had not asked for: what the trees concealed is now exposed, and the exposure is unwelcome."
+  },
+  "143": {
+    "answer": 2,
+    "explanation": "Guests confronted with every door thrown open are embarrassed rather than honoured; the houses are 'suddenly unfit'."
+  },
+  "144": {
+    "answer": 4,
+    "explanation": "One neighbour approves, the other cannot look; the speaker finds he has neither argument nor tears, and so belongs to neither camp."
+  },
+  "145": {
+    "answer": 3,
+    "explanation": "The proverb about planting for posterity is inverted into a charge: the felling too has heirs, who will feel the heat."
+  },
+  "146": {
+    "answer": 2,
+    "explanation": "The trick is the persuasion that a narrative voice could stand nowhere in particular."
+  },
+  "147": {
+    "answer": 3,
+    "explanation": "The passage says the omniscient narrator is not a person but a vantage."
+  },
+  "148": {
+    "answer": 4,
+    "explanation": "Modernism is said not to have destroyed the convention so much as to have exposed its cost."
+  },
+  "149": {
+    "answer": 2,
+    "explanation": "Interior narration gains the vividness of partiality and loses the authority of survey."
+  },
+  "150": {
+    "answer": 3,
+    "explanation": "The closing sentences state that each convention pays for its power with a blindness, and that the interesting novelists choose theirs deliberately."
+  }
+}

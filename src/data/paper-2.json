@@ -1,0 +1,1704 @@
+{
+  "setId": 2,
+  "title": "UGC NET — ENGLISH (Subject Code 30) — FULL-LENGTH PRACTICE PAPER : SET 2",
+  "durationMinutes": 180,
+  "marksPerCorrect": 2,
+  "sections": [
+    {
+      "paper": 1,
+      "title": "PAPER I : GENERAL APTITUDE (Q.1–Q.50)",
+      "units": [
+        {
+          "name": "Comprehension — Data Interpretation",
+          "firstQ": 1,
+          "lastQ": 5,
+          "passage": "**Study the table carefully and answer the questions that follow.**\n\nThe table gives the number of print and digital documents issued by four university libraries P, Q, R and S during an academic year.\n\n| Library | Print documents issued | Digital documents issued |\n|---|---|---|\n| P | 3200 | 800 |\n| Q | 2800 | 1200 |\n| R | 2400 | 1600 |\n| S | 3600 | 2400 |",
+          "questions": [
+            {
+              "no": 1,
+              "stem": "Digital issues form what percentage of the total issues of library R?",
+              "options": [
+                "30",
+                "35",
+                "40",
+                "45"
+              ]
+            },
+            {
+              "no": 2,
+              "stem": "What is the ratio of the print issues of P and Q together to the digital issues of R and S together?",
+              "options": [
+                "2 : 3",
+                "3 : 2",
+                "4 : 3",
+                "5 : 3"
+              ]
+            },
+            {
+              "no": 3,
+              "stem": "The total issues of library S form what percentage of the total issues of all four libraries?",
+              "options": [
+                "25",
+                "30",
+                "33⅓",
+                "40"
+              ]
+            },
+            {
+              "no": 4,
+              "stem": "What is the average number of digital documents issued per library?",
+              "options": [
+                "1200",
+                "1500",
+                "1600",
+                "1800"
+              ]
+            },
+            {
+              "no": 5,
+              "stem": "The print issues of library S exceed those of library R by what percentage?",
+              "options": [
+                "33⅓",
+                "40",
+                "50",
+                "60"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Teaching Aptitude",
+          "firstQ": 6,
+          "lastQ": 10,
+          "passage": null,
+          "questions": [
+            {
+              "no": 6,
+              "stem": "Arrange the following levels of Bloom's affective domain in ascending order:\nA. Valuing\nB. Receiving\nC. Characterisation by a value\nD. Responding\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "B, D, A, C",
+                "D, B, A, C",
+                "B, A, D, C",
+                "A, B, D, C"
+              ]
+            },
+            {
+              "no": 7,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Model of teaching) | List-II (Associated with) |\n|---|---|\n| A. Basic Teaching Model | I. Richard Suchman |\n| B. Inquiry Training Model | II. Jerome Bruner |\n| C. Advance Organizer Model | III. Robert Glaser |\n| D. Concept Attainment Model | IV. David Ausubel |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-III, C-IV, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-II, B-I, C-III, D-IV"
+              ]
+            },
+            {
+              "no": 8,
+              "stem": "Which of the following are characteristics of learner-centred teaching?\nA. Primary emphasis on rote memorisation\nB. Active participation of learners in constructing knowledge\nC. The teacher functioning largely as a facilitator\nD. A uniform pace of instruction prescribed for all learners\nE. Continuous use of formative feedback\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and E Only",
+                "C, D and E Only",
+                "A, D and E Only"
+              ]
+            },
+            {
+              "no": 9,
+              "stem": "The term 'andragogy' refers to:",
+              "options": [
+                "The teaching of young children",
+                "The art and science of helping adults learn",
+                "Teaching conducted through digital technology",
+                "The education of gifted learners"
+              ]
+            },
+            {
+              "no": 10,
+              "stem": "A test administered to locate the specific points of difficulty a learner is facing, so that remedial instruction may be planned, is called:",
+              "options": [
+                "An achievement test",
+                "An aptitude test",
+                "A diagnostic test",
+                "A summative test"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Research Aptitude",
+          "firstQ": 11,
+          "lastQ": 15,
+          "passage": null,
+          "questions": [
+            {
+              "no": 11,
+              "stem": "In a perfectly normal distribution, the mean, the median and the mode:",
+              "options": [
+                "Are always different from one another",
+                "Coincide at the centre of the distribution",
+                "Stand in the ratio 1 : 2 : 3",
+                "Cannot be computed"
+              ]
+            },
+            {
+              "no": 12,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Concept) | List-II (Meaning) |\n|---|---|\n| A. Cronbach's alpha | I. Rejection of a null hypothesis that is in fact true |\n| B. Content validity | II. Representativeness of the items of a test |\n| C. Type I error | III. Internal consistency of a scale |\n| D. Type II error | IV. Failure to reject a null hypothesis that is in fact false |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-II, C-I, D-IV",
+                "A-I, B-II, C-III, D-IV",
+                "A-III, B-I, C-II, D-IV",
+                "A-II, B-III, C-IV, D-I"
+              ]
+            },
+            {
+              "no": 13,
+              "stem": "Which one of the following is a **non-parametric** test?",
+              "options": [
+                "t-test",
+                "Analysis of variance",
+                "Pearson's product-moment correlation",
+                "Chi-square test"
+              ]
+            },
+            {
+              "no": 14,
+              "stem": "Which of the following are features of qualitative research?\nA. Frequent use of purposive sampling\nB. Statistical generalisation to a wider population as its primary aim\nC. Reliance on interviews, observation and documents for data\nD. Emphasis on thick, contextual description\nE. Invariable use of random sampling\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "A, C and D Only",
+                "B, C and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 15,
+              "stem": "Arrange the following steps in testing a hypothesis in their correct sequence:\nA. Computation of the test statistic\nB. Statement of the null and alternative hypotheses\nC. Decision regarding the null hypothesis\nD. Selection of the level of significance\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "B, A, D, C",
+                "A, B, C, D",
+                "B, D, A, C",
+                "D, B, C, A"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Communication",
+          "firstQ": 16,
+          "lastQ": 20,
+          "passage": null,
+          "questions": [
+            {
+              "no": 16,
+              "stem": "The formulation of communication as the question of who says what, in which channel, to whom, and with what effect is associated with:",
+              "options": [
+                "Wilbur Schramm",
+                "Harold Lasswell",
+                "Marshall McLuhan",
+                "Charles Osgood"
+              ]
+            },
+            {
+              "no": 17,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Branch of non-verbal study) | List-II (Subject matter) |\n|---|---|\n| A. Kinesics | I. Use of touch |\n| B. Proxemics | II. Body movement and gesture |\n| C. Chronemics | III. Use of time |\n| D. Haptics | IV. Use of space and distance |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-II, B-IV, C-III, D-I",
+                "A-I, B-II, C-III, D-IV",
+                "A-II, B-III, C-IV, D-I",
+                "A-IV, B-II, C-I, D-III"
+              ]
+            },
+            {
+              "no": 18,
+              "stem": "In the communication process, 'noise' means:",
+              "options": [
+                "Only audible sound in the surroundings",
+                "The absence of feedback from the receiver",
+                "Any interference that distorts or impedes the message",
+                "The redundancy deliberately built into a message"
+              ]
+            },
+            {
+              "no": 19,
+              "stem": "Which of the following statements about non-verbal communication are correct?\nA. Its meanings are often culture-specific.\nB. It invariably contradicts the accompanying verbal message.\nC. Facial expression is one of its principal channels.\nD. Silence may itself be communicative.\nE. Its codes are entirely universal.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and E Only",
+                "A, C and D Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 20,
+              "stem": "In mass communication, 'gatekeeping' refers to:",
+              "options": [
+                "Censorship imposed by the state",
+                "Restriction of access to content by subscription",
+                "The blocking of audience feedback",
+                "The selection and filtering of messages by media personnel"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mathematical Reasoning and Aptitude",
+          "firstQ": 21,
+          "lastQ": 25,
+          "passage": null,
+          "questions": [
+            {
+              "no": 21,
+              "stem": "What is the sum of the first ten terms of the series 1, 4, 7, 10, … ?",
+              "options": [
+                "135",
+                "140",
+                "150",
+                "145"
+              ]
+            },
+            {
+              "no": 22,
+              "stem": "The difference between the compound interest and the simple interest on Rs. 10,000 for 2 years at 10% per annum is:",
+              "options": [
+                "Rs. 100",
+                "Rs. 110",
+                "Rs. 200",
+                "Rs. 210"
+              ]
+            },
+            {
+              "no": 23,
+              "stem": "A student who scores 60% in an examination obtains 30 marks more than the pass mark, which is 40% of the total. The total marks of the examination are:",
+              "options": [
+                "120",
+                "140",
+                "150",
+                "200"
+              ]
+            },
+            {
+              "no": 24,
+              "stem": "If a : b = 2 : 3 and b : c = 4 : 5, then a : c is:",
+              "options": [
+                "2 : 5",
+                "8 : 15",
+                "3 : 5",
+                "5 : 8"
+              ]
+            },
+            {
+              "no": 25,
+              "stem": "Identify the correct statements:\nA. The average of the first five prime numbers is 5.6\nB. 0.25 expressed as a fraction in its lowest terms is 1/4\nC. 15% of 400 is 65\nD. If x : y = 3 : 4, then (x + y) : y = 7 : 4\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "A, C and D Only",
+                "A, B and D Only",
+                "B, C and D Only"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Logical Reasoning",
+          "firstQ": 26,
+          "lastQ": 30,
+          "passage": null,
+          "questions": [
+            {
+              "no": 26,
+              "stem": "Arrange the five members of the Nyaya syllogism (*panchavayava*) in their correct order:\nA. Upanaya\nB. Pratijna\nC. Nigamana\nD. Hetu\nE. Udaharana\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "B, D, E, A, C",
+                "D, B, E, A, C",
+                "B, E, D, C, A",
+                "B, D, A, E, C"
+              ]
+            },
+            {
+              "no": 27,
+              "stem": "Which of the following is a **formal** fallacy?",
+              "options": [
+                "Ad hominem",
+                "Straw man",
+                "Undistributed middle",
+                "Red herring"
+              ]
+            },
+            {
+              "no": 28,
+              "stem": "In the proposition 'All men are mortal', the term 'mortal' is:",
+              "options": [
+                "The subject term, and it is distributed",
+                "The predicate term, and it is undistributed",
+                "The middle term, and it is distributed",
+                "The predicate term, and it is distributed"
+              ]
+            },
+            {
+              "no": 29,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Form of inference) | List-II (Pattern) |\n|---|---|\n| A. Modus ponens | I. If p then q; if q then r; therefore if p then r |\n| B. Modus tollens | II. Either p or q; not p; therefore q |\n| C. Hypothetical syllogism | III. If p then q; p; therefore q |\n| D. Disjunctive syllogism | IV. If p then q; not q; therefore not p |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-IV, C-I, D-II",
+                "A-I, B-III, C-IV, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-IV, B-III, C-II, D-I"
+              ]
+            },
+            {
+              "no": 30,
+              "stem": "Two propositions that cannot both be true but may both be false are termed:",
+              "options": [
+                "Contradictories",
+                "Sub-contraries",
+                "Contraries",
+                "Subalterns"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Information and Communication Technology",
+          "firstQ": 31,
+          "lastQ": 35,
+          "passage": null,
+          "questions": [
+            {
+              "no": 31,
+              "stem": "Which of the following is an example of an open-source operating system?",
+              "options": [
+                "Windows 11",
+                "macOS",
+                "Linux",
+                "iOS"
+              ]
+            },
+            {
+              "no": 32,
+              "stem": "DOI stands for:",
+              "options": [
+                "Digital Object Identifier",
+                "Data Object Index",
+                "Direct Online Identifier",
+                "Digital Ownership Index"
+              ]
+            },
+            {
+              "no": 33,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Top-level domain) | List-II (Typical user) |\n|---|---|\n| A. .edu | I. Commercial enterprises |\n| B. .gov | II. Educational institutions |\n| C. .org | III. Non-profit organisations |\n| D. .com | IV. Government agencies |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-II, C-III, D-IV",
+                "A-II, B-III, C-IV, D-I",
+                "A-IV, B-II, C-I, D-III",
+                "A-II, B-IV, C-III, D-I"
+              ]
+            },
+            {
+              "no": 34,
+              "stem": "Choose the correct statements:\nA. Wi-Fi is a wireless local area networking technology.\nB. A URL specifies the location of a resource on the web.\nC. Cloud computing requires no network connectivity.\nD. Cache memory is faster than main memory.\nE. One byte consists of four bits.\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "A, B and D Only",
+                "B, C and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 35,
+              "stem": "The PARAM series of supercomputers was developed in India by:",
+              "options": [
+                "ISRO",
+                "DRDO",
+                "C-DAC",
+                "BARC"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "People, Development and Environment",
+          "firstQ": 36,
+          "lastQ": 40,
+          "passage": null,
+          "questions": [
+            {
+              "no": 36,
+              "stem": "Among the following, the gas with the highest global warming potential per molecule is:",
+              "options": [
+                "Carbon dioxide",
+                "Methane",
+                "Nitrous oxide",
+                "Sulphur hexafluoride"
+              ]
+            },
+            {
+              "no": 37,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Movement) | List-II (Region) |\n|---|---|\n| A. Chipko Movement | I. Kerala |\n| B. Silent Valley Movement | II. Karnataka |\n| C. Narmada Bachao Andolan | III. Uttarakhand |\n| D. Appiko Movement | IV. Madhya Pradesh |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-II, B-I, C-IV, D-III"
+              ]
+            },
+            {
+              "no": 38,
+              "stem": "Biological Oxygen Demand (BOD) is used as an indicator of:",
+              "options": [
+                "The acidity of soil",
+                "The organic pollution load of water",
+                "The concentration of airborne particulates",
+                "Radioactive contamination"
+              ]
+            },
+            {
+              "no": 39,
+              "stem": "Choose the correct statements:\nA. Wind energy is a renewable source of energy.\nB. Nuclear fission energy is a renewable source of energy.\nC. Solar energy is a renewable source of energy.\nD. Coal is a fossil fuel.\nE. Geothermal energy is a non-renewable source of energy.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "A, C and D Only",
+                "B, D and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 40,
+              "stem": "The Environment (Protection) Act was enacted in India in the year:",
+              "options": [
+                "1974",
+                "1981",
+                "1986",
+                "1991"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Higher Education System",
+          "firstQ": 41,
+          "lastQ": 45,
+          "passage": null,
+          "questions": [
+            {
+              "no": 41,
+              "stem": "The UGC notified the regulations establishing the Academic Bank of Credits in higher education in the year:",
+              "options": [
+                "2018",
+                "2019",
+                "2020",
+                "2021"
+              ]
+            },
+            {
+              "no": 42,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Body / Instrument) | List-II (Principal function) |\n|---|---|\n| A. NIRF | I. Accreditation of technical programmes |\n| B. NAAC | II. Annual statistical survey of higher education |\n| C. NBA | III. Ranking of higher educational institutions |\n| D. AISHE | IV. Assessment and accreditation of institutions |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-IV, B-III, C-I, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-I, B-IV, C-III, D-II"
+              ]
+            },
+            {
+              "no": 43,
+              "stem": "The Kothari Commission (1964–66) is also known as:",
+              "options": [
+                "The University Education Commission",
+                "The Education Commission",
+                "The Secondary Education Commission",
+                "The National Knowledge Commission"
+              ]
+            },
+            {
+              "no": 44,
+              "stem": "Choose the correct statements:\nA. The National Assessment and Accreditation Council was established in 1994.\nB. The National Board of Accreditation accredits technical programmes.\nC. The University Grants Commission functions under the UGC Act, 1956.\nD. The National Institutional Ranking Framework ranks only private universities.\nE. The Radhakrishnan Commission was concerned with secondary education.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and D Only",
+                "A, D and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 45,
+              "stem": "Education was transferred from the State List to the Concurrent List of the Constitution of India by:",
+              "options": [
+                "The 44th Amendment, 1978",
+                "The 42nd Amendment, 1976",
+                "The 73rd Amendment, 1992",
+                "The 86th Amendment, 2002"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Comprehension",
+          "firstQ": 46,
+          "lastQ": 50,
+          "passage": "**Read the following passage and answer the questions that follow.**\n\n> Every technology arrives with a story about itself, and the story is usually about liberation. The machine will free us from labour; the network will free us from distance; the algorithm will free us from the tedium of judgement. Such promises are not lies, but they are partial in a particular way: they describe what the technology adds and are silent about what it quietly withdraws. The motor car did free the traveller from the timetable, and it also removed from the street the possibility of a child playing in it. Neither the gain nor the loss can be read off from the device itself; both are the work of the arrangements we build around it, and those arrangements are political. To ask of a new instrument only whether it works is therefore to ask the smaller half of the question. The larger half is who is now able to do what, and at whose expense; and this half is rarely settled by engineers, though it is often decided by them in effect, simply because nobody else was in the room.",
+          "questions": [
+            {
+              "no": 46,
+              "stem": "According to the passage, the story that a technology tells about itself is usually a story of:",
+              "options": [
+                "Profit",
+                "Liberation",
+                "Danger",
+                "Tradition"
+              ]
+            },
+            {
+              "no": 47,
+              "stem": "The author's chief objection to such promises is that:",
+              "options": [
+                "They are deliberate falsehoods",
+                "They are too technical for the public",
+                "They are silent about what the technology withdraws",
+                "They are hostile to progress"
+              ]
+            },
+            {
+              "no": 48,
+              "stem": "The example of the motor car is used to show that:",
+              "options": [
+                "Motor cars are inherently harmful",
+                "A gain and a loss may arrive together",
+                "Timetables serve no purpose",
+                "Children should not play in streets"
+              ]
+            },
+            {
+              "no": 49,
+              "stem": "According to the passage, the gains and losses of a technology arise from:",
+              "options": [
+                "The design of the device itself",
+                "The intentions of its inventors",
+                "Sheer chance",
+                "The arrangements built around the device"
+              ]
+            },
+            {
+              "no": 50,
+              "stem": "The 'larger half' of the question to be asked of a new instrument concerns:",
+              "options": [
+                "Whether it works",
+                "Its cost of production",
+                "Who is now able to do what, and at whose expense",
+                "Its conformity to engineering standards"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "paper": 2,
+      "title": "PAPER II : ENGLISH (Q.51–Q.150)",
+      "units": [
+        {
+          "name": "Drama",
+          "firstQ": 51,
+          "lastQ": 58,
+          "passage": null,
+          "questions": [
+            {
+              "no": 51,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Play) | List-II (Playwright) |\n|---|---|\n| A. *The Spanish Tragedy* | I. Nicholas Udall |\n| B. *Doctor Faustus* | II. Thomas Kyd |\n| C. *Gammer Gurton's Needle* | III. William Stevenson |\n| D. *Ralph Roister Doister* | IV. Christopher Marlowe |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-II, B-IV, C-III, D-I",
+                "A-I, B-II, C-III, D-IV",
+                "A-II, B-III, C-IV, D-I",
+                "A-IV, B-II, C-I, D-III"
+              ]
+            },
+            {
+              "no": 52,
+              "stem": "Which play of Shakespeare observes the classical unities of time, place and action most closely?",
+              "options": [
+                "*Hamlet*",
+                "*King Lear*",
+                "*The Tempest*",
+                "*Antony and Cleopatra*"
+              ]
+            },
+            {
+              "no": 53,
+              "stem": "Which of the following is Dryden's blank-verse tragedy on the theme of Antony and Cleopatra?",
+              "options": [
+                "*The Way of the World*",
+                "*The Country Wife*",
+                "*All for Love*",
+                "*Venice Preserved*"
+              ]
+            },
+            {
+              "no": 54,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. *She Stoops to Conquer* was written by Oliver Goldsmith.\nB. *The School for Scandal* was written by R. B. Sheridan.\nC. *The Beggar's Opera* was written by John Gay.\nD. *The Rivals* was written by William Congreve.\nE. Sentimental comedy was championed by Oliver Goldsmith.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and D Only",
+                "A, D and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 55,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Play) | List-II (Dramatist) |\n|---|---|\n| A. *Waiting for Godot* | I. Peter Shaffer |\n| B. *Rosencrantz and Guildenstern Are Dead* | II. Samuel Beckett |\n| C. *Equus* | III. Harold Pinter |\n| D. *The Homecoming* | IV. Tom Stoppard |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-II, B-I, C-IV, D-III",
+                "A-II, B-IV, C-I, D-III",
+                "A-I, B-IV, C-II, D-III",
+                "A-IV, B-II, C-III, D-I"
+              ]
+            },
+            {
+              "no": 56,
+              "stem": "Which verse play by T. S. Eliot deals with the martyrdom of Thomas Becket?",
+              "options": [
+                "*The Family Reunion*",
+                "*The Cocktail Party*",
+                "*Murder in the Cathedral*",
+                "*The Confidential Clerk*"
+              ]
+            },
+            {
+              "no": 57,
+              "stem": "Arrange the following plays in chronological order of first publication or performance:\nA. *Murder in the Cathedral*\nB. *Look Back in Anger*\nC. *Waiting for Godot* (English version)\nD. *The Birthday Party*\nE. *Saint Joan*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "E, A, C, B, D",
+                "A, E, C, D, B",
+                "E, C, A, B, D",
+                "A, C, E, B, D"
+              ]
+            },
+            {
+              "no": 58,
+              "stem": "Girish Karnad's *Hayavadana* derives its central narrative of transposed heads from:",
+              "options": [
+                "The *Mahabharata*",
+                "The *Kathasaritsagara*",
+                "The Jataka tales",
+                "The *Panchatantra*"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Poetry",
+          "firstQ": 59,
+          "lastQ": 66,
+          "passage": null,
+          "questions": [
+            {
+              "no": 59,
+              "stem": "The greater part of Chaucer's *The Canterbury Tales* is written in:",
+              "options": [
+                "Blank verse",
+                "Rhyme royal",
+                "Rhyming couplets in iambic pentameter",
+                "Alliterative unrhymed verse"
+              ]
+            },
+            {
+              "no": 60,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Poem) | List-II (Poet) |\n|---|---|\n| A. \"The Rime of the Ancient Mariner\" | I. P. B. Shelley |\n| B. \"Ode to a Nightingale\" | II. William Blake |\n| C. \"Ozymandias\" | III. S. T. Coleridge |\n| D. \"The Tyger\" | IV. John Keats |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-IV, C-III, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-II, B-IV, C-I, D-III"
+              ]
+            },
+            {
+              "no": 61,
+              "stem": "Which of the following poems is **not** by Alfred Tennyson?",
+              "options": [
+                "\"The Lotos-Eaters\"",
+                "\"Locksley Hall\"",
+                "\"The Scholar-Gipsy\"",
+                "\"In Memoriam A. H. H.\""
+              ]
+            },
+            {
+              "no": 62,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. *Paradise Lost* is written in blank verse.\nB. Spenser's *Epithalamion* is a marriage hymn.\nC. Gray's \"Elegy Written in a Country Churchyard\" is composed in heroic quatrains.\nD. Milton's *Lycidas* is a comic ballad.\nE. Donne's \"The Flea\" is a mock-epic.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and E Only",
+                "A, D and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 63,
+              "stem": "The metrical principle of 'sprung rhythm' was formulated and practised by:",
+              "options": [
+                "Robert Browning",
+                "G. M. Hopkins",
+                "Walt Whitman",
+                "Ezra Pound"
+              ]
+            },
+            {
+              "no": 64,
+              "stem": "Arrange the following works in chronological order of publication:\nA. *In Memoriam*\nB. *The Waste Land*\nC. *Lyrical Ballads*\nD. *Men and Women*\nE. *Don Juan*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "C, A, E, D, B",
+                "C, E, A, D, B",
+                "E, C, A, B, D",
+                "C, E, D, A, B"
+              ]
+            },
+            {
+              "no": 65,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Poem) | List-II (Poet) |\n|---|---|\n| A. \"Church Going\" | I. Seamus Heaney |\n| B. \"The Thought-Fox\" | II. Stevie Smith |\n| C. \"Digging\" | III. Philip Larkin |\n| D. \"Not Waving but Drowning\" | IV. Ted Hughes |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-IV, C-III, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-III, C-II, D-I"
+              ]
+            },
+            {
+              "no": 66,
+              "stem": "*Terza rima* consists of:",
+              "options": [
+                "Four-line stanzas rhyming *abab*",
+                "Interlocking three-line stanzas rhyming *aba bcb cdc*",
+                "Eight-line stanzas rhyming *abababcc*",
+                "Unrhymed tercets of variable length"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fiction and Short Story",
+          "firstQ": 67,
+          "lastQ": 74,
+          "passage": null,
+          "questions": [
+            {
+              "no": 67,
+              "stem": "Which novel opens with a series of letters written by Robert Walton to his sister?",
+              "options": [
+                "*Dracula*",
+                "*The Monk*",
+                "*Frankenstein*",
+                "*Wuthering Heights*"
+              ]
+            },
+            {
+              "no": 68,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Novel) | List-II (Character) |\n|---|---|\n| A. *Emma* | I. Eustacia Vye |\n| B. *Jane Eyre* | II. St John Rivers |\n| C. *Middlemarch* | III. Mr Knightley |\n| D. *The Return of the Native* | IV. Tertius Lydgate |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-II, C-IV, D-I",
+                "A-I, B-II, C-III, D-IV",
+                "A-III, B-IV, C-II, D-I",
+                "A-II, B-III, C-I, D-IV"
+              ]
+            },
+            {
+              "no": 69,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. *Northanger Abbey* parodies the conventions of Gothic fiction.\nB. *Persuasion* was published posthumously.\nC. *Sense and Sensibility* was the first of Austen's novels to be published.\nD. *Mansfield Park* was written by Charlotte Brontë.\nE. *Emma* was published in 1847.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and D Only",
+                "B, C and E Only",
+                "C, D and E Only",
+                "A, B and C Only"
+              ]
+            },
+            {
+              "no": 70,
+              "stem": "*The Way of All Flesh*, a satirical account of Victorian family piety, was written by:",
+              "options": [
+                "George Gissing",
+                "George Meredith",
+                "Samuel Butler",
+                "Mark Rutherford"
+              ]
+            },
+            {
+              "no": 71,
+              "stem": "Arrange the following novels in chronological order of publication:\nA. *Ulysses*\nB. *Heart of Darkness*\nC. *Nineteen Eighty-Four*\nD. *Sons and Lovers*\nE. *Brave New World*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "B, D, A, E, C",
+                "D, B, A, C, E",
+                "B, A, D, E, C",
+                "D, B, E, A, C"
+              ]
+            },
+            {
+              "no": 72,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Novel) | List-II (Novelist) |\n|---|---|\n| A. *Train to Pakistan* | I. Amitav Ghosh |\n| B. *A Fine Balance* | II. Shashi Deshpande |\n| C. *The Shadow Lines* | III. Khushwant Singh |\n| D. *That Long Silence* | IV. Rohinton Mistry |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-IV, C-III, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-III, C-II, D-I"
+              ]
+            },
+            {
+              "no": 73,
+              "stem": "Which of the following novels is **not** written by Salman Rushdie?",
+              "options": [
+                "*Shame*",
+                "*The Moor's Last Sigh*",
+                "*Fury*",
+                "*The Great Indian Novel*"
+              ]
+            },
+            {
+              "no": 74,
+              "stem": "The term 'magic realism', as commonly used in literary studies, is most closely associated with:",
+              "options": [
+                "The English social novel of the 1930s",
+                "Latin American fiction, notably that of Gabriel García Márquez",
+                "Nineteenth-century Russian realism",
+                "The American naturalist novel"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Non-Fictional Prose",
+          "firstQ": 75,
+          "lastQ": 80,
+          "passage": null,
+          "questions": [
+            {
+              "no": 75,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Work) | List-II (Author) |\n|---|---|\n| A. *The Advancement of Learning* | I. John Milton |\n| B. *Areopagitica* | II. Izaak Walton |\n| C. *Religio Medici* | III. Francis Bacon |\n| D. *The Compleat Angler* | IV. Sir Thomas Browne |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-III, D-II"
+              ]
+            },
+            {
+              "no": 76,
+              "stem": "*Confessions of an English Opium-Eater* was written by:",
+              "options": [
+                "Charles Lamb",
+                "William Hazlitt",
+                "Thomas De Quincey",
+                "Leigh Hunt"
+              ]
+            },
+            {
+              "no": 77,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. Carlyle delivered and published *On Heroes, Hero-Worship and the Heroic in History*.\nB. Ruskin wrote *The Stones of Venice*.\nC. The \"Conclusion\" to Pater's *Studies in the History of the Renaissance* recommends the subordination of art to moral instruction.\nD. Arnold used the term 'Philistines' for the English middle classes.\nE. Newman's *Apologia Pro Vita Sua* is a novel of religious conversion.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "A, B and D Only",
+                "B, C and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 78,
+              "stem": "*Eminent Victorians*, a group of iconoclastic biographical portraits, was written by:",
+              "options": [
+                "Lytton Strachey",
+                "Leonard Woolf",
+                "E. M. Forster",
+                "Harold Nicolson"
+              ]
+            },
+            {
+              "no": 79,
+              "stem": "*The Argumentative Indian* was written by:",
+              "options": [
+                "Nirad C. Chaudhuri",
+                "Ramachandra Guha",
+                "Amartya Sen",
+                "Sunil Khilnani"
+              ]
+            },
+            {
+              "no": 80,
+              "stem": "Which essayist wrote under the pen name 'Elia'?",
+              "options": [
+                "William Hazlitt",
+                "Thomas Carlyle",
+                "Robert Lynd",
+                "Charles Lamb"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Language: Basic Concepts, Theories and Pedagogy",
+          "firstQ": 81,
+          "lastQ": 90,
+          "passage": null,
+          "questions": [
+            {
+              "no": 81,
+              "stem": "The branch of linguistics concerned with meaning is:",
+              "options": [
+                "Syntax",
+                "Semantics",
+                "Morphology",
+                "Phonology"
+              ]
+            },
+            {
+              "no": 82,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Unit) | List-II (Definition) |\n|---|---|\n| A. Phoneme | I. Smallest meaningful unit of language |\n| B. Morpheme | II. Smallest unit of a writing system |\n| C. Lexeme | III. Smallest distinctive unit of sound |\n| D. Grapheme | IV. Vocabulary item as listed in a dictionary |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-II, B-I, C-IV, D-III"
+              ]
+            },
+            {
+              "no": 83,
+              "stem": "Which of the following English sounds is bilabial?",
+              "options": [
+                "/f/",
+                "/m/",
+                "/s/",
+                "/k/"
+              ]
+            },
+            {
+              "no": 84,
+              "stem": "The distinction between syntagmatic and paradigmatic relations in language was drawn by:",
+              "options": [
+                "Noam Chomsky",
+                "Roman Jakobson",
+                "Ferdinand de Saussure",
+                "Leonard Bloomfield"
+              ]
+            },
+            {
+              "no": 85,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. Standard English is itself a dialect.\nB. All natural languages are of equal linguistic status.\nC. Prescriptive grammar describes actual usage without evaluating it.\nD. Descriptive linguistics accounts for language as it is actually used.\nE. In the history of a language, writing precedes speech.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and D Only",
+                "B, C and E Only",
+                "A, C and D Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 86,
+              "stem": "In the Common European Framework of Reference, level B2 designates:",
+              "options": [
+                "A basic user",
+                "A proficient user",
+                "An independent user",
+                "The breakthrough level"
+              ]
+            },
+            {
+              "no": 87,
+              "stem": "Task-Based Language Teaching is characterised by:",
+              "options": [
+                "Explicit drilling of grammatical paradigms",
+                "Memorisation of set dialogues",
+                "Completion of meaningful tasks in which language is a means rather than an end",
+                "Translation of literary passages into the mother tongue"
+              ]
+            },
+            {
+              "no": 88,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Scholar) | List-II (Associated concept) |\n|---|---|\n| A. Stephen Krashen | I. Universal Grammar |\n| B. Noam Chomsky | II. Communicative competence |\n| C. M. A. K. Halliday | III. Monitor Model |\n| D. Dell Hymes | IV. Systemic Functional Grammar |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-III, C-IV, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-II, D-III"
+              ]
+            },
+            {
+              "no": 89,
+              "stem": "Arrange the following language teaching methods in the chronological order of their emergence:\nA. Communicative Language Teaching\nB. Grammar-Translation Method\nC. Audio-Lingual Method\nD. Direct Method\nE. Task-Based Language Teaching\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "B, D, C, A, E",
+                "D, B, C, E, A",
+                "B, C, D, A, E",
+                "D, B, A, C, E"
+              ]
+            },
+            {
+              "no": 90,
+              "stem": "The distinction between an 'error', which reflects the learner's underlying competence, and a 'mistake', which is a lapse in performance, is associated with:",
+              "options": [
+                "Larry Selinker",
+                "S. Pit Corder",
+                "Stephen Krashen",
+                "Rod Ellis"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "English in India: History, Evolution and Futures",
+          "firstQ": 91,
+          "lastQ": 98,
+          "passage": null,
+          "questions": [
+            {
+              "no": 91,
+              "stem": "The Orientalist–Anglicist controversy of the early nineteenth century concerned:",
+              "options": [
+                "The salaries of Indian schoolmasters",
+                "The medium and content of instruction in India",
+                "The site of the first Indian universities",
+                "The role of missionaries in famine relief"
+              ]
+            },
+            {
+              "no": 92,
+              "stem": "Fort William College, Calcutta, was founded in 1800 by:",
+              "options": [
+                "Warren Hastings",
+                "Lord Cornwallis",
+                "Lord Wellesley",
+                "Lord Bentinck"
+              ]
+            },
+            {
+              "no": 93,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. The Serampore Mission Press printed books in several Indian languages.\nB. Macaulay's Minute on Indian Education was written in 1835.\nC. The Calcutta School Book Society was founded in 1817.\nD. Wood's Despatch was issued in 1904.\nE. The Sadler Commission was concerned with primary education.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and D Only",
+                "A, D and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 94,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Commission / Report) | List-II (Year) |\n|---|---|\n| A. Hunter Commission | I. 1944 |\n| B. Sadler Commission | II. 1948 |\n| C. Sargent Report | III. 1882 |\n| D. Radhakrishnan Commission | IV. 1917 |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-III, C-IV, D-II",
+                "A-III, B-I, C-II, D-IV",
+                "A-IV, B-III, C-II, D-I",
+                "A-III, B-IV, C-I, D-II"
+              ]
+            },
+            {
+              "no": 95,
+              "stem": "*Rajmohan's Wife*, generally regarded as the first Indian novel in English, was written by:",
+              "options": [
+                "Toru Dutt",
+                "Bankim Chandra Chatterjee",
+                "Michael Madhusudan Dutt",
+                "Krupabai Satthianadhan"
+              ]
+            },
+            {
+              "no": 96,
+              "stem": "The three-language formula was endorsed in the National Policy on Education of:",
+              "options": [
+                "1964",
+                "1976",
+                "1968",
+                "1986"
+              ]
+            },
+            {
+              "no": 97,
+              "stem": "Arrange the following works in chronological order of publication:\nA. *Kanthapura*\nB. *Rajmohan's Wife*\nC. *Untouchable*\nD. *Gitanjali* (English version)\nE. *Ancient Ballads and Legends of Hindustan*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "B, E, D, C, A",
+                "B, D, E, C, A",
+                "E, B, D, A, C",
+                "B, E, C, D, A"
+              ]
+            },
+            {
+              "no": 98,
+              "stem": "*Indian Writing in English*, a pioneering critical history of the field, was written by:",
+              "options": [
+                "M. K. Naik",
+                "K. R. Srinivasa Iyengar",
+                "C. D. Narasimhaiah",
+                "Meenakshi Mukherjee"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cultural Studies",
+          "firstQ": 99,
+          "lastQ": 105,
+          "passage": null,
+          "questions": [
+            {
+              "no": 99,
+              "stem": "The concept of the 'culture industry' is directed against:",
+              "options": [
+                "State ownership of the media",
+                "The standardisation and commodification of culture for mass consumption",
+                "The folk traditions of the working class",
+                "The avant-garde in painting"
+              ]
+            },
+            {
+              "no": 100,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Work) | List-II (Author) |\n|---|---|\n| A. *Dialectic of Enlightenment* | I. Guy Debord |\n| B. *Understanding Media* | II. Jean Baudrillard |\n| C. *The Society of the Spectacle* | III. Adorno and Horkheimer |\n| D. *Simulacra and Simulation* | IV. Marshall McLuhan |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-IV, C-I, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-I, C-IV, D-II",
+                "A-IV, B-III, C-II, D-I"
+              ]
+            },
+            {
+              "no": 101,
+              "stem": "Stuart Hall's encoding/decoding model proposes three hypothetical positions from which a message may be read. These are:",
+              "options": [
+                "Literal, figurative and symbolic",
+                "Dominant-hegemonic, negotiated and oppositional",
+                "Denotative, connotative and mythic",
+                "Emergent, residual and dominant"
+              ]
+            },
+            {
+              "no": 102,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. Cultural studies is by design an interdisciplinary field.\nB. Subaltern Studies emerged as a distinct project in Indian historiography in the 1980s.\nC. Ranajit Guha is closely associated with Subaltern Studies.\nD. Cultural studies rejects popular culture as an object of serious analysis.\nE. The concept of 'print capitalism' was developed by Michel Foucault.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and D Only",
+                "B, C and E Only",
+                "A, B and C Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 103,
+              "stem": "*Imagined Communities: Reflections on the Origin and Spread of Nationalism* was written by:",
+              "options": [
+                "Partha Chatterjee",
+                "Eric Hobsbawm",
+                "Ernest Gellner",
+                "Benedict Anderson"
+              ]
+            },
+            {
+              "no": 104,
+              "stem": "The essay \"The Work of Art in the Age of Mechanical Reproduction\" was written by:",
+              "options": [
+                "Theodor Adorno",
+                "Georg Lukács",
+                "Herbert Marcuse",
+                "Walter Benjamin"
+              ]
+            },
+            {
+              "no": 105,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (School / Movement) | List-II (Representative figure) |\n|---|---|\n| A. Russian Formalism | I. Theodor Adorno |\n| B. Frankfurt School | II. Jacques Derrida |\n| C. Structural anthropology | III. Viktor Shklovsky |\n| D. Post-structuralism | IV. Claude Lévi-Strauss |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-III, C-IV, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-II, D-III"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Literary Criticism",
+          "firstQ": 106,
+          "lastQ": 115,
+          "passage": null,
+          "questions": [
+            {
+              "no": 106,
+              "stem": "Plato's principal objection to poetry in *The Republic* is that:",
+              "options": [
+                "It is unintelligible to the common citizen",
+                "It is an imitation at two removes from reality and nourishes the passions",
+                "It is composed in prose rather than verse",
+                "It is of no use in the conduct of war"
+              ]
+            },
+            {
+              "no": 107,
+              "stem": "Horace's *Ars Poetica* holds that the proper function of poetry is:",
+              "options": [
+                "Instruction alone",
+                "Delight alone",
+                "Both delight and instruction",
+                "Neither delight nor instruction"
+              ]
+            },
+            {
+              "no": 108,
+              "stem": "Whom did Dryden describe as the father of English poetry?",
+              "options": [
+                "Ben Jonson",
+                "Geoffrey Chaucer",
+                "Edmund Spenser",
+                "John Milton"
+              ]
+            },
+            {
+              "no": 109,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Critical work) | List-II (Author) |\n|---|---|\n| A. *Preface to the Fables* | I. Alexander Pope |\n| B. \"An Essay on Criticism\" | II. P. B. Shelley |\n| C. *Lives of the Poets* | III. John Dryden |\n| D. \"A Defence of Poetry\" | IV. Samuel Johnson |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-III, D-II"
+              ]
+            },
+            {
+              "no": 110,
+              "stem": "The definition of the poet as a man speaking to men occurs in:",
+              "options": [
+                "*Biographia Literaria*",
+                "The Preface to *Lyrical Ballads*",
+                "\"A Defence of Poetry\"",
+                "\"The Study of Poetry\""
+              ]
+            },
+            {
+              "no": 111,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. Coleridge distinguishes between the primary and the secondary imagination.\nB. Coleridge criticises Wordsworth's theory of poetic diction.\nC. Coleridge's account of the imagination appears in *Biographia Literaria*.\nD. Coleridge wrote *Culture and Anarchy*.\nE. Coleridge maintained that the language of poetry must be identical with the language of prose.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and D Only",
+                "A, B and C Only",
+                "B, C and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 112,
+              "stem": "Which of the following novelists is **excluded** from the line of descent traced in F. R. Leavis's *The Great Tradition*?",
+              "options": [
+                "Jane Austen",
+                "George Eliot",
+                "Charles Dickens",
+                "Henry James"
+              ]
+            },
+            {
+              "no": 113,
+              "stem": "Northrop Frye's *Anatomy of Criticism* organises literature principally in terms of:",
+              "options": [
+                "The biography of the author",
+                "Archetypal patterns and narrative modes corresponding to the seasons",
+                "Statistical stylistics",
+                "The psychology of individual readers"
+              ]
+            },
+            {
+              "no": 114,
+              "stem": "Arrange the following critical works in chronological order of publication:\nA. *Practical Criticism*\nB. *Seven Types of Ambiguity*\nC. *The Well Wrought Urn*\nD. *Anatomy of Criticism*\nE. *The Great Tradition*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A, B, C, E, D",
+                "B, A, C, D, E",
+                "A, B, E, C, D",
+                "B, A, C, E, D"
+              ]
+            },
+            {
+              "no": 115,
+              "stem": "How many *rasas* are enumerated in Bharata's *Natyasastra*?",
+              "options": [
+                "Six",
+                "Eight",
+                "Nine",
+                "Ten"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Literary Theory Post World War II",
+          "firstQ": 116,
+          "lastQ": 125,
+          "passage": null,
+          "questions": [
+            {
+              "no": 116,
+              "stem": "Structuralism in literary study derives its central models from the linguistics of:",
+              "options": [
+                "Roman Jakobson",
+                "Émile Benveniste",
+                "Ferdinand de Saussure",
+                "Noam Chomsky"
+              ]
+            },
+            {
+              "no": 117,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Concept / Field) | List-II (Theorist) |\n|---|---|\n| A. Narratology | I. Mikhail Bakhtin |\n| B. Dialogism | II. Hans Robert Jauss |\n| C. Defamiliarisation | III. Gérard Genette |\n| D. Horizon of expectations | IV. Viktor Shklovsky |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-III, D-II"
+              ]
+            },
+            {
+              "no": 118,
+              "stem": "*Is There a Text in This Class?*, a landmark of reader-response criticism, was written by:",
+              "options": [
+                "Wolfgang Iser",
+                "Stanley Fish",
+                "Norman Holland",
+                "Roman Ingarden"
+              ]
+            },
+            {
+              "no": 119,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. New Historicism is closely associated with Stephen Greenblatt.\nB. Cultural materialism in Renaissance studies is associated with Jonathan Dollimore and Alan Sinfield.\nC. The notion of 'thick description' was borrowed from the anthropologist Clifford Geertz.\nD. New Historicism affirms the autonomy of the literary text from its historical conditions.\nE. The phrase 'poetics of culture' was coined by Terry Eagleton.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and D Only",
+                "B, C and E Only",
+                "C, D and E Only",
+                "A, B and C Only"
+              ]
+            },
+            {
+              "no": 120,
+              "stem": "*Epistemology of the Closet*, a founding text of queer theory, was written by:",
+              "options": [
+                "Judith Butler",
+                "Adrienne Rich",
+                "Eve Kosofsky Sedgwick",
+                "Michael Warner"
+              ]
+            },
+            {
+              "no": 121,
+              "stem": "The term 'subaltern', as used in Indian historiography and postcolonial theory, is derived from the writings of:",
+              "options": [
+                "Michel Foucault",
+                "Antonio Gramsci",
+                "Louis Althusser",
+                "Raymond Williams"
+              ]
+            },
+            {
+              "no": 122,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Concept) | List-II (Theorist) |\n|---|---|\n| A. Mimicry | I. Aimé Césaire |\n| B. Strategic essentialism | II. Homi Bhabha |\n| C. Contact zone | III. Mary Louise Pratt |\n| D. Négritude | IV. G. C. Spivak |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-II, B-IV, C-III, D-I",
+                "A-I, B-II, C-III, D-IV",
+                "A-II, B-III, C-IV, D-I",
+                "A-IV, B-II, C-I, D-III"
+              ]
+            },
+            {
+              "no": 123,
+              "stem": "Arrange the following works in chronological order of publication:\nA. *Orientalism*\nB. *The Wretched of the Earth*\nC. *The Empire Writes Back*\nD. *The Location of Culture*\nE. *Provincializing Europe*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A, B, C, D, E",
+                "B, A, C, D, E",
+                "B, C, A, E, D",
+                "A, B, D, C, E"
+              ]
+            },
+            {
+              "no": 124,
+              "stem": "The term 'ecocriticism' was first used in an essay of 1978 by:",
+              "options": [
+                "Cheryll Glotfelty",
+                "William Rueckert",
+                "Lawrence Buell",
+                "Raymond Williams"
+              ]
+            },
+            {
+              "no": 125,
+              "stem": "\"A Cyborg Manifesto\", a key text for posthumanist theory, was written by:",
+              "options": [
+                "Rosi Braidotti",
+                "N. Katherine Hayles",
+                "Donna Haraway",
+                "Bruno Latour"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Research Methods and Materials in English",
+          "firstQ": 126,
+          "lastQ": 131,
+          "passage": null,
+          "questions": [
+            {
+              "no": 126,
+              "stem": "In the *MLA Handbook*, 9th edition, a standard parenthetical in-text citation consists of:",
+              "options": [
+                "The author's full name and the year of publication",
+                "The author's surname and the page number",
+                "The title of the work and the year",
+                "The page number alone"
+              ]
+            },
+            {
+              "no": 127,
+              "stem": "A 'variorum' edition of a literary work is one that:",
+              "options": [
+                "Modernises the spelling and punctuation for student use",
+                "Presents variant readings together with the commentary of earlier editors",
+                "Abridges the text for classroom use",
+                "Reproduces the first edition in facsimile"
+              ]
+            },
+            {
+              "no": 128,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. The choice of copy-text is a central problem of textual editing.\nB. The Greg–Bowers theory is concerned with the treatment of copy-text.\nC. A concordance lists the words of a text with their contexts and locations.\nD. Recension means the invention of new readings by the editor.\nE. A *festschrift* is a critical edition of a single literary text.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and D Only",
+                "A, B and C Only",
+                "B, C and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 129,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Style manual) | List-II (Characteristic system) |\n|---|---|\n| A. MLA | I. Author-date system widely used in the social sciences |\n| B. APA | II. Student adaptation of the Chicago system |\n| C. Chicago | III. Author-page system standard in literary studies |\n| D. Turabian | IV. Notes-bibliography system used in history and the humanities |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-III, D-II"
+              ]
+            },
+            {
+              "no": 130,
+              "stem": "Which of the following databases is most directly useful for research in literature and the humanities?",
+              "options": [
+                "PubMed",
+                "JSTOR",
+                "SciFinder",
+                "INSPIRE"
+              ]
+            },
+            {
+              "no": 131,
+              "stem": "The abstract of a research article should:",
+              "options": [
+                "List the chapter divisions of the work",
+                "Reproduce the introduction verbatim",
+                "Give a concise account of the aim, method, findings and conclusion",
+                "Acknowledge the sources of funding"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "American and Other Non-British Literatures",
+          "firstQ": 132,
+          "lastQ": 140,
+          "passage": null,
+          "questions": [
+            {
+              "no": 132,
+              "stem": "The verse of Emily Dickinson is chiefly characterised by:",
+              "options": [
+                "Regular Spenserian stanzas",
+                "Extensive use of dashes, slant rhyme and hymn metre",
+                "Strict heroic couplets",
+                "Long alliterative lines"
+              ]
+            },
+            {
+              "no": 133,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Novel) | List-II (Novelist) |\n|---|---|\n| A. *The Adventures of Huckleberry Finn* | I. Stephen Crane |\n| B. *The Red Badge of Courage* | II. Edith Wharton |\n| C. *Sister Carrie* | III. Mark Twain |\n| D. *The Age of Innocence* | IV. Theodore Dreiser |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-III, B-I, C-IV, D-II",
+                "A-I, B-III, C-II, D-IV",
+                "A-III, B-IV, C-I, D-II",
+                "A-IV, B-I, C-III, D-II"
+              ]
+            },
+            {
+              "no": 134,
+              "stem": "Which novel by Ernest Hemingway is set during the Spanish Civil War?",
+              "options": [
+                "*A Farewell to Arms*",
+                "*The Sun Also Rises*",
+                "*For Whom the Bell Tolls*",
+                "*To Have and Have Not*"
+              ]
+            },
+            {
+              "no": 135,
+              "stem": "Read the following statements carefully and choose the correct ones:\nA. Allen Ginsberg belonged to the Beat Generation.\nB. \"Howl\" was written by Allen Ginsberg.\nC. *On the Road* was written by Jack Kerouac.\nD. Robert Frost is classed among the Confessional poets.\nE. *Leaves of Grass* was written by Wallace Stevens.\n\nChoose the **most appropriate** answer from the options given below:",
+              "options": [
+                "A, B and C Only",
+                "B, C and D Only",
+                "A, D and E Only",
+                "C, D and E Only"
+              ]
+            },
+            {
+              "no": 136,
+              "stem": "Match **List-I** with **List-II**:\n\n| List-I (Work) | List-II (Author) |\n|---|---|\n| A. *Things Fall Apart* | I. Wole Soyinka |\n| B. *Petals of Blood* | II. Tsitsi Dangarembga |\n| C. *Death and the King's Horseman* | III. Chinua Achebe |\n| D. *Nervous Conditions* | IV. Ngugi wa Thiong'o |\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A-I, B-IV, C-III, D-II",
+                "A-III, B-IV, C-I, D-II",
+                "A-III, B-I, C-IV, D-II",
+                "A-IV, B-III, C-II, D-I"
+              ]
+            },
+            {
+              "no": 137,
+              "stem": "*Omeros*, a long poem reworking Homeric material in a Caribbean setting, was written by:",
+              "options": [
+                "Kamau Brathwaite",
+                "Claude McKay",
+                "Wilson Harris",
+                "Derek Walcott"
+              ]
+            },
+            {
+              "no": 138,
+              "stem": "The Australian novel *Voss* was written by:",
+              "options": [
+                "Peter Carey",
+                "Patrick White",
+                "David Malouf",
+                "Thomas Keneally"
+              ]
+            },
+            {
+              "no": 139,
+              "stem": "*Survival: A Thematic Guide to Canadian Literature* was written by:",
+              "options": [
+                "Alice Munro",
+                "Margaret Laurence",
+                "Margaret Atwood",
+                "Northrop Frye"
+              ]
+            },
+            {
+              "no": 140,
+              "stem": "Arrange the following works in chronological order of publication:\nA. *Things Fall Apart*\nB. *Omeros*\nC. *Beloved*\nD. *Midnight's Children*\nE. *The God of Small Things*\n\nChoose the **correct** answer from the options given below:",
+              "options": [
+                "A, D, C, B, E",
+                "A, C, D, B, E",
+                "D, A, C, E, B",
+                "A, D, B, C, E"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Comprehension — Verse",
+          "firstQ": 141,
+          "lastQ": 145,
+          "passage": "**Read the following lines and answer the questions that follow.**\n\n> They took the elms down early in the spring,\n> Before the leaves could argue for their lives.\n> All morning there was tearing, and the sting\n> Of sap in the cold air; then the men left,\n> And what remained was light — too much of it,\n> An honesty the street had not asked for.\n> The houses stood there suddenly unfit,\n> Like guests whose host has opened every door.\n> My neighbour said, *They should have done it years*\n> *Ago*; my other neighbour would not look.\n> I found I had no argument, no tears,\n> Only the shape of something taken back.\n> We plant, they say, for those we shall not meet.\n> We fell, I say, for those who feel the heat.",
+          "questions": [
+            {
+              "no": 141,
+              "stem": "The phrase about the leaves arguing for their lives is an instance of:",
+              "options": [
+                "Metonymy",
+                "Personification",
+                "Synecdoche",
+                "Oxymoron"
+              ]
+            },
+            {
+              "no": 142,
+              "stem": "Calling the excess of light 'an honesty' suggests that:",
+              "options": [
+                "The street has become beautiful",
+                "The trees had been dishonest",
+                "An exposure has replaced a kindly concealment",
+                "Morning has arrived earlier than usual"
+              ]
+            },
+            {
+              "no": 143,
+              "stem": "The simile comparing the houses to guests whose host has opened every door conveys:",
+              "options": [
+                "Generous hospitality",
+                "Awkward exposure",
+                "Festivity",
+                "The desertion of the houses"
+              ]
+            },
+            {
+              "no": 144,
+              "stem": "The recorded remarks of the two neighbours chiefly establish:",
+              "options": [
+                "A quarrel between the neighbours",
+                "The speaker's agreement with the first neighbour",
+                "General indifference to the felling",
+                "A divided response which the speaker is unable to join"
+              ]
+            },
+            {
+              "no": 145,
+              "stem": "The concluding couplet works mainly by:",
+              "options": [
+                "Resolving the poem's central conflict",
+                "Introducing a new character",
+                "Turning a proverb about planting into an indictment",
+                "Abandoning the imagery of the poem"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Comprehension — Prose",
+          "firstQ": 146,
+          "lastQ": 150,
+          "passage": "**Read the following passage carefully and answer the questions that follow.**\n\n> The realist novel achieved its authority by a trick that has since become invisible: it persuaded readers that a narrative voice could stand nowhere in particular. The omniscient narrator of the nineteenth century is not a person but a vantage — above the town, inside every skull, unhurried, unimplicated, apparently without interests of its own. The trick worked because the vantage flattered the reader, who was invited to share it. Modernist fiction did not so much destroy this convention as expose its cost. Once the narration is lodged inside a single consciousness, everything gains the vividness of partiality and loses the authority of survey; the town can no longer be described, only glimpsed from a window. What we call the crisis of the novel is in truth an argument about this exchange, and it is not an argument that can be won, because each convention pays for its power with a corresponding blindness. The interesting novelists are those who choose their blindness deliberately.",
+          "questions": [
+            {
+              "no": 146,
+              "stem": "The 'trick' attributed to the realist novel is that:",
+              "options": [
+                "It invented new kinds of plot",
+                "It made the narrating voice appear to occupy no particular position",
+                "It concealed the identity of the author",
+                "It imitated the methods of journalism"
+              ]
+            },
+            {
+              "no": 147,
+              "stem": "According to the passage, the omniscient narrator is best described as:",
+              "options": [
+                "A fully realised character",
+                "The novelist in disguise",
+                "A vantage rather than a person",
+                "An unreliable witness"
+              ]
+            },
+            {
+              "no": 148,
+              "stem": "In the author's view, modernist fiction:",
+              "options": [
+                "Destroyed the realist convention altogether",
+                "Revived omniscient narration",
+                "Abandoned the representation of consciousness",
+                "Exposed the cost of the realist convention"
+              ]
+            },
+            {
+              "no": 149,
+              "stem": "Narration lodged within a single consciousness is said to gain ______ and to lose ______.",
+              "options": [
+                "Authority; vividness",
+                "The vividness of partiality; the authority of survey",
+                "Clarity; interest",
+                "Plot; character"
+              ]
+            },
+            {
+              "no": 150,
+              "stem": "The author's final judgement is that:",
+              "options": [
+                "Realism is artistically superior to modernism",
+                "The crisis of the novel is soluble in principle",
+                "Every convention entails a blindness, and good novelists choose theirs deliberately",
+                "Narrative conventions should be abandoned altogether"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
