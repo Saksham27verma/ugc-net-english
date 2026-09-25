@@ -1,10 +1,8 @@
 import { ExamShell } from "@/components/exam/ExamShell"
-import { getPaper, papers } from "@/data/papers"
+import { getPaperFromStore } from "@/server/papers"
 import { notFound } from "next/navigation"
 
-export function generateStaticParams() {
-  return papers.map((paper) => ({ setId: String(paper.setId) }))
-}
+export const dynamic = "force-dynamic"
 
 export default async function ExamPage({
   params,
@@ -12,7 +10,7 @@ export default async function ExamPage({
   params: Promise<{ setId: string }>
 }) {
   const { setId } = await params
-  const paper = getPaper(Number(setId))
+  const paper = await getPaperFromStore(Number(setId))
   if (!paper) notFound()
   return <ExamShell paper={paper} />
 }

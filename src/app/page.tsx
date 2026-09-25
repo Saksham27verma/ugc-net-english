@@ -1,14 +1,9 @@
 import { HomeClient } from "@/components/home/HomeClient"
-import { papers } from "@/data/papers"
+import { listPapers } from "@/server/papers"
 
-export default function HomePage() {
-  return (
-    <HomeClient
-      papers={papers.map((paper) => ({
-        setId: paper.setId,
-        title: paper.title,
-        durationMinutes: paper.durationMinutes,
-      }))}
-    />
-  )
+export const dynamic = "force-dynamic"
+
+export default async function HomePage() {
+  const papers = await listPapers()
+  return <HomeClient papers={papers} />
 }

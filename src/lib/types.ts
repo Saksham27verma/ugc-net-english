@@ -35,6 +35,13 @@ export type Paper = {
   sections: PaperSection[]
 }
 
+export type PaperSummary = {
+  setId: number
+  title: string
+  durationMinutes: 180
+  updatedAt?: string
+}
+
 export type KeyEntry = {
   answer: 1 | 2 | 3 | 4
   explanation: string
@@ -91,4 +98,6 @@ export type Result = {
   byUnit: ResultUnit[]
   perQuestion: ResultQuestion[]
   submittedAt: number
+  elapsedMs: number
+  overtimeMs: number
 }

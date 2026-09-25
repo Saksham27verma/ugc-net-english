@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { CUT_OFF_NOTE } from "@/lib/bands"
+import { formatClock } from "@/lib/clock"
 import { findResult } from "@/lib/storage"
 import type { Result } from "@/lib/types"
 
@@ -59,6 +60,16 @@ export function ResultClient({ attemptId }: { attemptId: string }) {
         </p>
         <p className="mt-3 text-lg">{result.band}</p>
         <p className="mt-2 max-w-xl text-sm text-muted">{CUT_OFF_NOTE}</p>
+        {result.elapsedMs ? (
+          <p className="mt-3 text-sm">
+            Time taken {formatClock(result.elapsedMs)}
+            {result.overtimeMs > 0 ? (
+              <span className="text-red"> · {formatClock(result.overtimeMs)} overtime</span>
+            ) : (
+              <span className="text-muted"> · within 180 minutes</span>
+            )}
+          </p>
+        ) : null}
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat label="Paper I" value={`${result.paper1} / 100`} />

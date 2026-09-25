@@ -19,6 +19,7 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
       "src/data/papers.ts",
+      "src/server/key-files.ts",
     ],
   },
   {
@@ -32,6 +33,7 @@ const eslintConfig = [
                 "**/server/keys/**",
                 "@/server/keys",
                 "@/server/keys/**",
+                "@/server/key-files",
                 "**/answer-keys.json",
               ],
               message:

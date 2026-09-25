@@ -4,28 +4,34 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { Markdown } from "@/components/Markdown"
-import { getPaper } from "@/data/papers"
 import { locateQuestion } from "@/lib/paper"
 import { findResult } from "@/lib/storage"
-import type { Result } from "@/lib/types"
+import type { Paper, Result } from "@/lib/types"
+import { getPublishedPaper } from "@/server/paper-actions"
 
 type Filter = "all" | "wrong" | "unattempted" | "marked" | string
 
 export function ReviewClient({ attemptId }: { attemptId: string }) {
   const router = useRouter()
   const [result, setResult] = useState<Result | null | undefined>(undefined)
+  const [paper, setPaper] = useState<Paper | null | undefined>(undefined)
   const [filter, setFilter] = useState<Filter>("all")
   const [jump, setJump] = useState<number | null>(null)
 
   useEffect(() => {
-    setResult(findResult(attemptId) ?? null)
+    const found = findResult(attemptId) ?? null
+    setResult(found)
+    if (!found) {
+      setPaper(null)
+      return
+    }
+    setPaper(undefined)
+    void getPublishedPaper(found.setId).then((loaded) => setPaper(loaded))
   }, [attemptId])
 
   useEffect(() => {
     if (result === null) router.replace("/")
   }, [result, router])
-
-  const paper = result ? getPaper(result.setId) : undefined
 
   const units = useMemo(() => paper?.sections.flatMap((section) => section.units) ?? [], [paper])
 
@@ -48,7 +54,7 @@ export function ReviewClient({ attemptId }: { attemptId: string }) {
     setJump(null)
   }, [jump])
 
-  if (result === undefined) {
+  if (result === undefined || paper === undefined) {
     return <div className="flex min-h-dvh items-center justify-center text-muted">Loading review…</div>
   }
   if (!result || !paper) return null

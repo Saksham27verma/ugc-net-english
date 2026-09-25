@@ -3,16 +3,15 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
-import { formatRemaining, remainingMs } from "@/lib/clock"
+import { formatClock, remainingMs } from "@/lib/clock"
 import { paperShortTitle } from "@/lib/paper"
-import { appendHistory, createAttempt, clearActive, readActive, readHistory, writeActive } from "@/lib/storage"
-import type { Attempt, Result } from "@/lib/types"
-import { submitAttempt } from "@/server/score"
+import { createAttempt, clearActive, readActive, readHistory, writeActive } from "@/lib/storage"
+import type { Attempt, PaperSummary, Result } from "@/lib/types"
 
 export function HomeClient({
   papers,
 }: {
-  papers: { setId: number; title: string; durationMinutes: 180 }[]
+  papers: PaperSummary[]
 }) {
   const router = useRouter()
   const [history, setHistory] = useState<Result[]>([])
@@ -21,23 +20,8 @@ export function HomeClient({
   const [pendingSetId, setPendingSetId] = useState<number | null>(null)
 
   useEffect(() => {
-    const existing = readActive()
     setHistory(readHistory())
-    if (existing && remainingMs(existing) <= 0) {
-      void (async () => {
-        try {
-          const result = await submitAttempt(existing.setId, existing.responses, existing.id)
-          appendHistory(result)
-          clearActive()
-          setActive(null)
-          setHistory(readHistory())
-        } catch {
-          setActive(existing)
-        }
-      })()
-      return
-    }
-    setActive(existing)
+    setActive(readActive())
   }, [])
 
   useEffect(() => {
@@ -48,7 +32,7 @@ export function HomeClient({
   const activeRemaining = active ? remainingMs(active, now) : 0
 
   function start(setId: number) {
-    if (active && remainingMs(active, Date.now()) > 0 && active.setId !== setId) {
+    if (active && active.setId !== setId) {
       setPendingSetId(setId)
       return
     }
@@ -82,16 +66,20 @@ export function HomeClient({
 
       <main className="mx-auto max-w-5xl px-4 py-8">
         <section className="grid gap-4 md:grid-cols-2">
-          {papers.map((paper) => (
-            <SetCard
-              key={paper.setId}
-              paper={paper}
-              history={history}
-              active={active}
-              remaining={active?.setId === paper.setId ? activeRemaining : 0}
-              onStart={() => start(paper.setId)}
-            />
-          ))}
+          {papers.length === 0 ? (
+            <p className="text-sm text-muted">No papers are in the database yet.</p>
+          ) : (
+            papers.map((paper) => (
+              <SetCard
+                key={paper.setId}
+                paper={paper}
+                history={history}
+                active={active}
+                remaining={active?.setId === paper.setId ? activeRemaining : 0}
+                onStart={() => start(paper.setId)}
+              />
+            ))
+          )}
         </section>
 
         <section className="mt-12">
@@ -99,6 +87,11 @@ export function HomeClient({
           <HistoryTable history={history} papers={papers} />
         </section>
       </main>
+      <footer className="mx-auto max-w-5xl px-4 pb-8 text-xs text-muted">
+        <Link href="/admin" className="hover:text-foreground">
+          Import paper
+        </Link>
+      </footer>
 
       {pendingSetId !== null ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -140,7 +133,7 @@ function SetCard({
   remaining,
   onStart,
 }: {
-  paper: { setId: number; title: string; durationMinutes: 180 }
+  paper: PaperSummary
   history: Result[]
   active: Attempt | null
   remaining: number
@@ -169,7 +162,11 @@ function SetCard({
         onClick={onStart}
         className="mt-5 bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
       >
-        {resumable ? `Resume · ${formatRemaining(remaining)}` : "Start"}
+        {resumable
+          ? remaining >= 0
+            ? `Resume · ${formatClock(remaining)}`
+            : `Resume · +${formatClock(-remaining)} overtime`
+          : "Start"}
       </button>
     </article>
   )
@@ -180,7 +177,7 @@ function HistoryTable({
   papers,
 }: {
   history: Result[]
-  papers: { setId: number; title: string; durationMinutes: 180 }[]
+  papers: PaperSummary[]
 }) {
   const titles = useMemo(() => {
     const map = new Map<number, string>()
@@ -201,6 +198,7 @@ function HistoryTable({
             <th className="px-3 py-2 font-medium">Set</th>
             <th className="px-3 py-2 font-medium">Score</th>
             <th className="px-3 py-2 font-medium">Accuracy</th>
+            <th className="px-3 py-2 font-medium">Time</th>
             <th className="px-3 py-2 font-medium">Result</th>
           </tr>
         </thead>
@@ -216,6 +214,13 @@ function HistoryTable({
               <td className="px-3 py-2">{titles.get(item.setId) ?? `Set ${item.setId}`}</td>
               <td className="px-3 py-2 font-medium">{item.total} / 300</td>
               <td className="px-3 py-2">{item.accuracy.toFixed(1)}%</td>
+              <td className="px-3 py-2">
+                {item.elapsedMs
+                  ? item.overtimeMs
+                    ? `${formatClock(item.elapsedMs)} (+${formatClock(item.overtimeMs)})`
+                    : formatClock(item.elapsedMs)
+                  : "—"}
+              </td>
               <td className="px-3 py-2">
                 <Link href={`/result/${item.attemptId}`} className="text-accent underline-offset-2 hover:underline">
                   View

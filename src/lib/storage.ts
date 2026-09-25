@@ -2,6 +2,7 @@ import type { Attempt, AttemptResponse, Result } from "./types"
 
 export const ACTIVE_KEY = "ugcnet:active"
 export const HISTORY_KEY = "ugcnet:history"
+export const VISITOR_KEY = "ugcnet:visitor"
 
 function canUseStorage(): boolean {
   return typeof window !== "undefined" && typeof window.localStorage !== "undefined"
@@ -65,6 +66,15 @@ export function appendHistory(result: Result): void {
 
 export function findResult(attemptId: string): Result | undefined {
   return readHistory().find((item) => item.attemptId === attemptId)
+}
+
+export function getVisitorId(): string {
+  if (!canUseStorage()) return ""
+  const existing = window.localStorage.getItem(VISITOR_KEY)
+  if (existing) return existing
+  const id = crypto.randomUUID()
+  window.localStorage.setItem(VISITOR_KEY, id)
+  return id
 }
 
 export function createAttempt(setId: number, durationMs: number): Attempt {

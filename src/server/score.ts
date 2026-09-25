@@ -2,9 +2,9 @@
 
 import "server-only"
 import { bandFor } from "@/lib/bands"
-import { getPaper } from "@/data/papers"
 import type { AttemptResponse, Result, ResultQuestion, ResultUnit, Selected } from "@/lib/types"
 import { loadKey } from "./load-key"
+import { getPaperFromStore, saveAttemptResult } from "./papers"
 
 function asSelected(value: unknown): Selected {
   if (value === 1 || value === 2 || value === 3 || value === 4) return value
@@ -18,12 +18,14 @@ export async function submitAttempt(
   setId: number,
   responses: Record<number | string, AttemptResponse>,
   attemptId: string,
+  timing?: { startedAt: number; durationMs: number },
+  visitorId?: string,
 ): Promise<Result> {
-  const paper = getPaper(setId)
+  const paper = await getPaperFromStore(setId)
   if (!paper) {
     throw new Error(`Unknown set ${setId}`)
   }
-  const key = loadKey(setId)
+  const key = await loadKey(setId)
   const perQuestion: ResultQuestion[] = []
   const byUnit: ResultUnit[] = []
   let correct = 0
@@ -79,7 +81,11 @@ export async function submitAttempt(
   const total = paper1 + paper2
   const accuracy = attempted === 0 ? 0 : (correct / attempted) * 100
 
-  return {
+  const submittedAt = Date.now()
+  const elapsedMs = timing ? Math.max(0, submittedAt - timing.startedAt) : 0
+  const overtimeMs = timing ? Math.max(0, elapsedMs - timing.durationMs) : 0
+
+  const result: Result = {
     attemptId,
     setId,
     total,
@@ -93,6 +99,18 @@ export async function submitAttempt(
     band: bandFor(total),
     byUnit,
     perQuestion,
-    submittedAt: Date.now(),
+    submittedAt,
+    elapsedMs,
+    overtimeMs,
   }
+
+  if (visitorId) {
+    try {
+      await saveAttemptResult(visitorId, result)
+    } catch (error) {
+      console.error("Could not persist attempt to Neon", error)
+    }
+  }
+
+  return result
 }

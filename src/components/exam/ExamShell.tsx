@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { Markdown } from "@/components/Markdown"
 import { Palette, PaletteLegend } from "@/components/exam/Palette"
-import { formatRemaining, remainingMs, timerTone, timerWarning } from "@/lib/clock"
+import { formatClock, formatTimer, timerTone, timerWarning } from "@/lib/clock"
 import { firstUnansweredInSection, locateQuestion, paperShortTitle } from "@/lib/paper"
 import { answeredCount, getResponse, markedCount, statusCounts } from "@/lib/status"
-import { appendHistory, clearActive } from "@/lib/storage"
+import { appendHistory, clearActive, getVisitorId } from "@/lib/storage"
 import { useExam } from "@/lib/use-exam"
 import type { Paper, Selected } from "@/lib/types"
 import { submitAttempt } from "@/server/score"
@@ -33,22 +33,28 @@ export function ExamShell({ paper }: { paper: Paper }) {
     submittingRef.current = true
     setError(null)
     try {
-      const result = await submitAttempt(paper.setId, flushed.responses, flushed.id)
+      const result = await submitAttempt(
+        paper.setId,
+        flushed.responses,
+        flushed.id,
+        {
+          startedAt: flushed.startedAt,
+          durationMs: flushed.durationMs,
+        },
+        getVisitorId(),
+      )
       appendHistory(result)
       clearActive()
       router.push(`/result/${result.attemptId}`)
     } catch (err) {
       submittingRef.current = false
-      setError(err instanceof Error ? err.message : "Could not submit the paper.")
+      setError(
+        err instanceof Error
+          ? `${err.message} Your answers are still saved on this device — try Submit again.`
+          : "Could not submit the paper. Your answers are still saved — try Submit again.",
+      )
     }
   }, [flushTime, paper.setId, router])
-
-  useEffect(() => {
-    if (!attempt) return
-    if (remainingMs(attempt) <= 0) {
-      void finish()
-    }
-  }, [attempt, remaining, finish])
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -110,9 +116,54 @@ export function ExamShell({ paper }: { paper: Paper }) {
   const notAnswered = 150 - answered
   const tone = timerTone(remaining)
   const warning = timerWarning(remaining)
+  const timer = formatTimer(remaining)
   const timerClass =
     tone === "red" ? "text-red" : tone === "amber" ? "text-amber" : "text-foreground"
   const passage = located.unit.passage
+
+  const actionRow = (
+    <div className="flex flex-wrap items-center gap-2 border-b border-line bg-surface px-4 py-3">
+      <button
+        type="button"
+        onClick={saveAndNext}
+        className="bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
+      >
+        Save & Next
+      </button>
+      <button
+        type="button"
+        onClick={saveAndMark}
+        className="border border-line bg-surface px-3 py-2 text-sm"
+      >
+        Save & Mark for Review
+      </button>
+      <button type="button" onClick={clear} className="border border-line bg-surface px-3 py-2 text-sm">
+        Clear Response
+      </button>
+      <button
+        type="button"
+        onClick={previous}
+        disabled={currentNo === 1}
+        className="border border-line bg-surface px-3 py-2 text-sm disabled:opacity-40"
+      >
+        Previous
+      </button>
+      <button
+        type="button"
+        onClick={() => setPaletteOpen(true)}
+        className="border border-line bg-surface px-3 py-2 text-sm lg:hidden"
+      >
+        Palette · {answered} answered
+      </button>
+      <button
+        type="button"
+        onClick={() => setSubmitOpen(true)}
+        className="ml-auto border border-red px-4 py-2 text-sm font-semibold text-red"
+      >
+        Submit
+      </button>
+    </div>
+  )
 
   return (
     <div className="flex min-h-dvh flex-col bg-background text-foreground">
@@ -125,9 +176,11 @@ export function ExamShell({ paper }: { paper: Paper }) {
         </div>
         <div className="text-right">
           <p className={`font-mono text-2xl font-medium tabular-nums ${timerClass}`}>
-            {formatRemaining(remaining)}
+            {timer.display}
           </p>
-          {warning ? (
+          {timer.overtime ? (
+            <p className="text-xs text-red">Overtime — exam continues until you submit</p>
+          ) : warning ? (
             <p className={`text-xs ${tone === "red" ? "text-red" : "text-amber"}`}>
               {warning} minute{warning === 1 ? "" : "s"} remaining
             </p>
@@ -185,13 +238,16 @@ export function ExamShell({ paper }: { paper: Paper }) {
             ) : null}
 
             <section className="flex min-h-0 min-w-0 flex-1 flex-col">
-              <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-6">
+              <div className="px-4 pt-4 sm:px-6">
                 <p className="font-sans text-xs tracking-wide text-muted">
                   {located.unit.name}
                   <span className="mx-2 text-line">·</span>
                   +2 marks · no negative marking
                 </p>
-                <h2 className="mt-2 font-sans text-lg font-semibold">Q.{located.question.no}</h2>
+              </div>
+              {actionRow}
+              <div className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-6">
+                <h2 className="font-sans text-lg font-semibold">Q.{located.question.no}</h2>
                 <div className="mt-4">
                   <Markdown>{located.question.stem}</Markdown>
                 </div>
@@ -223,48 +279,6 @@ export function ExamShell({ paper }: { paper: Paper }) {
                     )
                   })}
                 </fieldset>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2 border-t border-line bg-surface px-4 py-3">
-                <button
-                  type="button"
-                  onClick={saveAndNext}
-                  className="bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
-                >
-                  Save & Next
-                </button>
-                <button
-                  type="button"
-                  onClick={saveAndMark}
-                  className="border border-line bg-surface px-3 py-2 text-sm"
-                >
-                  Save & Mark for Review
-                </button>
-                <button type="button" onClick={clear} className="border border-line bg-surface px-3 py-2 text-sm">
-                  Clear Response
-                </button>
-                <button
-                  type="button"
-                  onClick={previous}
-                  disabled={currentNo === 1}
-                  className="border border-line bg-surface px-3 py-2 text-sm disabled:opacity-40"
-                >
-                  Previous
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPaletteOpen(true)}
-                  className="border border-line bg-surface px-3 py-2 text-sm lg:hidden"
-                >
-                  Palette · {answered} answered
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSubmitOpen(true)}
-                  className="ml-auto border border-red px-4 py-2 text-sm font-semibold text-red"
-                >
-                  Submit
-                </button>
               </div>
             </section>
           </div>
@@ -318,6 +332,11 @@ export function ExamShell({ paper }: { paper: Paper }) {
         <p className="mt-2 text-sm text-muted">
           Once submitted, this attempt cannot be reopened. Unanswered questions will score zero.
         </p>
+        {timer.overtime ? (
+          <p className="mt-2 text-sm text-red">
+            Official time has ended. Extra time so far: {formatClock(-remaining)}.
+          </p>
+        ) : null}
         <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
           <div className="border border-line p-3">
             <dt className="text-muted">Answered</dt>

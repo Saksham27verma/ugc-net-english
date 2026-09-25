@@ -6,12 +6,27 @@ export function remainingMs(attempt: Attempt, now = Date.now()): number {
   return attempt.startedAt + attempt.durationMs - now
 }
 
-export function formatRemaining(ms: number): string {
+export function overtimeMs(attempt: Attempt, now = Date.now()): number {
+  return Math.max(0, -remainingMs(attempt, now))
+}
+
+export function formatClock(ms: number): string {
   const totalSeconds = Math.max(0, Math.ceil(ms / 1000))
   const hours = Math.floor(totalSeconds / 3600)
   const minutes = Math.floor((totalSeconds % 3600) / 60)
   const seconds = totalSeconds % 60
   return [hours, minutes, seconds].map((n) => String(n).padStart(2, "0")).join(":")
+}
+
+export function formatRemaining(ms: number): string {
+  return formatClock(ms)
+}
+
+export function formatTimer(remaining: number): { display: string; label: string; overtime: boolean } {
+  if (remaining >= 0) {
+    return { display: formatClock(remaining), label: "Time remaining", overtime: false }
+  }
+  return { display: `+${formatClock(-remaining)}`, label: "Overtime", overtime: true }
 }
 
 export type TimerWarning = 30 | 10 | 5 | 1 | null
@@ -26,6 +41,7 @@ export function timerWarning(ms: number): TimerWarning {
 }
 
 export function timerTone(ms: number): "normal" | "amber" | "red" {
+  if (ms <= 0) return "red"
   if (ms <= 5 * 60_000) return "red"
   if (ms <= 10 * 60_000) return "amber"
   return "normal"
