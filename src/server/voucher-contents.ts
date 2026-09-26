@@ -47,13 +47,13 @@ const CONTENTS: Record<Milestone, VoucherContents> = {
     validLine: "Any day you like · No expiry",
     wishPrompt: null,
   },
-  20: {
-    milestone: 20,
-    number: voucherNumber(20),
-    issuedTo: "Issued to Tanya · for twenty days in a row",
+  15: {
+    milestone: 15,
+    number: voucherNumber(15),
+    issuedTo: "Issued to Tanya · for fifteen days in a row",
     stubCaption: "days in a row",
     title: "Nykaa or Myntra, your call",
-    lead: "Twenty days. Fill a cart on Nykaa or Myntra, up to ₹3,500, and hand me your phone at checkout.",
+    lead: "Fifteen days. Fill a cart on Nykaa or Myntra, up to ₹3,500, and hand me your phone at checkout.",
     includes: [
       "One cart, one checkout, my card",
       "Not a single \u201cdo you really need that?\u201d",
@@ -65,13 +65,13 @@ const CONTENTS: Record<Milestone, VoucherContents> = {
     validLine: "Any day you like · No expiry",
     wishPrompt: null,
   },
-  30: {
-    milestone: 30,
-    number: voucherNumber(30),
-    issuedTo: "Issued to Tanya · for a whole month, every day",
-    stubCaption: "days · one full month",
+  20: {
+    milestone: 20,
+    number: voucherNumber(20),
+    issuedTo: "Issued to Tanya · for twenty days in a row",
+    stubCaption: "days in a row",
     title: "The full-hour massage",
-    lead: "A month of showing up every single day. Sixty minutes of a proper full-body massage: warm oil, dim lights, your playlist, and you don't lift a finger.",
+    lead: "Twenty days of showing up. Sixty minutes of a proper full-body massage: warm oil, dim lights, your playlist, and you don't lift a finger.",
     includes: [
       "Head, shoulders, back, feet: the full route",
       "Your playlist, your pace, your pressure",
@@ -83,13 +83,13 @@ const CONTENTS: Record<Milestone, VoucherContents> = {
     validLine: "Any evening you like · No expiry",
     wishPrompt: null,
   },
-  50: {
-    milestone: 50,
-    number: voucherNumber(50),
-    issuedTo: "Issued to Tanya · for fifty days in a row",
-    stubCaption: "days in a row",
+  30: {
+    milestone: 30,
+    number: voucherNumber(30),
+    issuedTo: "Issued to Tanya · for thirty days in a row",
+    stubCaption: "days · one full month",
     title: "A night that's all about you",
-    lead: "Fifty days. Door locked, phones face-down, candles lit. One whole night with my undivided attention, and you set the agenda.",
+    lead: "Thirty days. Door locked, phones face-down, candles lit. One whole night with my undivided attention, and you set the agenda.",
     includes: [
       "Chinku, entirely yours, till morning",
       "Whatever you want, for as long as you want it",
@@ -101,13 +101,13 @@ const CONTENTS: Record<Milestone, VoucherContents> = {
     validLine: "Any night you like · No expiry",
     wishPrompt: null,
   },
-  100: {
-    milestone: 100,
-    number: voucherNumber(100),
-    issuedTo: "Issued to Tanya · for a hundred days in a row",
+  50: {
+    milestone: 50,
+    number: voucherNumber(50),
+    issuedTo: "Issued to Tanya · for fifty days in a row",
     stubCaption: "days in a row",
     title: "You write this one",
-    lead: "A hundred days in a row. There's no reward I could print that would match it, so the line below is yours to fill in.",
+    lead: "Fifty days in a row. There's no reward I could print that would match it, so the line below is yours to fill in.",
     includes: [],
     finePrint:
       "Anything within reason, and my definition of reason is very generous. Not valid for \u201cskip the exam\u201d. Signed in advance, so there's no backing out.",

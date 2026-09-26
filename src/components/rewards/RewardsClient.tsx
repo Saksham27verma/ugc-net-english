@@ -85,7 +85,7 @@ export function RewardsClient({
             Coming up
           </h2>
           {upcoming.length === 0 ? (
-            <p className="mt-3 text-sm text-muted">Every single one is yours. A hundred days.</p>
+            <p className="mt-3 text-sm text-muted">Every single one is yours. Fifty days.</p>
           ) : (
             <ul className="mt-4 divide-y divide-line rounded-2xl border border-line bg-surface">
               {upcoming.map((item) => (

@@ -31,6 +31,12 @@ function lockedLadder(): VoucherPublic[] {
 export async function syncVouchers(currentStreak: number): Promise<VoucherPublic[]> {
   if (!hasDatabase()) return lockedLadder()
   const sql = await ensureSchema()
+  // Drop retired milestones (e.g. the old 100-day row) so the ladder matches MILESTONES.
+  await sql`
+    DELETE FROM voucher_state
+    WHERE learner_id = ${LEARNER_ID}
+      AND NOT (milestone = ANY(${[...MILESTONES]}::int[]))
+  `
   await sql`
     INSERT INTO voucher_state (learner_id, milestone, status, earned_at)
     SELECT

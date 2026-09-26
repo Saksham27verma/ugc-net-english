@@ -6,7 +6,7 @@
  */
 import { shiftDayKey } from "./streak"
 
-export const MILESTONES = [5, 10, 20, 30, 50, 100] as const
+export const MILESTONES = [5, 10, 15, 20, 30, 50] as const
 
 export type Milestone = (typeof MILESTONES)[number]
 
@@ -24,7 +24,7 @@ export type VoucherPublic = {
 }
 
 /** The voucher that takes a written wish instead of printed contents. */
-export const WISH_MILESTONE = 100
+export const WISH_MILESTONE = 50
 
 export const WISH_MAX_LENGTH = 160
 

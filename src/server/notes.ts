@@ -33,7 +33,7 @@ const NOTES = [
   "If the timer ran long, we practise the clock next, not the panic.",
   "I am not grading you. I am keeping you company.",
   "Close the review when your eyes blur. The explanations will wait.",
-  "A hundred days starts with evenings exactly like this one.",
+  "Fifty days starts with evenings exactly like this one.",
   "You chose the paper over the easier thing. I noticed.",
   "Let the band sit. The next attempt is a different conversation.",
   "I packed no advice tonight. Just this: you did the day's work.",

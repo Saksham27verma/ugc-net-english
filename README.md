@@ -101,7 +101,7 @@ The verse and prose passages are original compositions written for these papers,
 
 ## Streak rewards — marking a voucher redeemed
 
-Milestones at 5, 10, 20, 30, 50 and 100 consecutive days each earn one voucher.
+Milestones at 5, 10, 15, 20, 30 and 50 consecutive days each earn one voucher.
 Earning is decided server-side when the dashboard loads, and an earned voucher
 is never taken back if the streak breaks. She scratches it open, then presses
 Claim. Nothing is sent anywhere — she shares the image herself.
