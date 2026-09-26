@@ -161,10 +161,10 @@ export function VoucherDialog({
 
         {contents && revealed && !claimed ? (
           <div className="mt-5 flex flex-col gap-3">
-            {voucher.milestone === WISH_MILESTONE ? (
+            {contents.wishPrompt ? (
               <label className="text-sm">
                 <span className="text-xs uppercase tracking-[0.18em] text-muted">
-                  I, Tanya, redeem this voucher for
+                  {contents.wishPrompt}
                 </span>
                 <input
                   value={wish}

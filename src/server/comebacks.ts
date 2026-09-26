@@ -60,7 +60,7 @@ function recoveryThirdDay(
 ): string | null {
   const end = todayDone ? todayKey : shiftDayKey(todayKey, -1)
   let cursor = end
-  let run: string[] = []
+  const run: string[] = []
   for (let i = 0; i < 400; i += 1) {
     if (practised.has(cursor)) {
       run.unshift(cursor)
