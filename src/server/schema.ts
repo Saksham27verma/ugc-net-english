@@ -51,4 +51,54 @@ export async function migrate(sql: Sql): Promise<void> {
         CHECK (status IN ('locked', 'ready', 'revealed', 'claimed', 'redeemed'))
     )
   `
+  await sql`
+    CREATE TABLE IF NOT EXISTS freeze_uses (
+      learner_id text NOT NULL,
+      day_key text NOT NULL,
+      month text NOT NULL,
+      source text NOT NULL,
+      consumed_at timestamptz NOT NULL DEFAULT now(),
+      PRIMARY KEY (learner_id, day_key),
+      CONSTRAINT freeze_uses_source_check
+        CHECK (source IN ('monthly', 'credit'))
+    )
+  `
+  await sql`
+    CREATE TABLE IF NOT EXISTS freeze_credits (
+      id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+      learner_id text NOT NULL,
+      reason text NOT NULL,
+      granted_at timestamptz NOT NULL DEFAULT now(),
+      consumed_day_key text
+    )
+  `
+  await sql`
+    CREATE INDEX IF NOT EXISTS freeze_credits_learner_idx
+      ON freeze_credits (learner_id, consumed_day_key)
+  `
+  await sql`
+    CREATE TABLE IF NOT EXISTS comeback_awards (
+      learner_id text NOT NULL,
+      day_key text NOT NULL,
+      granted_at timestamptz NOT NULL DEFAULT now(),
+      dismissed_at timestamptz,
+      PRIMARY KEY (learner_id, day_key)
+    )
+  `
+  await sql`
+    CREATE TABLE IF NOT EXISTS notes_shown (
+      learner_id text NOT NULL,
+      day_key text NOT NULL,
+      note_index integer NOT NULL,
+      PRIMARY KEY (learner_id, day_key)
+    )
+  `
+  await sql`
+    CREATE TABLE IF NOT EXISTS recap_seen (
+      learner_id text NOT NULL,
+      week_key text NOT NULL,
+      seen_at timestamptz NOT NULL DEFAULT now(),
+      PRIMARY KEY (learner_id, week_key)
+    )
+  `
 }

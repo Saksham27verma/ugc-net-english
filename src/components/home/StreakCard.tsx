@@ -1,4 +1,10 @@
-import type { HeatLevel, StreakData } from "@/lib/streak"
+import {
+  formatDayKeyShort,
+  type FreezeInfo,
+  type HeatLevel,
+  type StreakCell,
+  type StreakData,
+} from "@/lib/streak"
 import type { LadderItem } from "@/lib/vouchers"
 
 const HEAT_CLASS: Record<HeatLevel, string> = {
@@ -13,9 +19,11 @@ const WEEKDAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""]
 
 export function StreakCard({
   streak,
+  freeze,
   nextVoucher,
 }: {
   streak: StreakData
+  freeze?: FreezeInfo
   nextVoucher?: LadderItem | null
 }) {
   const {
@@ -66,6 +74,7 @@ export function StreakCard({
               {nextVoucher.unlocksInDays === 1 ? "day" : "days"}
             </p>
           ) : null}
+          {freeze ? <FreezeLine freeze={freeze} /> : null}
         </div>
         <dl className="flex gap-6 text-sm">
           <Stat label="Current" value={`${currentStreak}d`} />
@@ -123,14 +132,16 @@ export function StreakCard({
                   <span
                     key={cell.key}
                     aria-hidden="true"
-                    title={
-                      cell.future
-                        ? cell.label
-                        : `${cell.count === 0 ? "No papers" : `${cell.count} paper${cell.count === 1 ? "" : "s"}`} on ${cell.label}`
-                    }
-                    className={`h-4 w-4 rounded-md sm:h-5 sm:w-5 lg:h-6 lg:w-6 ${HEAT_CLASS[cell.level]} ${
-                      cell.future ? "opacity-30" : ""
-                    } ${cell.key === todayKey ? "ring-2 ring-accent ring-offset-1 ring-offset-surface" : ""}`}
+                    title={cellTooltip(cell)}
+                    className={`h-4 w-4 rounded-md sm:h-5 sm:w-5 lg:h-6 lg:w-6 ${
+                      cell.frozen ? "bg-surface" : HEAT_CLASS[cell.level]
+                    } ${cell.future ? "opacity-30" : ""} ${
+                      cell.frozen
+                        ? "ring-2 ring-accent ring-offset-1 ring-offset-surface"
+                        : cell.key === todayKey
+                          ? "ring-2 ring-accent ring-offset-1 ring-offset-surface"
+                          : ""
+                    }`}
                   />
                 ))}
               </div>
@@ -148,6 +159,26 @@ export function StreakCard({
       </div>
     </section>
   )
+}
+
+function FreezeLine({ freeze }: { freeze: FreezeInfo }) {
+  const parts: string[] = []
+  if (freeze.available > 0) {
+    parts.push(
+      freeze.available === 1 ? "1 freeze available" : `${freeze.available} freezes available`,
+    )
+  }
+  if (freeze.usedOn) {
+    parts.push(`Freeze used on ${formatDayKeyShort(freeze.usedOn)}`)
+  }
+  if (parts.length === 0) return null
+  return <p className="mt-1 text-sm text-muted">{parts.join(" · ")}</p>
+}
+
+function cellTooltip(cell: StreakCell): string {
+  if (cell.future) return cell.label
+  if (cell.frozen) return `Streak freeze on ${cell.label}`
+  return `${cell.count === 0 ? "No papers" : `${cell.count} paper${cell.count === 1 ? "" : "s"}`} on ${cell.label}`
 }
 
 function Stat({ label, value }: { label: string; value: string }) {

@@ -38,12 +38,32 @@ export type StreakCell = {
   count: number
   level: HeatLevel
   future: boolean
+  frozen: boolean
+  questions: number
+  accuracy: number | null
+  score: number | null
 }
 
 export type StreakWeek = {
   key: string
   monthLabel: string | null
   cells: StreakCell[]
+}
+
+export type StreakAttempt = {
+  submittedAt: number
+  accuracy?: number
+  attempted?: number
+  total?: number
+}
+
+export type StreakOptions = {
+  frozenDays?: Iterable<string>
+}
+
+export type FreezeInfo = {
+  available: number
+  usedOn: string | null
 }
 
 export type StreakData = {
@@ -96,8 +116,17 @@ export function formatDayKeyShort(key: string): string {
   return dayLabelFormatter.format(new Date(keyToNoon(key)))
 }
 
-function weekday(key: string): number {
+export function weekdayOf(key: string): number {
   return new Date(keyToNoon(key)).getUTCDay()
+}
+
+/** YYYY-MM in the learner's calendar. */
+export function monthKeyOf(key: string): string {
+  return key.slice(0, 7)
+}
+
+function weekday(key: string): number {
+  return weekdayOf(key)
 }
 
 function levelFor(count: number): HeatLevel {
@@ -106,18 +135,22 @@ function levelFor(count: number): HeatLevel {
   return count as 1 | 2 | 3
 }
 
-function currentStreakFrom(counts: Map<string, number>, todayKey: string): number {
-  let cursor = counts.has(todayKey) ? todayKey : shift(todayKey, -1)
+function isActive(key: string, practised: Set<string>, frozen: Set<string>): boolean {
+  return practised.has(key) || frozen.has(key)
+}
+
+function currentStreakFrom(practised: Set<string>, frozen: Set<string>, todayKey: string): number {
+  let cursor = practised.has(todayKey) ? todayKey : shift(todayKey, -1)
   let streak = 0
-  while (counts.has(cursor)) {
+  while (isActive(cursor, practised, frozen)) {
     streak += 1
     cursor = shift(cursor, -1)
   }
   return streak
 }
 
-function longestStreakIn(counts: Map<string, number>): number {
-  const keys = [...counts.keys()].sort()
+function longestStreakIn(practised: Set<string>, frozen: Set<string>): number {
+  const keys = [...new Set([...practised, ...frozen])].sort()
   let longest = 0
   let run = 0
   let previous: string | null = null
@@ -129,13 +162,34 @@ function longestStreakIn(counts: Map<string, number>): number {
   return longest
 }
 
-export function buildStreak(submittedAt: number[], now: number): StreakData {
+function asAttempts(input: number[] | StreakAttempt[]): StreakAttempt[] {
+  return input.map((item) => (typeof item === "number" ? { submittedAt: item } : item))
+}
+
+export function buildStreak(
+  submittedAt: number[] | StreakAttempt[],
+  now: number,
+  options: StreakOptions = {},
+): StreakData {
+  const attempts = asAttempts(submittedAt)
   const counts = new Map<string, number>()
-  for (const ms of submittedAt) {
-    const key = dayKey(ms)
+  const questions = new Map<string, number>()
+  const bestAccuracy = new Map<string, number>()
+  const bestScore = new Map<string, number>()
+  for (const attempt of attempts) {
+    const key = dayKey(attempt.submittedAt)
     counts.set(key, (counts.get(key) ?? 0) + 1)
+    questions.set(key, (questions.get(key) ?? 0) + (attempt.attempted ?? 0))
+    if (attempt.accuracy !== undefined) {
+      bestAccuracy.set(key, Math.max(bestAccuracy.get(key) ?? 0, attempt.accuracy))
+    }
+    if (attempt.total !== undefined) {
+      bestScore.set(key, Math.max(bestScore.get(key) ?? 0, attempt.total))
+    }
   }
 
+  const practised = new Set(counts.keys())
+  const frozen = new Set(options.frozenDays ?? [])
   const todayKey = dayKey(now)
   // The grid ends on the Saturday of the current week so today always sits in
   // the last column, like the GitHub graph.
@@ -151,12 +205,17 @@ export function buildStreak(submittedAt: number[], now: number): StreakData {
     const weekKey = cursor
     for (let day = 0; day < 7; day += 1) {
       const count = counts.get(cursor) ?? 0
+      const frozenDay = frozen.has(cursor) && count === 0
       cells.push({
         key: cursor,
         label: dayLabelFormatter.format(new Date(keyToNoon(cursor))),
         count,
         level: levelFor(count),
         future: cursor > todayKey,
+        frozen: frozenDay,
+        questions: questions.get(cursor) ?? 0,
+        accuracy: bestAccuracy.get(cursor) ?? null,
+        score: bestScore.get(cursor) ?? null,
       })
       cursor = shift(cursor, 1)
     }
@@ -176,10 +235,10 @@ export function buildStreak(submittedAt: number[], now: number): StreakData {
     learnerName: LEARNER_NAME,
     todayKey,
     weeks,
-    currentStreak: currentStreakFrom(counts, todayKey),
-    longestStreak: longestStreakIn(counts),
-    activeDays: counts.size,
-    totalAttempts: submittedAt.length,
+    currentStreak: currentStreakFrom(practised, frozen, todayKey),
+    longestStreak: longestStreakIn(practised, frozen),
+    activeDays: practised.size,
+    totalAttempts: attempts.length,
     daysThisWeek,
     weeklyGoal: WEEKLY_GOAL,
     todayCount: counts.get(todayKey) ?? 0,

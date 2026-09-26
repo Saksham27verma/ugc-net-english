@@ -10,7 +10,7 @@ import { StreakCard } from "@/components/home/StreakCard"
 import { RewardLadder } from "@/components/home/RewardLadder"
 import { syncLocalHistory } from "@/server/paper-actions"
 import { TIME_ZONE } from "@/lib/streak"
-import type { StreakData } from "@/lib/streak"
+import type { FreezeInfo, StreakData } from "@/lib/streak"
 import { buildLadder, nextLadderItem, type VoucherPublic } from "@/lib/vouchers"
 import type { Attempt, PaperSummary, Result } from "@/lib/types"
 
@@ -28,11 +28,13 @@ export function HomeClient({
   papers,
   history,
   streak,
+  freeze,
   vouchers,
 }: {
   papers: PaperSummary[]
   history: Result[]
   streak: StreakData
+  freeze: FreezeInfo
   vouchers: VoucherPublic[]
 }) {
   const router = useRouter()
@@ -100,7 +102,7 @@ export function HomeClient({
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <StreakCard streak={streak} nextVoucher={nextVoucher} />
+        <StreakCard streak={streak} freeze={freeze} nextVoucher={nextVoucher} />
         <RewardLadder items={ladder} />
 
         <section className="mt-8 grid gap-4 md:grid-cols-2">

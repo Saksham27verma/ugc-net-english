@@ -1,5 +1,4 @@
 import { RewardsClient } from "@/components/rewards/RewardsClient"
-import { buildStreak } from "@/lib/streak"
 import {
   buildLadder,
   isEarned,
@@ -8,18 +7,14 @@ import {
   type VoucherPublic,
 } from "@/lib/vouchers"
 import { isAdmin } from "@/server/admin-auth"
-import { listAttemptResults } from "@/server/papers"
+import { loadProgress } from "@/server/progress"
 import { syncVouchers } from "@/server/rewards"
 import { voucherContents } from "@/server/voucher-contents"
 
 export const dynamic = "force-dynamic"
 
 export default async function RewardsPage() {
-  const history = await listAttemptResults()
-  const streak = buildStreak(
-    history.map((item) => item.submittedAt),
-    Date.now(),
-  )
+  const { streak } = await loadProgress()
 
   let vouchers: VoucherPublic[] = []
   try {
