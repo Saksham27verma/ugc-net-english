@@ -3,8 +3,6 @@ import { monthKeyOf, shiftDayKey, type FreezeInfo } from "@/lib/streak"
 import { ensureSchema, hasDatabase } from "./db"
 import { LEARNER_ID } from "./learner"
 
-const LOOKBACK_DAYS = 400
-
 export type FreezeState = FreezeInfo & {
   frozenDays: string[]
 }
@@ -35,32 +33,32 @@ export async function syncFreezes(practised: Set<string>, todayKey: string): Pro
     ORDER BY granted_at
   `
 
-  // Today is still open, so a missing attempt today is not a miss yet.
+  // Today is still open. Only yesterday can newly become a miss, and only when
+  // the day before it was a live streak (practised or already frozen).
   const yesterday = shiftDayKey(todayKey, -1)
-  const lastActive = lastActiveOnOrBefore(practised, frozen, yesterday)
-  if (lastActive && lastActive < yesterday) {
-    const firstMiss = shiftDayKey(lastActive, 1)
-    if (!practised.has(firstMiss) && !frozen.has(firstMiss)) {
-      const month = monthKeyOf(firstMiss)
-      const monthlyOpen = !monthsUsed.has(month)
-      const credit = unusedCredits[0]
-      if (monthlyOpen || credit) {
-        const source = monthlyOpen ? "monthly" : "credit"
+  const beforeYesterday = shiftDayKey(yesterday, -1)
+  const yesterdayMissed = !practised.has(yesterday) && !frozen.has(yesterday)
+  const streakToSave = practised.has(beforeYesterday) || frozen.has(beforeYesterday)
+  if (yesterdayMissed && streakToSave) {
+    const month = monthKeyOf(yesterday)
+    const monthlyOpen = !monthsUsed.has(month)
+    const credit = unusedCredits[0]
+    if (monthlyOpen || credit) {
+      const source = monthlyOpen ? "monthly" : "credit"
+      await sql`
+        INSERT INTO freeze_uses (learner_id, day_key, month, source)
+        VALUES (${LEARNER_ID}, ${yesterday}, ${month}, ${source})
+        ON CONFLICT (learner_id, day_key) DO NOTHING
+      `
+      if (source === "credit" && credit) {
         await sql`
-          INSERT INTO freeze_uses (learner_id, day_key, month, source)
-          VALUES (${LEARNER_ID}, ${firstMiss}, ${month}, ${source})
-          ON CONFLICT (learner_id, day_key) DO NOTHING
+          UPDATE freeze_credits
+          SET consumed_day_key = ${yesterday}
+          WHERE id = ${credit.id}::uuid AND consumed_day_key IS NULL
         `
-        if (source === "credit" && credit) {
-          await sql`
-            UPDATE freeze_credits
-            SET consumed_day_key = ${firstMiss}
-            WHERE id = ${credit.id}::uuid AND consumed_day_key IS NULL
-          `
-        }
-        frozen.add(firstMiss)
-        monthsUsed.add(month)
       }
+      frozen.add(yesterday)
+      monthsUsed.add(month)
     }
   }
 
@@ -88,15 +86,3 @@ export async function grantFreezeCredit(reason: string): Promise<void> {
   `
 }
 
-function lastActiveOnOrBefore(
-  practised: Set<string>,
-  frozen: Set<string>,
-  start: string,
-): string | null {
-  let cursor = start
-  for (let i = 0; i < LOOKBACK_DAYS; i += 1) {
-    if (practised.has(cursor) || frozen.has(cursor)) return cursor
-    cursor = shiftDayKey(cursor, -1)
-  }
-  return null
-}
