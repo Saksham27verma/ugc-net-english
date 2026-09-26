@@ -135,6 +135,19 @@ function levelFor(count: number): HeatLevel {
   return count as 1 | 2 | 3
 }
 
+/** Four shades from that day's best accuracy, or from questions if unscored. */
+function levelForDay(accuracy: number | null, questions: number, count: number): HeatLevel {
+  if (count <= 0) return 0
+  if (accuracy !== null) {
+    if (accuracy >= 80) return 4
+    if (accuracy >= 60) return 3
+    if (accuracy >= 40) return 2
+    return 1
+  }
+  if (questions > 0) return levelFor(Math.ceil(questions / 40))
+  return levelFor(count)
+}
+
 function isActive(key: string, practised: Set<string>, frozen: Set<string>): boolean {
   return practised.has(key) || frozen.has(key)
 }
@@ -210,7 +223,7 @@ export function buildStreak(
         key: cursor,
         label: dayLabelFormatter.format(new Date(keyToNoon(cursor))),
         count,
-        level: levelFor(count),
+        level: levelForDay(bestAccuracy.get(cursor) ?? null, questions.get(cursor) ?? 0, count),
         future: cursor > todayKey,
         frozen: frozenDay,
         questions: questions.get(cursor) ?? 0,

@@ -178,7 +178,16 @@ function FreezeLine({ freeze }: { freeze: FreezeInfo }) {
 function cellTooltip(cell: StreakCell): string {
   if (cell.future) return cell.label
   if (cell.frozen) return `Streak freeze on ${cell.label}`
-  return `${cell.count === 0 ? "No papers" : `${cell.count} paper${cell.count === 1 ? "" : "s"}`} on ${cell.label}`
+  if (cell.count === 0) return `No papers on ${cell.label}`
+  const papers = `${cell.count} paper${cell.count === 1 ? "" : "s"}`
+  const questions = cell.questions > 0 ? `${cell.questions} questions` : papers
+  const score =
+    cell.score !== null
+      ? `${cell.score} / 300`
+      : cell.accuracy !== null
+        ? `${cell.accuracy.toFixed(0)}%`
+        : papers
+  return `${cell.label}: ${questions}, ${score}`
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
