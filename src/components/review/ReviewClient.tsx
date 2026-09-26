@@ -1,37 +1,16 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { Markdown } from "@/components/Markdown"
 import { locateQuestion } from "@/lib/paper"
-import { findResult } from "@/lib/storage"
 import type { Paper, Result } from "@/lib/types"
-import { getPublishedPaper } from "@/server/paper-actions"
 
 type Filter = "all" | "wrong" | "unattempted" | "marked" | string
 
-export function ReviewClient({ attemptId }: { attemptId: string }) {
-  const router = useRouter()
-  const [result, setResult] = useState<Result | null | undefined>(undefined)
-  const [paper, setPaper] = useState<Paper | null | undefined>(undefined)
+export function ReviewClient({ result, paper }: { result: Result; paper: Paper }) {
   const [filter, setFilter] = useState<Filter>("all")
   const [jump, setJump] = useState<number | null>(null)
-
-  useEffect(() => {
-    const found = findResult(attemptId) ?? null
-    setResult(found)
-    if (!found) {
-      setPaper(null)
-      return
-    }
-    setPaper(undefined)
-    void getPublishedPaper(found.setId).then((loaded) => setPaper(loaded))
-  }, [attemptId])
-
-  useEffect(() => {
-    if (result === null) router.replace("/")
-  }, [result, router])
 
   const units = useMemo(() => paper?.sections.flatMap((section) => section.units) ?? [], [paper])
 
@@ -54,18 +33,13 @@ export function ReviewClient({ attemptId }: { attemptId: string }) {
     setJump(null)
   }, [jump])
 
-  if (result === undefined || paper === undefined) {
-    return <div className="flex min-h-dvh items-center justify-center text-muted">Loading review…</div>
-  }
-  if (!result || !paper) return null
-
   const shownPassages = new Set<number>()
 
   return (
     <div className="min-h-dvh">
       <header className="sticky top-0 z-10 border-b border-line bg-surface">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 text-sm">
-          <Link href={`/result/${attemptId}`} className="text-muted hover:text-foreground">
+          <Link href={`/result/${result.attemptId}`} className="text-muted hover:text-foreground">
             ← Result
           </Link>
           <p className="font-medium">Review · Set {result.setId}</p>

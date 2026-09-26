@@ -101,14 +101,22 @@ export async function loadKeyFromStore(setId: number): Promise<KeyFile> {
   return rows[0].key as KeyFile
 }
 
-export async function saveAttemptResult(visitorId: string, result: Result): Promise<void> {
-  if (!visitorId) return
+function asResult(raw: unknown): Result | undefined {
+  const result = raw as Result
+  if (!result?.attemptId || !result.setId || !Array.isArray(result.perQuestion)) {
+    return undefined
+  }
+  return result
+}
+
+export async function saveAttemptResult(result: Result): Promise<void> {
+  requireDatabase()
   const sql = await ensureSchema()
   await sql`
     INSERT INTO attempts (id, visitor_id, set_id, result, submitted_at)
     VALUES (
       ${result.attemptId}::uuid,
-      ${visitorId},
+      ${"shared"},
       ${result.setId},
       ${result},
       to_timestamp(${result.submittedAt / 1000.0})
@@ -117,4 +125,36 @@ export async function saveAttemptResult(visitorId: string, result: Result): Prom
       result = EXCLUDED.result,
       submitted_at = EXCLUDED.submitted_at
   `
+}
+
+export async function listAttemptResults(): Promise<Result[]> {
+  requireDatabase()
+  const sql = await ensureSchema()
+  const rows = await sql`
+    SELECT result
+    FROM attempts
+    ORDER BY submitted_at DESC
+    LIMIT 200
+  `
+  return rows.flatMap((row) => {
+    const result = asResult(row.result)
+    return result ? [result] : []
+  })
+}
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
+export async function getAttemptResult(attemptId: string): Promise<Result | undefined> {
+  if (!UUID_RE.test(attemptId)) return undefined
+  requireDatabase()
+  const sql = await ensureSchema()
+  const rows = await sql`
+    SELECT result
+    FROM attempts
+    WHERE id = ${attemptId}::uuid
+    LIMIT 1
+  `
+  if (rows.length === 0) return undefined
+  return asResult(rows[0].result)
 }

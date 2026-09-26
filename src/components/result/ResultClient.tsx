@@ -1,38 +1,19 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import { CUT_OFF_NOTE } from "@/lib/bands"
 import { formatClock } from "@/lib/clock"
-import { findResult } from "@/lib/storage"
 import type { Result } from "@/lib/types"
 
-export function ResultClient({ attemptId }: { attemptId: string }) {
-  const router = useRouter()
-  const [result, setResult] = useState<Result | null | undefined>(undefined)
-
-  useEffect(() => {
-    setResult(findResult(attemptId) ?? null)
-  }, [attemptId])
-
-  useEffect(() => {
-    if (result === null) router.replace("/")
-  }, [result, router])
-
+export function ResultClient({ result }: { result: Result }) {
   const weakest = useMemo(() => {
-    if (!result) return []
     return result.byUnit
       .filter((unit) => unit.attempted > 2)
       .slice()
       .sort((a, b) => a.correct / a.attempted - b.correct / b.attempted)
       .slice(0, 3)
   }, [result])
-
-  if (result === undefined) {
-    return <div className="flex min-h-dvh items-center justify-center text-muted">Loading result…</div>
-  }
-  if (!result) return null
 
   const units = result.byUnit
     .slice()

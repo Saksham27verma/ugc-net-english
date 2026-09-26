@@ -5,24 +5,35 @@ import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { formatClock, remainingMs } from "@/lib/clock"
 import { paperShortTitle } from "@/lib/paper"
-import { createAttempt, clearActive, readActive, readHistory, writeActive } from "@/lib/storage"
+import { createAttempt, clearActive, markHistorySynced, readActive, readHistory, shouldSyncLocalHistory, writeActive } from "@/lib/storage"
+import { syncLocalHistory } from "@/server/paper-actions"
 import type { Attempt, PaperSummary, Result } from "@/lib/types"
 
 export function HomeClient({
   papers,
+  history,
 }: {
   papers: PaperSummary[]
+  history: Result[]
 }) {
   const router = useRouter()
-  const [history, setHistory] = useState<Result[]>([])
   const [active, setActive] = useState<Attempt | null>(null)
   const [now, setNow] = useState(() => Date.now())
   const [pendingSetId, setPendingSetId] = useState<number | null>(null)
 
   useEffect(() => {
-    setHistory(readHistory())
     setActive(readActive())
-  }, [])
+    if (!shouldSyncLocalHistory()) return
+    const local = readHistory()
+    void syncLocalHistory(local)
+      .then(() => {
+        markHistorySynced()
+        router.refresh()
+      })
+      .catch(() => {
+        // Keep local rows until a later visit succeeds.
+      })
+  }, [router])
 
   useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now()), 500)

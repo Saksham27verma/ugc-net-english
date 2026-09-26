@@ -2,7 +2,7 @@ import type { Attempt, AttemptResponse, Result } from "./types"
 
 export const ACTIVE_KEY = "ugcnet:active"
 export const HISTORY_KEY = "ugcnet:history"
-export const VISITOR_KEY = "ugcnet:visitor"
+export const HISTORY_SYNCED_KEY = "ugcnet:history-synced"
 
 function canUseStorage(): boolean {
   return typeof window !== "undefined" && typeof window.localStorage !== "undefined"
@@ -53,28 +53,16 @@ export function readHistory(): Result[] {
   }
 }
 
-export function writeHistory(history: Result[]): void {
+export function shouldSyncLocalHistory(): boolean {
+  if (!canUseStorage()) return false
+  if (window.localStorage.getItem(HISTORY_SYNCED_KEY)) return false
+  return readHistory().length > 0
+}
+
+export function markHistorySynced(): void {
   if (!canUseStorage()) return
-  window.localStorage.setItem(HISTORY_KEY, JSON.stringify(history))
-}
-
-export function appendHistory(result: Result): void {
-  const history = readHistory()
-  const next = [result, ...history.filter((item) => item.attemptId !== result.attemptId)]
-  writeHistory(next)
-}
-
-export function findResult(attemptId: string): Result | undefined {
-  return readHistory().find((item) => item.attemptId === attemptId)
-}
-
-export function getVisitorId(): string {
-  if (!canUseStorage()) return ""
-  const existing = window.localStorage.getItem(VISITOR_KEY)
-  if (existing) return existing
-  const id = crypto.randomUUID()
-  window.localStorage.setItem(VISITOR_KEY, id)
-  return id
+  window.localStorage.setItem(HISTORY_SYNCED_KEY, "1")
+  window.localStorage.removeItem(HISTORY_KEY)
 }
 
 export function createAttempt(setId: number, durationMs: number): Attempt {

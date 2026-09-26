@@ -4,6 +4,7 @@ import "server-only"
 import { bandFor } from "@/lib/bands"
 import type { AttemptResponse, Result, ResultQuestion, ResultUnit, Selected } from "@/lib/types"
 import { loadKey } from "./load-key"
+import { revalidatePath } from "next/cache"
 import { getPaperFromStore, saveAttemptResult } from "./papers"
 
 function asSelected(value: unknown): Selected {
@@ -19,7 +20,6 @@ export async function submitAttempt(
   responses: Record<number | string, AttemptResponse>,
   attemptId: string,
   timing?: { startedAt: number; durationMs: number },
-  visitorId?: string,
 ): Promise<Result> {
   const paper = await getPaperFromStore(setId)
   if (!paper) {
@@ -104,13 +104,10 @@ export async function submitAttempt(
     overtimeMs,
   }
 
-  if (visitorId) {
-    try {
-      await saveAttemptResult(visitorId, result)
-    } catch (error) {
-      console.error("Could not persist attempt to Neon", error)
-    }
-  }
+  await saveAttemptResult(result)
+  revalidatePath("/")
+  revalidatePath(`/result/${result.attemptId}`)
+  revalidatePath(`/review/${result.attemptId}`)
 
   return result
 }

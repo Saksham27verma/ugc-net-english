@@ -7,7 +7,7 @@ import { Palette, PaletteLegend } from "@/components/exam/Palette"
 import { formatClock, formatTimer, timerTone, timerWarning } from "@/lib/clock"
 import { firstUnansweredInSection, locateQuestion, paperShortTitle } from "@/lib/paper"
 import { answeredCount, getResponse, markedCount, statusCounts } from "@/lib/status"
-import { appendHistory, clearActive, getVisitorId } from "@/lib/storage"
+import { clearActive } from "@/lib/storage"
 import { useExam } from "@/lib/use-exam"
 import type { Paper, Selected } from "@/lib/types"
 import { submitAttempt } from "@/server/score"
@@ -33,17 +33,10 @@ export function ExamShell({ paper }: { paper: Paper }) {
     submittingRef.current = true
     setError(null)
     try {
-      const result = await submitAttempt(
-        paper.setId,
-        flushed.responses,
-        flushed.id,
-        {
-          startedAt: flushed.startedAt,
-          durationMs: flushed.durationMs,
-        },
-        getVisitorId(),
-      )
-      appendHistory(result)
+      const result = await submitAttempt(paper.setId, flushed.responses, flushed.id, {
+        startedAt: flushed.startedAt,
+        durationMs: flushed.durationMs,
+      })
       clearActive()
       router.push(`/result/${result.attemptId}`)
     } catch (err) {
