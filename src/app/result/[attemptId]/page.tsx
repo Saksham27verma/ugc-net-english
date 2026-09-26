@@ -1,4 +1,5 @@
 import { ResultClient } from "@/components/result/ResultClient"
+import { noteForCompletedDay } from "@/server/notes"
 import { getAttemptResult } from "@/server/papers"
 import { notFound } from "next/navigation"
 
@@ -12,5 +13,11 @@ export default async function ResultPage({
   const { attemptId } = await params
   const result = await getAttemptResult(attemptId)
   if (!result) notFound()
-  return <ResultClient result={result} />
+  let note: string | null = null
+  try {
+    note = await noteForCompletedDay(result.submittedAt)
+  } catch {
+    note = null
+  }
+  return <ResultClient result={result} note={note} />
 }

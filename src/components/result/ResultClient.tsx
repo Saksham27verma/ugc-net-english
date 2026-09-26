@@ -6,7 +6,7 @@ import { CUT_OFF_NOTE } from "@/lib/bands"
 import { formatClock } from "@/lib/clock"
 import type { Result } from "@/lib/types"
 
-export function ResultClient({ result }: { result: Result }) {
+export function ResultClient({ result, note }: { result: Result; note?: string | null }) {
   const weakest = useMemo(() => {
     return result.byUnit
       .filter((unit) => unit.attempted > 2)
@@ -63,6 +63,13 @@ export function ResultClient({ result }: { result: Result }) {
           <Stat label="Wrong" value={String(result.wrong)} />
           <Stat label="Unattempted" value={String(result.unattempted)} />
         </div>
+
+        {note ? (
+          <section className="mt-8 rounded-2xl border border-line bg-surface p-5 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.18em] text-muted">A note from Chinku</p>
+            <p className="mt-2 font-serif text-lg">{note}</p>
+          </section>
+        ) : null}
 
         {weakest.length > 0 ? (
           <section className="mt-10 rounded-2xl border border-line bg-surface p-5 shadow-sm">
