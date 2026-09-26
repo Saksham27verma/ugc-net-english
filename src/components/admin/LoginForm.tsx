@@ -15,7 +15,7 @@ export function LoginForm() {
           name="password"
           required
           autoComplete="current-password"
-          className="mt-1 w-full border border-line bg-background px-3 py-2"
+          className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
         />
       </label>
       {state?.error ? <p className="text-sm text-red">{state.error}</p> : null}

@@ -97,7 +97,7 @@ export function ExamShell({ paper }: { paper: Paper }) {
 
   if (!attempt || !located || !response) {
     return (
-      <div className="flex min-h-dvh items-center justify-center text-muted">
+      <div className="theme-exam flex min-h-dvh items-center justify-center bg-background text-muted">
         Loading paper…
       </div>
     )
@@ -159,7 +159,7 @@ export function ExamShell({ paper }: { paper: Paper }) {
   )
 
   return (
-    <div className="flex min-h-dvh flex-col bg-background text-foreground">
+    <div className="theme-exam flex min-h-dvh flex-col bg-background text-foreground">
       <header className="flex items-center justify-between gap-4 border-b border-line bg-surface px-4 py-3">
         <div className="min-w-0">
           <p className="truncate font-sans text-sm font-semibold tracking-tight">
@@ -253,7 +253,7 @@ export function ExamShell({ paper }: { paper: Paper }) {
                       <label
                         key={value}
                         className={`flex cursor-pointer items-start gap-3 border px-3 py-3 ${
-                          checked ? "border-accent bg-[#eef3f8]" : "border-line bg-surface"
+                          checked ? "border-accent bg-[var(--option-selected)]" : "border-line bg-surface"
                         }`}
                       >
                         <input

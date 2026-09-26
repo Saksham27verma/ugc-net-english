@@ -22,7 +22,7 @@ export function AdminClient({
 
   return (
     <div className="min-h-dvh">
-      <header className="border-b border-line bg-surface">
+      <header className="border-b border-line bg-gradient-to-b from-surface to-background">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-muted">Admin</p>
@@ -42,7 +42,7 @@ export function AdminClient({
       </header>
 
       <main className="mx-auto grid max-w-5xl gap-8 px-4 py-8 lg:grid-cols-[1fr_20rem]">
-        <section className="border border-line bg-surface p-5">
+        <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
           <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Upload Markdown</h2>
           <form action={action} className="mt-4 space-y-4">
             <label className="block text-sm">
@@ -62,7 +62,7 @@ export function AdminClient({
                 name="setId"
                 min={1}
                 defaultValue={suggestedSetId}
-                className="mt-1 w-full border border-line bg-background px-3 py-2"
+                className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
               />
               <span className="mt-1 block text-xs text-muted">
                 Leave as {suggestedSetId} for the next paper, or match Practice-Set-N.md.
@@ -86,7 +86,7 @@ export function AdminClient({
         </section>
 
         <aside className="space-y-6">
-          <section className="border border-line bg-surface p-5">
+          <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
             <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Template</h2>
             <p className="mt-2 text-sm text-muted">
               Download a complete 150-question skeleton that already passes the importer. Replace every placeholder,
@@ -95,13 +95,13 @@ export function AdminClient({
             <a
               href="/templates/UGC-NET-English-Practice-Set-TEMPLATE.md"
               download
-              className="mt-4 inline-block bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
+              className="mt-4 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
             >
               Download template
             </a>
           </section>
 
-          <section className="border border-line bg-surface p-5">
+          <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
             <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Papers in Neon</h2>
             {papers.length === 0 ? (
               <p className="mt-2 text-sm text-muted">None yet. Import the first .md file.</p>
@@ -120,7 +120,7 @@ export function AdminClient({
           </section>
         </aside>
 
-        <section className="border border-line bg-surface p-5 lg:col-span-2">
+        <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm lg:col-span-2">
           <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Markdown format</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
             <li>UTF-8 file. Prefer the name <code>UGC-NET-English-Practice-Set-N.md</code>.</li>

@@ -68,7 +68,7 @@ export function ReviewClient({ result, paper }: { result: Result; paper: Paper }
               const showPassage = Boolean(located.unit.passage) && !shownPassages.has(located.unit.firstQ)
               if (located.unit.passage) shownPassages.add(located.unit.firstQ)
               return (
-                <li id={`q-${item.no}`} key={item.no} className="border border-line bg-surface p-5">
+                <li id={`q-${item.no}`} key={item.no} className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
                   <p className="text-xs tracking-wide text-muted">
                     {located.unit.name}
                     <span className="mx-2">·</span>
@@ -92,11 +92,11 @@ export function ReviewClient({ result, paper }: { result: Result; paper: Paper }
                       return (
                         <li
                           key={value}
-                          className={`border px-3 py-2 text-sm ${
+                          className={`rounded-xl border px-3 py-2 text-sm ${
                             isAnswer
-                              ? "border-answered bg-[#eef6f0]"
+                              ? "border-answered bg-[var(--correct-tint)]"
                               : isSelected
-                                ? "border-not-answered bg-[#fdf2f2]"
+                                ? "border-not-answered bg-[var(--wrong-tint)]"
                                 : "border-line"
                           }`}
                         >
@@ -133,7 +133,7 @@ export function ReviewClient({ result, paper }: { result: Result; paper: Paper }
                   setFilter("all")
                   setJump(item.no)
                 }}
-                className={`h-8 text-[11px] ${
+                className={`h-8 rounded-lg text-[11px] ${
                   item.correct
                     ? "border border-answered text-answered"
                     : item.selected
@@ -165,7 +165,7 @@ function Chip({
     <button
       type="button"
       onClick={onClick}
-      className={`border px-2.5 py-1 text-xs ${
+      className={`rounded-full border px-2.5 py-1 text-xs ${
         active ? "border-accent bg-accent text-white" : "border-line bg-surface"
       }`}
     >

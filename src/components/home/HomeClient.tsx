@@ -6,15 +6,30 @@ import { useEffect, useMemo, useState } from "react"
 import { formatClock, remainingMs } from "@/lib/clock"
 import { paperShortTitle } from "@/lib/paper"
 import { createAttempt, clearActive, markHistorySynced, readActive, readHistory, shouldSyncLocalHistory, writeActive } from "@/lib/storage"
+import { StreakCard } from "@/components/home/StreakCard"
 import { syncLocalHistory } from "@/server/paper-actions"
+import { TIME_ZONE } from "@/lib/streak"
+import type { StreakData } from "@/lib/streak"
 import type { Attempt, PaperSummary, Result } from "@/lib/types"
+
+// Fixed locale and zone so the server and client render the same string.
+const submittedFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: TIME_ZONE,
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+})
 
 export function HomeClient({
   papers,
   history,
+  streak,
 }: {
   papers: PaperSummary[]
   history: Result[]
+  streak: StreakData
 }) {
   const router = useRouter()
   const [active, setActive] = useState<Attempt | null>(null)
@@ -65,7 +80,7 @@ export function HomeClient({
 
   return (
     <div className="min-h-dvh">
-      <header className="border-b border-line bg-surface">
+      <header className="border-b border-line bg-gradient-to-b from-surface to-background">
         <div className="mx-auto max-w-5xl px-4 py-8">
           <p className="text-xs uppercase tracking-[0.18em] text-muted">Subject Code 30</p>
           <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight">UGC NET English</h1>
@@ -76,7 +91,9 @@ export function HomeClient({
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <section className="grid gap-4 md:grid-cols-2">
+        <StreakCard streak={streak} />
+
+        <section className="mt-8 grid gap-4 md:grid-cols-2">
           {papers.length === 0 ? (
             <p className="text-sm text-muted">No papers are in the database yet.</p>
           ) : (
@@ -112,7 +129,7 @@ export function HomeClient({
             aria-label="Cancel"
             onClick={() => setPendingSetId(null)}
           />
-          <div className="relative w-[min(28rem,calc(100%-2rem))] border border-line bg-surface p-6">
+          <div className="relative w-[min(28rem,calc(100%-2rem))] rounded-2xl border border-line bg-surface p-6 shadow-lg">
             <h2 className="text-lg font-semibold">Discard the in-progress attempt?</h2>
             <p className="mt-2 text-sm text-muted">
               A paper is already in progress. Starting Set {pendingSetId} will discard that attempt. This cannot be
@@ -155,7 +172,7 @@ function SetCard({
   const resumable = active?.setId === paper.setId
 
   return (
-    <article className="border border-line bg-surface p-5">
+    <article className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
       <h2 className="font-serif text-xl font-semibold">{paperShortTitle(paper)}</h2>
       <p className="mt-1 text-sm text-muted">150 questions · 180 minutes · 300 marks</p>
       <dl className="mt-4 flex gap-6 text-sm">
@@ -201,9 +218,9 @@ function HistoryTable({
   }
 
   return (
-    <div className="mt-3 overflow-x-auto border border-line bg-surface">
+    <div className="mt-3 overflow-x-auto rounded-2xl border border-line bg-surface">
       <table className="w-full text-left text-sm">
-        <thead className="border-b border-line bg-[#f3efe6] text-xs uppercase tracking-wide text-muted">
+        <thead className="border-b border-line bg-[var(--table-head)] text-xs uppercase tracking-wide text-muted">
           <tr>
             <th className="px-3 py-2 font-medium">Date</th>
             <th className="px-3 py-2 font-medium">Set</th>
@@ -216,12 +233,7 @@ function HistoryTable({
         <tbody>
           {history.map((item) => (
             <tr key={item.attemptId} className="border-b border-line last:border-b-0">
-              <td className="px-3 py-2">
-                {new Date(item.submittedAt).toLocaleString(undefined, {
-                  dateStyle: "medium",
-                  timeStyle: "short",
-                })}
-              </td>
+              <td className="px-3 py-2">{submittedFormatter.format(new Date(item.submittedAt))}</td>
               <td className="px-3 py-2">{titles.get(item.setId) ?? `Set ${item.setId}`}</td>
               <td className="px-3 py-2 font-medium">{item.total} / 300</td>
               <td className="px-3 py-2">{item.accuracy.toFixed(1)}%</td>

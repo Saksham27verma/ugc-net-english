@@ -25,7 +25,7 @@ export function ResultClient({ result }: { result: Result }) {
 
   return (
     <div className="min-h-dvh">
-      <header className="border-b border-line bg-surface">
+      <header className="border-b border-line bg-gradient-to-b from-surface to-background">
         <div className="mx-auto max-w-5xl px-4 py-4 text-sm">
           <Link href="/" className="text-muted hover:text-foreground">
             ← Home
@@ -65,7 +65,7 @@ export function ResultClient({ result }: { result: Result }) {
         </div>
 
         {weakest.length > 0 ? (
-          <section className="mt-10 border border-line bg-surface p-5">
+          <section className="mt-10 rounded-2xl border border-line bg-surface p-5 shadow-sm">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">
               Weakest units
             </h2>
@@ -89,14 +89,14 @@ export function ResultClient({ result }: { result: Result }) {
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">Unit breakdown</h2>
             <Link
               href={`/review/${result.attemptId}`}
-              className="bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
+              className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
             >
               Review answers
             </Link>
           </div>
-          <div className="mt-3 overflow-x-auto border border-line bg-surface">
+          <div className="mt-3 overflow-x-auto rounded-2xl border border-line bg-surface">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-line bg-[#f3efe6] text-xs uppercase tracking-wide text-muted">
+              <thead className="border-b border-line bg-[var(--table-head)] text-xs uppercase tracking-wide text-muted">
                 <tr>
                   <th className="px-3 py-2 font-medium">Unit</th>
                   <th className="px-3 py-2 font-medium">Correct</th>
@@ -121,8 +121,11 @@ export function ResultClient({ result }: { result: Result }) {
                       <td className="px-3 py-2">
                         <div className="flex items-center gap-2">
                           <span className="w-14 tabular-nums">{unit.attempted === 0 ? "—" : `${acc.toFixed(0)}%`}</span>
-                          <span className="h-2 w-24 border border-line bg-background">
-                            <span className="block h-full bg-accent" style={{ width: `${bar}%` }} />
+                          <span className="h-2 w-24 overflow-hidden rounded-full bg-[var(--heat-1)]">
+                            <span
+                              className="block h-full rounded-full bg-accent"
+                              style={{ width: `${bar}%` }}
+                            />
                           </span>
                         </div>
                       </td>
@@ -140,7 +143,7 @@ export function ResultClient({ result }: { result: Result }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-line bg-surface p-4">
+    <div className="rounded-xl border border-line bg-surface p-4">
       <div className="text-xs uppercase tracking-wide text-muted">{label}</div>
       <div className="mt-1 text-xl font-semibold">{value}</div>
     </div>

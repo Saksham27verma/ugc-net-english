@@ -1,6 +1,33 @@
 @import "tailwindcss";
 
 :root {
+  --background: #fdf4f8;
+  --foreground: #3a2333;
+  --surface: #fffbfd;
+  --muted: #74566a;
+  --line: #f2dae7;
+  --accent: #a63a6e;
+  --accent-hover: #8c2d5b;
+  --visited-outline: #c49ab0;
+  --not-answered: #dc2626;
+  --answered: #15803d;
+  --marked: #6d28d9;
+  --amber: #b4600b;
+  --red: #b91c1c;
+  --table-head: #fbeaf3;
+  --option-selected: #fbe8f1;
+  --correct-tint: #edf7f0;
+  --wrong-tint: #fdf0f4;
+  --selection: #f9d4e6;
+  --heat-0: #f7e7ef;
+  --heat-1: #f8cfe0;
+  --heat-2: #f0a6c6;
+  --heat-3: #dd6fa4;
+  --heat-4: #b8447a;
+}
+
+/* The exam screen stays NTA-accurate: neutral chrome, official palette, square edges. */
+.theme-exam {
   --background: #f4f1ea;
   --foreground: #1c1917;
   --surface: #fffcf7;
@@ -9,11 +36,11 @@
   --accent: #1e3a5f;
   --accent-hover: #162c49;
   --visited-outline: #78716c;
-  --not-answered: #dc2626;
-  --answered: #15803d;
-  --marked: #6d28d9;
   --amber: #b45309;
-  --red: #b91c1c;
+  --table-head: #f3efe6;
+  --option-selected: #eef3f8;
+  --wrong-tint: #fdf2f2;
+  --selection: #d7e2ee;
 }
 
 @theme inline {
@@ -35,8 +62,15 @@
   --font-mono: var(--font-timer);
 }
 
-button:not([type="radio"]) {
-  border-radius: 0;
+/* In the base layer so a rounded-* utility on a specific button still wins. */
+@layer base {
+  button:not([type="radio"]) {
+    border-radius: 0.5rem;
+  }
+
+  .theme-exam button:not([type="radio"]) {
+    border-radius: 0;
+  }
 }
 
 html,
@@ -56,7 +90,7 @@ select {
 }
 
 ::selection {
-  background: #d7e2ee;
+  background: var(--selection);
 }
 
 .measure {
@@ -108,7 +142,7 @@ select {
 
 .prose-exam th {
   font-weight: 650;
-  background: #f3efe6;
+  background: var(--table-head);
 }
 
 .prose-exam ul,
