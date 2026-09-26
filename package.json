@@ -8,6 +8,7 @@
     "verify": "tsx scripts/parse.ts --verify",
     "template": "tsx scripts/generate-template.ts",
     "seed": "tsx scripts/seed.ts",
+    "seed:rewards": "tsx scripts/seed-rewards.ts",
     "smoke": "tsx scripts/smoke.ts",
     "build": "npm run parse && npm run template && next build && tsx scripts/assert-no-key-leak.ts",
     "start": "next start",
@@ -15,6 +16,8 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
+    "canvas-confetti": "^1.9.4",
+    "html-to-image": "^1.11.13",
     "next": "15.5.25",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -25,6 +28,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

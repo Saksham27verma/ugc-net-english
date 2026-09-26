@@ -1,4 +1,5 @@
 import type { HeatLevel, StreakData } from "@/lib/streak"
+import type { LadderItem } from "@/lib/vouchers"
 
 const HEAT_CLASS: Record<HeatLevel, string> = {
   0: "bg-[var(--heat-0)]",
@@ -10,7 +11,13 @@ const HEAT_CLASS: Record<HeatLevel, string> = {
 
 const WEEKDAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""]
 
-export function StreakCard({ streak }: { streak: StreakData }) {
+export function StreakCard({
+  streak,
+  nextVoucher,
+}: {
+  streak: StreakData
+  nextVoucher?: LadderItem | null
+}) {
   const {
     learnerName,
     weeks,
@@ -53,6 +60,12 @@ export function StreakCard({ streak }: { streak: StreakData }) {
             {headline}
           </h2>
           <p className="mt-1 text-sm text-muted">{message}</p>
+          {nextVoucher ? (
+            <p className="mt-1 text-sm font-medium text-accent">
+              Next voucher in {nextVoucher.unlocksInDays}{" "}
+              {nextVoucher.unlocksInDays === 1 ? "day" : "days"}
+            </p>
+          ) : null}
         </div>
         <dl className="flex gap-6 text-sm">
           <Stat label="Current" value={`${currentStreak}d`} />

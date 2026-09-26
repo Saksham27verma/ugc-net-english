@@ -36,4 +36,19 @@ export async function migrate(sql: Sql): Promise<void> {
     CREATE INDEX IF NOT EXISTS attempts_visitor_submitted_idx
       ON attempts (visitor_id, submitted_at DESC)
   `
+  await sql`
+    CREATE TABLE IF NOT EXISTS voucher_state (
+      learner_id text NOT NULL,
+      milestone integer NOT NULL,
+      status text NOT NULL DEFAULT 'locked',
+      earned_at timestamptz,
+      revealed_at timestamptz,
+      claimed_at timestamptz,
+      redeemed_at timestamptz,
+      wish text,
+      PRIMARY KEY (learner_id, milestone),
+      CONSTRAINT voucher_state_status_check
+        CHECK (status IN ('locked', 'ready', 'revealed', 'claimed', 'redeemed'))
+    )
+  `
 }

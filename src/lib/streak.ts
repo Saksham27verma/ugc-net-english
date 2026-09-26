@@ -23,6 +23,13 @@ const monthLabelFormatter = new Intl.DateTimeFormat("en-GB", {
   month: "short",
 })
 
+const dayDateFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "UTC",
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+})
+
 export type HeatLevel = 0 | 1 | 2 | 3 | 4
 
 export type StreakCell = {
@@ -73,8 +80,20 @@ function noonToKey(ms: number): string {
   return `${date.getUTCFullYear()}-${month}-${day}`
 }
 
-function shift(key: string, days: number): string {
+export function shiftDayKey(key: string, days: number): string {
   return noonToKey(keyToNoon(key) + days * DAY_MS)
+}
+
+const shift = shiftDayKey
+
+/** "14 Oct 2026" — same string on the server and the client. */
+export function formatDayKey(key: string): string {
+  return dayDateFormatter.format(new Date(keyToNoon(key)))
+}
+
+/** "14 Oct" — the short form used on the heatmap. */
+export function formatDayKeyShort(key: string): string {
+  return dayLabelFormatter.format(new Date(keyToNoon(key)))
 }
 
 function weekday(key: string): number {

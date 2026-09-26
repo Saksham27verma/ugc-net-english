@@ -7,9 +7,11 @@ import { formatClock, remainingMs } from "@/lib/clock"
 import { paperShortTitle } from "@/lib/paper"
 import { createAttempt, clearActive, markHistorySynced, readActive, readHistory, shouldSyncLocalHistory, writeActive } from "@/lib/storage"
 import { StreakCard } from "@/components/home/StreakCard"
+import { RewardLadder } from "@/components/home/RewardLadder"
 import { syncLocalHistory } from "@/server/paper-actions"
 import { TIME_ZONE } from "@/lib/streak"
 import type { StreakData } from "@/lib/streak"
+import { buildLadder, nextLadderItem, type VoucherPublic } from "@/lib/vouchers"
 import type { Attempt, PaperSummary, Result } from "@/lib/types"
 
 // Fixed locale and zone so the server and client render the same string.
@@ -26,12 +28,19 @@ export function HomeClient({
   papers,
   history,
   streak,
+  vouchers,
 }: {
   papers: PaperSummary[]
   history: Result[]
   streak: StreakData
+  vouchers: VoucherPublic[]
 }) {
   const router = useRouter()
+  const ladder = useMemo(
+    () => buildLadder(vouchers, streak.currentStreak, streak.todayKey),
+    [vouchers, streak.currentStreak, streak.todayKey],
+  )
+  const nextVoucher = useMemo(() => nextLadderItem(ladder), [ladder])
   const [active, setActive] = useState<Attempt | null>(null)
   const [now, setNow] = useState(() => Date.now())
   const [pendingSetId, setPendingSetId] = useState<number | null>(null)
@@ -91,7 +100,8 @@ export function HomeClient({
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <StreakCard streak={streak} />
+        <StreakCard streak={streak} nextVoucher={nextVoucher} />
+        <RewardLadder items={ladder} />
 
         <section className="mt-8 grid gap-4 md:grid-cols-2">
           {papers.length === 0 ? (
