@@ -8,8 +8,10 @@ import {
   type Milestone,
   type VoucherContents,
 } from "@/lib/vouchers"
+import { isAdmin } from "./admin-auth"
 import {
   setVoucherClaimed,
+  setVoucherRedeemed,
   setVoucherRevealed,
   voucherStatus,
 } from "./rewards"
@@ -48,6 +50,16 @@ export async function claimVoucher(milestone: number, wish: string | null): Prom
   const stored =
     earned === WISH_MILESTONE && trimmed.length > 0 ? trimmed.slice(0, WISH_MAX_LENGTH) : null
   await setVoucherClaimed(earned, stored)
+  revalidatePath("/")
+  revalidatePath("/rewards")
+}
+
+/** Chinku marking a claimed voucher as delivered. Admin cookie only. */
+export async function redeemVoucher(milestone: number): Promise<void> {
+  if (!(await isAdmin())) {
+    throw new Error("Not signed in as admin")
+  }
+  await setVoucherRedeemed(await earnedMilestone(milestone))
   revalidatePath("/")
   revalidatePath("/rewards")
 }

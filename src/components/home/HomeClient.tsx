@@ -125,7 +125,10 @@ export function HomeClient({
           <HistoryTable history={history} papers={papers} />
         </section>
       </main>
-      <footer className="mx-auto max-w-5xl px-4 pb-8 text-xs text-muted">
+      <footer className="mx-auto flex max-w-5xl gap-4 px-4 pb-8 text-xs text-muted">
+        <Link href="/rewards" className="hover:text-foreground">
+          Rewards
+        </Link>
         <Link href="/admin" className="hover:text-foreground">
           Import paper
         </Link>

@@ -98,3 +98,24 @@ Cut-offs vary by session and category, so treat these as working targets rather 
 ## Note on the comprehension passages
 
 The verse and prose passages are original compositions written for these papers, so you can host them without any copyright question. If you want canonical material instead, swap in a public-domain passage of comparable difficulty (a Shakespearean soliloquy, or prose from Bacon, Ruskin or Arnold) and keep the same question types — that is exactly the pattern the June 2025 paper follows, where the Paper II verse passage came from *Measure for Measure* and the prose passage from Ruskin.
+
+## Streak rewards — marking a voucher redeemed
+
+Milestones at 5, 10, 20, 30, 50 and 100 consecutive days each earn one voucher.
+Earning is decided server-side when the dashboard loads, and an earned voucher
+is never taken back if the streak breaks. She scratches it open, then presses
+Claim. Nothing is sent anywhere — she shares the image herself.
+
+The voucher copy lives in `src/server/voucher-contents.ts`, which is
+`server-only`. `npm run build` runs `scripts/assert-no-key-leak.ts`, which
+fails the build if any of that copy (or any answer-key text) turns up under
+`.next/static`.
+
+To mark a claimed voucher as delivered:
+
+1. Sign in at `/admin` with `ADMIN_PASSWORD`.
+2. Open `/rewards`. Claimed vouchers show a **Mark redeemed** button that only
+   appears while the admin cookie is set.
+
+`npm run seed:rewards` creates the six voucher rows if they are missing. It
+never resets a voucher that has already been earned.

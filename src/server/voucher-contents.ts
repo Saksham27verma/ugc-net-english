@@ -120,15 +120,3 @@ const CONTENTS: Record<Milestone, VoucherContents> = {
 export function voucherContents(milestone: Milestone): VoucherContents {
   return CONTENTS[milestone]
 }
-
-/**
- * Only for the build-time leak check. Never call this from a request path.
- */
-export function allVoucherCopy(): string[] {
-  return Object.values(CONTENTS).flatMap((voucher) => [
-    voucher.title,
-    voucher.lead,
-    voucher.finePrint,
-    ...voucher.includes,
-  ])
-}
