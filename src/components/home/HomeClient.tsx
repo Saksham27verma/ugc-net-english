@@ -113,6 +113,11 @@ export function HomeClient({
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
+        {streak.todayCount === 0 ? (
+          <p className="mb-6 rounded-2xl border border-accent bg-[var(--heat-0)] px-4 py-3 text-sm">
+            Chinku&apos;s waiting on today&apos;s set
+          </p>
+        ) : null}
         <StreakCard streak={streak} freeze={freeze} nextVoucher={nextVoucher} />
         {comeback ? <WelcomeBack comeback={comeback} /> : null}
         {recap ? <WeeklyRecapCard recap={recap} /> : null}
