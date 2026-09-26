@@ -1,13 +1,16 @@
 import "server-only"
+import type { ComebackInfo } from "@/lib/motivation"
 import { buildStreak, dayKey, type FreezeInfo, type StreakData } from "@/lib/streak"
 import type { Result } from "@/lib/types"
-import { listAttemptResults } from "./papers"
+import { syncComeback } from "./comebacks"
 import { syncFreezes } from "./freezes"
+import { listAttemptResults } from "./papers"
 
 export type Progress = {
   history: Result[]
   streak: StreakData
   freeze: FreezeInfo
+  comeback: ComebackInfo | null
 }
 
 export async function loadProgress(now = Date.now()): Promise<Progress> {
@@ -24,9 +27,17 @@ export async function loadProgress(now = Date.now()): Promise<Progress> {
     now,
     { frozenDays: freeze.frozenDays },
   )
+  let comeback: ComebackInfo | null = null
+  try {
+    comeback = await syncComeback(practised, new Set(freeze.frozenDays), streak)
+  } catch {
+    comeback = null
+  }
+  const latest = await syncFreezes(practised, dayKey(now))
   return {
     history,
     streak,
-    freeze: { available: freeze.available, usedOn: freeze.usedOn },
+    freeze: { available: latest.available, usedOn: latest.usedOn },
+    comeback,
   }
 }

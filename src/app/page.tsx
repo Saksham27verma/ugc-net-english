@@ -20,6 +20,7 @@ export default async function HomePage() {
       history={progress.history}
       streak={progress.streak}
       freeze={progress.freeze}
+      comeback={progress.comeback}
       vouchers={vouchers}
     />
   )

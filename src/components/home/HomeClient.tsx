@@ -8,6 +8,8 @@ import { paperShortTitle } from "@/lib/paper"
 import { createAttempt, clearActive, markHistorySynced, readActive, readHistory, shouldSyncLocalHistory, writeActive } from "@/lib/storage"
 import { StreakCard } from "@/components/home/StreakCard"
 import { RewardLadder } from "@/components/home/RewardLadder"
+import { WelcomeBack } from "@/components/home/WelcomeBack"
+import type { ComebackInfo } from "@/lib/motivation"
 import { syncLocalHistory } from "@/server/paper-actions"
 import { TIME_ZONE } from "@/lib/streak"
 import type { FreezeInfo, StreakData } from "@/lib/streak"
@@ -29,12 +31,14 @@ export function HomeClient({
   history,
   streak,
   freeze,
+  comeback,
   vouchers,
 }: {
   papers: PaperSummary[]
   history: Result[]
   streak: StreakData
   freeze: FreezeInfo
+  comeback: ComebackInfo | null
   vouchers: VoucherPublic[]
 }) {
   const router = useRouter()
@@ -103,6 +107,7 @@ export function HomeClient({
 
       <main className="mx-auto max-w-5xl px-4 py-8">
         <StreakCard streak={streak} freeze={freeze} nextVoucher={nextVoucher} />
+        {comeback ? <WelcomeBack comeback={comeback} /> : null}
         <RewardLadder items={ladder} />
 
         <section className="mt-8 grid gap-4 md:grid-cols-2">
