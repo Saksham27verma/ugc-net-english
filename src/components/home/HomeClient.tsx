@@ -34,6 +34,7 @@ export function HomeClient({
   freeze,
   comeback,
   recap,
+  examDays,
   vouchers,
 }: {
   papers: PaperSummary[]
@@ -42,6 +43,7 @@ export function HomeClient({
   freeze: FreezeInfo
   comeback: ComebackInfo | null
   recap: WeeklyRecap | null
+  examDays: number
   vouchers: VoucherPublic[]
 }) {
   const router = useRouter()
@@ -102,8 +104,10 @@ export function HomeClient({
         <div className="mx-auto max-w-5xl px-4 py-8">
           <p className="text-xs uppercase tracking-[0.18em] text-muted">Subject Code 30</p>
           <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight">UGC NET English</h1>
+          <p className="mt-2 font-serif text-lg text-accent">{examLine(examDays)}</p>
           <p className="mt-2 max-w-2xl text-sm text-muted">
             Full-length mock papers. 150 questions, 180 minutes, 300 marks. No negative marking.
+            Weekly target stays {streak.weeklyGoal} of 7 days.
           </p>
         </div>
       </header>
@@ -222,6 +226,13 @@ function SetCard({
       </button>
     </article>
   )
+}
+
+function examLine(days: number): string {
+  if (days > 1) return `${days} days to the exam`
+  if (days === 1) return "1 day to the exam"
+  if (days === 0) return "Exam day"
+  return "The exam date has passed"
 }
 
 function HistoryTable({

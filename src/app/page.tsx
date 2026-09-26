@@ -1,4 +1,5 @@
 import { HomeClient } from "@/components/home/HomeClient"
+import { daysUntilExam } from "@/lib/config"
 import type { VoucherPublic } from "@/lib/vouchers"
 import { listPapers } from "@/server/papers"
 import { loadProgress } from "@/server/progress"
@@ -22,6 +23,7 @@ export default async function HomePage() {
       freeze={progress.freeze}
       comeback={progress.comeback}
       recap={progress.recap}
+      examDays={daysUntilExam()}
       vouchers={vouchers}
     />
   )
