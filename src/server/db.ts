@@ -9,6 +9,7 @@ type Sql = NeonQueryFunction<false, false>
 
 let sql: Sql | null = null
 let migrated = false
+let migrating: Promise<void> | null = null
 
 export function hasDatabase(): boolean {
   return Boolean(process.env.DATABASE_URL)
@@ -27,9 +28,16 @@ export function getSql(): Sql {
 
 export async function ensureSchema(): Promise<Sql> {
   const client = getSql()
-  if (!migrated) {
-    await migrate(client)
-    migrated = true
+  if (migrated) return client
+  if (!migrating) {
+    migrating = migrate(client)
+      .then(() => {
+        migrated = true
+      })
+      .finally(() => {
+        migrating = null
+      })
   }
+  await migrating
   return client
 }
