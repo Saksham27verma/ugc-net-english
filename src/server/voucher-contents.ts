@@ -1,5 +1,5 @@
 import "server-only"
-import type { Milestone } from "@/lib/vouchers"
+import type { Milestone, VoucherContents } from "@/lib/vouchers"
 import { voucherNumber } from "@/lib/vouchers"
 
 /**
@@ -9,23 +9,6 @@ import { voucherNumber } from "@/lib/vouchers"
  * scripts/assert-no-key-leak.ts fails the build if any of this copy turns up
  * under .next/static.
  */
-
-export type VoucherContents = {
-  milestone: Milestone
-  number: string
-  /** Small label above the title: "Issued to Tanya · for five days in a row". */
-  issuedTo: string
-  /** What sits under the big number on the stub. */
-  stubCaption: string
-  title: string
-  lead: string
-  includes: string[]
-  finePrint: string
-  signatureLabel: string
-  validLine: string
-  /** Voucher 006 takes a written wish in place of an includes list. */
-  wishPrompt: string | null
-}
 
 const CONTENTS: Record<Milestone, VoucherContents> = {
   5: {

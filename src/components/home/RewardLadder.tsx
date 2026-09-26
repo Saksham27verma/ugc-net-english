@@ -1,3 +1,7 @@
+"use client"
+
+import { useState } from "react"
+import { VoucherDialog } from "@/components/rewards/VoucherDialog"
 import { formatDayKey } from "@/lib/streak"
 import { isEarned, statusLabel, type LadderItem } from "@/lib/vouchers"
 
@@ -7,6 +11,9 @@ import { isEarned, statusLabel, type LadderItem } from "@/lib/vouchers"
  * until the milestone has been earned.
  */
 export function RewardLadder({ items }: { items: LadderItem[] }) {
+  const [openMilestone, setOpenMilestone] = useState<number | null>(null)
+  const open = items.find((item) => item.milestone === openMilestone) ?? null
+
   return (
     <section aria-labelledby="ladder-heading" className="mt-6">
       <div className="flex items-baseline justify-between gap-4">
@@ -20,29 +27,23 @@ export function RewardLadder({ items }: { items: LadderItem[] }) {
         <ul className="flex min-w-fit gap-3">
           {items.map((item) => (
             <li key={item.milestone} className="shrink-0">
-              <LadderCard item={item} />
+              <LadderCard item={item} onOpen={() => setOpenMilestone(item.milestone)} />
             </li>
           ))}
         </ul>
       </div>
+
+      {open ? <VoucherDialog voucher={open} onClose={() => setOpenMilestone(null)} /> : null}
     </section>
   )
 }
 
-function LadderCard({ item }: { item: LadderItem }) {
+function LadderCard({ item, onOpen }: { item: LadderItem; onOpen: () => void }) {
   const earned = isEarned(item.status)
   const ready = item.status === "ready"
 
-  return (
-    <article
-      className={`flex h-full w-[10.5rem] flex-col rounded-2xl border p-4 shadow-sm transition-shadow ${
-        ready
-          ? "border-accent bg-surface shadow-[0_0_0_4px_var(--heat-1)]"
-          : earned
-            ? "border-line bg-surface"
-            : "border-line bg-[var(--heat-0)]"
-      }`}
-    >
+  const body = (
+    <>
       <div className="flex items-baseline gap-1.5">
         <span className={`font-serif text-3xl font-semibold leading-none ${earned ? "text-accent" : ""}`}>
           {item.milestone}
@@ -56,7 +57,9 @@ function LadderCard({ item }: { item: LadderItem }) {
 
       <div className="mt-3 text-sm">
         {earned ? (
-          <p className={ready ? "font-semibold text-accent" : "text-muted"}>{statusLabel(item.status)}</p>
+          <p className={ready ? "font-semibold text-accent" : "text-muted"}>
+            {ready ? "Scratch to reveal" : statusLabel(item.status)}
+          </p>
         ) : item.projectedDayKey ? (
           <>
             <p className="text-muted">
@@ -68,6 +71,24 @@ function LadderCard({ item }: { item: LadderItem }) {
           <p className="text-muted">Unlocks at a {item.milestone}-day streak</p>
         )}
       </div>
-    </article>
+    </>
+  )
+
+  const shell = `flex h-full w-[10.5rem] flex-col rounded-2xl border p-4 text-left shadow-sm ${
+    ready
+      ? "border-accent bg-surface shadow-[0_0_0_4px_var(--heat-1)]"
+      : earned
+        ? "border-line bg-surface"
+        : "border-line bg-[var(--heat-0)]"
+  }`
+
+  if (!earned) {
+    return <article className={shell}>{body}</article>
+  }
+
+  return (
+    <button type="button" onClick={onOpen} className={`${shell} hover:border-accent`}>
+      {body}
+    </button>
   )
 }

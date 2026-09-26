@@ -26,6 +26,30 @@ export type VoucherPublic = {
 /** The voucher that takes a written wish instead of printed contents. */
 export const WISH_MILESTONE = 100
 
+export const WISH_MAX_LENGTH = 160
+
+/**
+ * The shape of a voucher's copy. The shape is public; the copy is not. Values
+ * of this type only ever exist on the server, or in the browser after a server
+ * action has confirmed the milestone was earned.
+ */
+export type VoucherContents = {
+  milestone: number
+  number: string
+  /** Small label above the title: "Issued to Tanya · for five days in a row". */
+  issuedTo: string
+  /** What sits under the big number on the stub. */
+  stubCaption: string
+  title: string
+  lead: string
+  includes: string[]
+  finePrint: string
+  signatureLabel: string
+  validLine: string
+  /** Voucher 006 takes a written wish in place of an includes list. */
+  wishPrompt: string | null
+}
+
 export function isMilestone(value: number): value is Milestone {
   return (MILESTONES as readonly number[]).includes(value)
 }

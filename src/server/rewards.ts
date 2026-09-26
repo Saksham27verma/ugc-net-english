@@ -74,6 +74,43 @@ export async function listVouchers(): Promise<VoucherPublic[]> {
   return lockedLadder().map((fallback) => byMilestone.get(fallback.milestone) ?? fallback)
 }
 
+/**
+ * Every mutation below is guarded by the status already in the table, so a
+ * replayed or out-of-order request can never move a voucher backwards.
+ */
+export async function setVoucherRevealed(milestone: number): Promise<void> {
+  const sql = await ensureSchema()
+  await sql`
+    UPDATE voucher_state
+    SET status = 'revealed', revealed_at = COALESCE(revealed_at, now())
+    WHERE learner_id = ${LEARNER_ID} AND milestone = ${milestone} AND status = 'ready'
+  `
+}
+
+export async function setVoucherClaimed(milestone: number, wish: string | null): Promise<void> {
+  const sql = await ensureSchema()
+  await sql`
+    UPDATE voucher_state
+    SET
+      status = 'claimed',
+      revealed_at = COALESCE(revealed_at, now()),
+      claimed_at = COALESCE(claimed_at, now()),
+      wish = ${wish}
+    WHERE learner_id = ${LEARNER_ID}
+      AND milestone = ${milestone}
+      AND status IN ('ready', 'revealed')
+  `
+}
+
+export async function setVoucherRedeemed(milestone: number): Promise<void> {
+  const sql = await ensureSchema()
+  await sql`
+    UPDATE voucher_state
+    SET status = 'redeemed', redeemed_at = COALESCE(redeemed_at, now())
+    WHERE learner_id = ${LEARNER_ID} AND milestone = ${milestone} AND status = 'claimed'
+  `
+}
+
 export async function voucherStatus(milestone: number): Promise<VoucherStatus | null> {
   if (!hasDatabase()) return null
   const sql = await ensureSchema()
