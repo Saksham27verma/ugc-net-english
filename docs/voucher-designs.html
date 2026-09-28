@@ -1,0 +1,239 @@
+<!doctype html>
+<!--
+  DESIGN REFERENCE for the revealed-voucher component (not a page to ship).
+  Milestones: 5, 10, 15, 20, 30, 50. Each card root is 794×559 px (A5 landscape).
+  Palette: paper #fbf7f5, card #fffdfc, accent #8f355c, stub tint #f5e3ea,
+  rule #e9c7d3, ink #2b2326, label #6b4557, fine print #5f4a52.
+  Fonts: Source Serif 4 (display, signature italic) + Source Sans 3 (body).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tanya's streak vouchers — design reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,500&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:40px;background:#efe9e6;display:flex;flex-direction:column;align-items:center;gap:48px;font-family:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif}
+section{display:flex;flex-direction:column;gap:12px}
+section h2{margin:0;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6b4557}
+</style>
+</head>
+<body>
+<section>
+<h2>Cover: the reward ladder</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', 'Segoe UI', Helvetica, Arial, sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; padding: 30px 36px 26px 36px; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Regularity rewards</div>
+        <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 34px; line-height: 1.08; letter-spacing: -0.01em; color: #8f355c; text-wrap: balance">Tanya's streak rewards</h1>
+        <p style="margin: 0; font-size: 15px; line-height: 1.45; max-width: 560px; text-wrap: pretty">Finish your questions every day and the streak grows. Hit a milestone, and one of these is yours to claim.</p>
+      </div>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="#f5e3ea" stroke="#8f355c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+      <div style="box-sizing: border-box; padding: 12px 14px 14px 14px; border: 1px solid #e9c7d3; border-radius: 10px; background: #fbf7f5; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: #8f355c">5</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6b4557">days</div></div>
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">A date at NSP</div>
+        <div style="font-size: 13px; line-height: 1.4; color: #5f4a52">Dinner at Netaji Subhash Place. Your pick of place, my treat.</div>
+      </div>
+      <div style="box-sizing: border-box; padding: 12px 14px 14px 14px; border: 1px solid #e9c7d3; border-radius: 10px; background: #fbf7f5; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: #8f355c">10</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6b4557">days</div></div>
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">Seafood night</div>
+        <div style="font-size: 13px; line-height: 1.4; color: #5f4a52">Prawns, crab, the works, at a proper seafood place.</div>
+      </div>
+      <div style="box-sizing: border-box; padding: 12px 14px 14px 14px; border: 1px solid #e9c7d3; border-radius: 10px; background: #fbf7f5; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: #8f355c">15</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6b4557">days</div></div>
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">Nykaa, Tira or H&amp;M</div>
+        <div style="font-size: 13px; line-height: 1.4; color: #5f4a52">One cart on Nykaa, Tira or H&amp;M, checked out on my card.</div>
+      </div>
+      <div style="box-sizing: border-box; padding: 12px 14px 14px 14px; border: 1px solid #e9c7d3; border-radius: 10px; background: #fbf7f5; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: #8f355c">20</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6b4557">days</div></div>
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">The full-hour massage</div>
+        <div style="font-size: 13px; line-height: 1.4; color: #5f4a52">Sixty minutes, warm oil, your playlist.</div>
+      </div>
+      <div style="box-sizing: border-box; padding: 12px 14px 14px 14px; border: 1px solid #e9c7d3; border-radius: 10px; background: #fbf7f5; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: #8f355c">30</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6b4557">days · one month</div></div>
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">A night in</div>
+        <div style="font-size: 13px; line-height: 1.4; color: #5f4a52">Door locked, phones off. One night that's entirely about you.</div>
+      </div>
+      <div style="box-sizing: border-box; padding: 12px 14px 14px 14px; border: 1px solid #e9c7d3; border-radius: 10px; background: #fbf7f5; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; align-items: baseline; gap: 6px"><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: #8f355c">50</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #6b4557">days</div></div>
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">The blank cheque</div>
+        <div style="font-size: 13px; line-height: 1.4; color: #5f4a52">You write the reward. I've already signed.</div>
+      </div>
+    </div>
+    <div style="flex-grow: 1"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; border-top: 1px solid #e9c7d3; padding-top: 12px">
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; max-width: 520px; text-wrap: pretty">One voucher per milestone. No expiry, and a broken streak never takes back what you've already earned. Terms, such as they are, on each voucher.</p>
+      <div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-weight: 500; font-size: 26px; line-height: 1; color: #8f355c; white-space: nowrap">— Chinku</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Voucher No. 001: 5 days</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; overflow: hidden">
+    <div style="width: 196px; flex-shrink: 0; box-sizing: border-box; padding: 28px 22px 24px 26px; background: #f5e3ea; border-right: 2px dashed #8f355c; display: flex; flex-direction: column; justify-content: space-between">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Streak reward</div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 132px; line-height: 0.9; letter-spacing: -0.03em; color: #8f355c">5</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">days in a row</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4557">No. 001</div></div>
+    </div>
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 30px 36px 26px 36px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued to Tanya · for five days in a row</div>
+      <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1.08; letter-spacing: -0.01em; color: #8f355c">A date at NSP</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Five days in a row deserves an evening out. Netaji Subhash Place, your pick of the place, and the bill is mine.</p>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><div>Dinner wherever you point at</div></div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><div>Dessert on the walk back</div></div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><div>Zero syllabus talk after 7 pm</div></div>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; border-top: 1px solid #e9c7d3; padding-top: 12px">Valid for one evening, any day of the week. Chinku reserves the right to hold your hand the entire time. Non-transferable, obviously.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end"><div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued by</div><div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-weight: 500; font-size: 28px; color: #8f355c">Chinku</div></div><div style="text-align: right"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Valid</div><div style="font-size: 14px; font-weight: 500">Any day you like · No expiry</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Voucher No. 002: 10 days</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; overflow: hidden">
+    <div style="width: 196px; flex-shrink: 0; box-sizing: border-box; padding: 28px 22px 24px 26px; background: #f5e3ea; border-right: 2px dashed #8f355c; display: flex; flex-direction: column; justify-content: space-between">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Streak reward</div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 132px; line-height: 0.9; letter-spacing: -0.04em; color: #8f355c">10</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">days in a row</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4557">No. 002</div></div>
+    </div>
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 30px 36px 26px 36px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued to Tanya · for ten days in a row</div>
+      <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1.08; color: #8f355c">Seafood night</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Ten straight days. That's prawns, crab, fish curry, whatever you've been craving, at a proper seafood place, on me.</p>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Starters, mains, and the one you can't decide on</div></div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Chinku ordering something he can't pronounce</div></div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Stealing from his plate: permitted</div></div>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; border-top: 1px solid #e9c7d3; padding-top: 12px">Valid for one dinner. No calorie talk at the table. If you say "you pick", I pick the most expensive thing on the menu for you.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end"><div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued by</div><div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-size: 28px; color: #8f355c">Chinku</div></div><div style="text-align: right"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Valid</div><div style="font-size: 14px; font-weight: 500">Any day you like · No expiry</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Voucher No. 003: 15 days</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; overflow: hidden">
+    <div style="width: 196px; flex-shrink: 0; box-sizing: border-box; padding: 28px 22px 24px 26px; background: #f5e3ea; border-right: 2px dashed #8f355c; display: flex; flex-direction: column; justify-content: space-between">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Streak reward</div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 132px; line-height: 0.9; letter-spacing: -0.04em; color: #8f355c">15</div>
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">days in a row</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4557">No. 003</div></div>
+    </div>
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 30px 36px 26px 36px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued to Tanya · for fifteen days in a row</div>
+      <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1.08; color: #8f355c">Nykaa, Tira or H&amp;M</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Fifteen days. Fill a cart on Nykaa, Tira or H&amp;M, up to ₹3,500, and hand me your phone at checkout.</p>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>One cart, one checkout, my card</div></div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Not a single "do you really need that?"</div></div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Unboxing together, if you want an audience</div></div>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; border-top: 1px solid #e9c7d3; padding-top: 12px">Nykaa, Tira, H&amp;M, or split across them. Valid once. "It was on sale" is not required as a justification, but is always welcome.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end"><div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued by</div><div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-size: 28px; color: #8f355c">Chinku</div></div><div style="text-align: right"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Valid</div><div style="font-size: 14px; font-weight: 500">Any day you like · No expiry</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Voucher No. 004: 20 days</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; overflow: hidden">
+    <div style="width: 196px; flex-shrink: 0; box-sizing: border-box; padding: 28px 22px 24px 26px; background: #f5e3ea; border-right: 2px dashed #8f355c; display: flex; flex-direction: column; justify-content: space-between">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Streak reward</div>
+      <div><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 132px; line-height: 0.9; letter-spacing: -0.04em; color: #8f355c">20</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">days in a row</div></div>
+      <div style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4557">No. 004</div></div>
+    </div>
+    <div style="flex-grow: 1; padding: 30px 36px 26px 36px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued to Tanya · for twenty days in a row</div>
+      <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1.08; color: #8f355c">The full-hour massage</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Twenty days of showing up. Sixty minutes of a proper full-body massage: warm oil, dim lights, your playlist, and you don't lift a finger.</p>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Head, shoulders, back, feet: the full route</div></div>
+        <div style="display: flex; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Your playlist, your pace, your pressure</div></div>
+        <div style="display: flex; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>A hot drink after, made by me</div></div>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; border-top: 1px solid #e9c7d3; padding-top: 12px">Valid for one 60-minute session. Saying "okay, that's enough" before the hour is up will be politely ignored. Falling asleep counts as a five-star review.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end"><div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued by</div><div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-size: 28px; color: #8f355c">Chinku</div></div><div style="text-align: right"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Valid</div><div style="font-size: 14px; font-weight: 500">Any evening you like · No expiry</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Voucher No. 005: 30 days</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; overflow: hidden">
+    <div style="width: 196px; flex-shrink: 0; padding: 28px 22px 24px 26px; background: #f5e3ea; border-right: 2px dashed #8f355c; display: flex; flex-direction: column; justify-content: space-between">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Streak reward</div>
+      <div><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 132px; line-height: 0.9; letter-spacing: -0.04em; color: #8f355c">30</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">days · one full month</div></div>
+      <div style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="#8f355c" stroke="#8f355c" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4557">No. 005</div></div>
+    </div>
+    <div style="flex-grow: 1; padding: 30px 36px 26px 36px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued to Tanya · for thirty days in a row</div>
+      <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1.08; color: #8f355c">A night that's all about you</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Thirty days. Door locked, phones face-down, candles lit. One whole night with my undivided attention, and you set the agenda.</p>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Chinku, entirely yours, till morning</div></div>
+        <div style="display: flex; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Whatever you want, for as long as you want it</div></div>
+        <div style="display: flex; gap: 10px; font-size: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f355c" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg><div>Breakfast in bed the next morning</div></div>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; border-top: 1px solid #e9c7d3; padding-top: 12px">Redeemable on any night of your choosing. What happens after redemption stays strictly between the two of us. No questions asked, and none answered, except yours.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end"><div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued by</div><div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-size: 28px; color: #8f355c">Chinku</div></div><div style="text-align: right"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Valid</div><div style="font-size: 14px; font-weight: 500">Any night you like · No expiry</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Voucher No. 006: 50 days</h2>
+<div style="width: 794px; height: 559px; box-sizing: border-box; padding: 24px; background: #fbf7f5; font-family: 'Source Sans 3', sans-serif; color: #2b2326">
+  <div style="width: 746px; height: 511px; box-sizing: border-box; border: 1.5px solid #8f355c; border-radius: 16px; background: #fffdfc; display: flex; overflow: hidden">
+    <div style="width: 196px; flex-shrink: 0; padding: 28px 22px 24px 26px; background: #f5e3ea; border-right: 2px dashed #8f355c; display: flex; flex-direction: column; justify-content: space-between">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Streak reward</div>
+      <div><div style="font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 132px; line-height: 0.9; letter-spacing: -0.04em; color: #8f355c">50</div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">days in a row</div></div>
+      <div style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="#8f355c" stroke="#8f355c" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4557">No. 006</div></div>
+    </div>
+    <div style="flex-grow: 1; padding: 30px 36px 26px 36px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Issued to Tanya · for fifty days in a row</div>
+      <h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1.08; color: #8f355c">You write this one</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Fifty days in a row. There's no reward I could print that would match it, so the line below is yours to fill in.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px">
+        <div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-size: 18px">I, Tanya, redeem this voucher for</div>
+        <div style="height: 40px; border-bottom: 1.5px solid #8f355c"></div>
+        <div style="height: 40px; border-bottom: 1.5px solid #8f355c"></div>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #5f4a52; border-top: 1px solid #e9c7d3; padding-top: 12px">Anything within reason, and my definition of reason is very generous. Not valid for "skip the exam". Signed in advance, so there's no backing out.</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end"><div><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Pre-signed by</div><div style="font-family: 'Source Serif 4', Georgia, serif; font-style: italic; font-size: 28px; color: #8f355c">Chinku</div></div><div style="text-align: right"><div style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b4557">Valid</div><div style="font-size: 14px; font-weight: 500">Whenever you say · No expiry</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>

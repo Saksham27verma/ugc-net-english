@@ -52,15 +52,15 @@ const CONTENTS: Record<Milestone, VoucherContents> = {
     number: voucherNumber(15),
     issuedTo: "Issued to Tanya · for fifteen days in a row",
     stubCaption: "days in a row",
-    title: "Nykaa or Myntra, your call",
-    lead: "Fifteen days. Fill a cart on Nykaa or Myntra, up to ₹3,500, and hand me your phone at checkout.",
+    title: "Nykaa, Tira or H&M",
+    lead: "Fifteen days. Fill a cart on Nykaa, Tira or H&M, up to ₹3,500, and hand me your phone at checkout.",
     includes: [
       "One cart, one checkout, my card",
       "Not a single \u201cdo you really need that?\u201d",
       "Unboxing together, if you want an audience",
     ],
     finePrint:
-      "Nykaa, Myntra, or split across both. Valid once. \u201cIt was on sale\u201d is not required as a justification, but is always welcome.",
+      "Nykaa, Tira, H&M, or split across them. Valid once. \u201cIt was on sale\u201d is not required as a justification, but is always welcome.",
     signatureLabel: "Issued by",
     validLine: "Any day you like · No expiry",
     wishPrompt: null,
