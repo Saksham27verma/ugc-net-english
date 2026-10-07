@@ -13,10 +13,9 @@ function asExam(value: unknown): ExamId {
   return isExamId(value) ? value : "ugc-net"
 }
 
-function asPaper(
-  raw: unknown,
-  row: { set_id: unknown; exam: unknown; set_number: unknown; duration_minutes: unknown; marks_per_correct: unknown },
-): Paper {
+type DbRow = Record<string, unknown>
+
+function asPaper(raw: unknown, row: DbRow): Paper {
   const paper = raw as Paper
   const setId = Number(row.set_id)
   const exam = asExam(row.exam ?? paper?.exam)
@@ -40,15 +39,7 @@ function asPaper(
   }
 }
 
-function summaryFromRow(row: {
-  set_id: unknown
-  exam: unknown
-  set_number: unknown
-  title: unknown
-  duration_minutes: unknown
-  marks_per_correct: unknown
-  updated_at: unknown
-}): PaperSummary {
+function summaryFromRow(row: DbRow): PaperSummary {
   const exam = asExam(row.exam)
   const profile = EXAMS[exam]
   return {
