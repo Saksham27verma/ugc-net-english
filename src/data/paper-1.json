@@ -1,8 +1,11 @@
 {
   "setId": 1,
+  "exam": "ugc-net",
+  "setNumber": 1,
   "title": "UGC NET — ENGLISH (Subject Code 30) — FULL-LENGTH PRACTICE PAPER : SET 1",
   "durationMinutes": 180,
   "marksPerCorrect": 2,
+  "marksPerWrong": 0,
   "sections": [
     {
       "paper": 1,

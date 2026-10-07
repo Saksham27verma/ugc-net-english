@@ -2,23 +2,32 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useActionState, useEffect } from "react"
+import { useActionState, useEffect, useState } from "react"
+import { EXAMS, type ExamId } from "@/lib/exams"
+import { paperShortTitle } from "@/lib/paper"
 import { logoutAdmin, uploadPaper } from "@/server/admin-actions"
 import type { PaperSummary } from "@/lib/types"
 
 export function AdminClient({
   papers,
-  suggestedSetId,
+  suggested,
 }: {
   papers: PaperSummary[]
-  suggestedSetId: number
+  suggested: Record<ExamId, number>
 }) {
   const router = useRouter()
   const [state, action, pending] = useActionState(uploadPaper, null)
+  const [exam, setExam] = useState<ExamId>("ugc-net")
+  const [setNumber, setSetNumber] = useState(suggested["ugc-net"])
+  const [setTouched, setSetTouched] = useState(false)
 
   useEffect(() => {
     if (state?.ok) router.refresh()
   }, [router, state])
+
+  useEffect(() => {
+    if (!setTouched) setSetNumber(suggested[exam])
+  }, [exam, setTouched, suggested])
 
   return (
     <div className="min-h-dvh">
@@ -56,16 +65,37 @@ export function AdminClient({
               />
             </label>
             <label className="block text-sm">
+              <span className="text-muted">Exam</span>
+              <select
+                name="exam"
+                value={exam}
+                onChange={(event) => {
+                  const next = event.target.value as ExamId
+                  setExam(next)
+                  if (!setTouched) setSetNumber(suggested[next])
+                }}
+                className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
+              >
+                <option value="ugc-net">UGC NET</option>
+                <option value="uppsc">UPPSC Assistant Professor</option>
+              </select>
+            </label>
+            <label className="block text-sm">
               <span className="text-muted">Set number</span>
               <input
                 type="number"
-                name="setId"
+                name="setNumber"
                 min={1}
-                defaultValue={suggestedSetId}
+                value={setNumber}
+                onChange={(event) => {
+                  setSetTouched(true)
+                  setSetNumber(Number(event.target.value))
+                }}
                 className="mt-1 w-full rounded-lg border border-line bg-background px-3 py-2"
               />
               <span className="mt-1 block text-xs text-muted">
-                Leave as {suggestedSetId} for the next paper, or match Practice-Set-N.md.
+                {EXAMS[exam].label} numbers its own sets. Leave this as {suggested[exam]} for the next{" "}
+                {EXAMS[exam].label} paper. A file named Practice-Set-N.md fills the number when you have not changed it.
               </span>
             </label>
             <label className="flex items-start gap-2 text-sm">
@@ -87,18 +117,27 @@ export function AdminClient({
 
         <aside className="space-y-6">
           <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
-            <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Template</h2>
+            <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Templates</h2>
             <p className="mt-2 text-sm text-muted">
-              Download a complete 150-question skeleton that already passes the importer. Replace every placeholder,
-              then upload.
+              Each skeleton already passes the importer. Replace every placeholder, then upload it under the matching
+              exam.
             </p>
-            <a
-              href="/templates/UGC-NET-English-Practice-Set-TEMPLATE.md"
-              download
-              className="mt-4 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
-            >
-              Download template
-            </a>
+            <div className="mt-4 flex flex-col gap-2">
+              <a
+                href="/templates/UGC-NET-English-Practice-Set-TEMPLATE.md"
+                download
+                className="inline-block rounded-lg bg-accent px-4 py-2 text-center text-sm font-semibold text-white hover:bg-accent-hover"
+              >
+                UGC NET template
+              </a>
+              <a
+                href="/templates/UPPSC-Assistant-Professor-Practice-Set-TEMPLATE.md"
+                download
+                className="inline-block rounded-lg border border-accent px-4 py-2 text-center text-sm font-semibold text-accent hover:bg-[var(--option-selected)]"
+              >
+                UPPSC template
+              </a>
+            </div>
           </section>
 
           <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
@@ -109,7 +148,7 @@ export function AdminClient({
               <ul className="mt-3 space-y-2 text-sm">
                 {papers.map((paper) => (
                   <li key={paper.setId} className="flex items-center justify-between gap-3 border-b border-line pb-2 last:border-b-0">
-                    <span>Set {paper.setId}</span>
+                    <span>{paperShortTitle(paper)}</span>
                     <Link href={`/exam/${paper.setId}`} className="text-accent underline-offset-2 hover:underline">
                       Open
                     </Link>
@@ -123,22 +162,28 @@ export function AdminClient({
         <section className="rounded-2xl border border-line bg-surface p-5 shadow-sm lg:col-span-2">
           <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Markdown format</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
-            <li>UTF-8 file. Prefer the name <code>UGC-NET-English-Practice-Set-N.md</code>.</li>
-            <li>Exactly 150 questions, each with four options labelled <code>1.</code> <code>2.</code> <code>3.</code> <code>4.</code> in order.</li>
             <li>
-              Two sections, using an em dash:{" "}
-              <code># SECTION A — PAPER I : GENERAL APTITUDE (Q.1–Q.50)</code> then{" "}
-              <code># SECTION B — PAPER II : ENGLISH (Q.51–Q.150)</code>.
+              UTF-8 file. Prefer <code>UGC-NET-English-Practice-Set-N.md</code> or{" "}
+              <code>UPPSC-Assistant-Professor-Practice-Set-N.md</code>.
             </li>
             <li>
-              Unit headings tile 1…150 with an en dash in the range:{" "}
-              <code>## Teaching Aptitude (Q.6–Q.10)</code>.
+              UGC NET: 150 questions, 180 minutes, +2 and no penalty. Paper I is Q.1–Q.50 and Paper II is Q.51–Q.150.
+              Passages are required for Q.1–Q.5, Q.46–Q.50, Q.141–Q.145, and Q.146–Q.150.
             </li>
-            <li>Passages are required for Q.1–Q.5, Q.46–Q.50, Q.141–Q.145, and Q.146–Q.150 (Markdown before the first question).</li>
             <li>
-              One <code># ANSWER KEY</code>, then a fenced block of 150 pairs <code>n:1-4</code>, then 150 lines{" "}
+              UPPSC: 120 questions, 120 minutes, +3 and −1. Paper I is Q.1–Q.30 and Paper II is Q.31–Q.120. Unit names
+              are yours. Passages are optional.
+            </li>
+            <li>
+              Two sections, using an em dash: <code># SECTION A — …</code> then <code># SECTION B — …</code>. Unit
+              headings use an en dash: <code>## Teaching Aptitude (Q.6–Q.10)</code>.
+            </li>
+            <li>Each question has four options labelled <code>1.</code> <code>2.</code> <code>3.</code> <code>4.</code> in order.</li>
+            <li>
+              One <code># ANSWER KEY</code>, then a fenced block of <code>n:1-4</code> pairs, then one line per question{" "}
               <code>**Q.1 — (3)** explanation…</code> matching the quick key.
             </li>
+            <li>Set numbers start again for each exam, so both can have a Set 1.</li>
           </ul>
         </section>
       </main>

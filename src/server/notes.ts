@@ -23,7 +23,7 @@ const NOTES = [
   "Weak units are not a verdict. They are a reading list.",
   "Leave the score on the table and come back to me.",
   "Tomorrow's paper does not need tonight's worry.",
-  "You sat with 150 questions. That takes more nerve than people admit.",
+  "You sat the full paper. That takes more nerve than people admit.",
   "When a passage dragged, you stayed. That is the skill.",
   "I will keep the evening quiet if you want the notes to yourself.",
   "A mid-range score with a finished paper beats a perfect plan.",

@@ -2,22 +2,21 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import { remainingMs } from "./clock"
+import { questionTotal } from "./paper"
 import { getResponse } from "./status"
 import { createAttempt, readActive, writeActive } from "./storage"
 import type { Attempt, AttemptResponse, Paper, Selected } from "./types"
-
-const TOTAL = 150
 
 function persist(attempt: Attempt): Attempt {
   writeActive(attempt)
   return attempt
 }
 
-function resumeAt(attempt: Attempt): number {
-  for (let n = 1; n <= TOTAL; n += 1) {
+function resumeAt(attempt: Attempt, total: number): number {
+  for (let n = 1; n <= total; n += 1) {
     if (!attempt.responses[n]?.selected) return n
   }
-  return TOTAL
+  return total
 }
 
 function applyTime(attempt: Attempt, no: number, enteredAt: number, at: number): Attempt {
@@ -46,6 +45,7 @@ function visit(attempt: Attempt, no: number): Attempt {
 }
 
 export function useExam(paper: Paper) {
+  const total = questionTotal(paper)
   const [attempt, setAttempt] = useState<Attempt | null>(null)
   const [currentNo, setCurrentNo] = useState(1)
   const [now, setNow] = useState(() => Date.now())
@@ -68,14 +68,14 @@ export function useExam(paper: Paper) {
       existing && existing.setId === paper.setId
         ? existing
         : persist(createAttempt(paper.setId, durationMs))
-    const startNo = resumeAt(started)
+    const startNo = resumeAt(started, total)
     const initial = visit(started, startNo)
     persist(initial)
     setAttempt(initial)
     setCurrentNo(startNo)
     currentNoRef.current = startNo
     enteredAtRef.current = Date.now()
-  }, [paper.setId, paper.durationMinutes])
+  }, [paper.setId, paper.durationMinutes, total])
 
   useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now()), 500)
@@ -93,7 +93,7 @@ export function useExam(paper: Paper) {
 
   const goTo = useCallback(
     (no: number) => {
-      if (no < 1 || no > TOTAL) return
+      if (no < 1 || no > total) return
       update((current) => {
         const withTime = applyTime(current, currentNoRef.current, enteredAtRef.current, Date.now())
         const next = visit(withTime, no)
@@ -103,7 +103,7 @@ export function useExam(paper: Paper) {
       enteredAtRef.current = Date.now()
       setCurrentNo(no)
     },
-    [update],
+    [total, update],
   )
 
   const patchCurrent = useCallback(
@@ -135,13 +135,13 @@ export function useExam(paper: Paper) {
   }, [patchCurrent])
 
   const saveAndNext = useCallback(() => {
-    goTo(Math.min(TOTAL, currentNoRef.current + 1))
-  }, [goTo])
+    goTo(Math.min(total, currentNoRef.current + 1))
+  }, [goTo, total])
 
   const saveAndMark = useCallback(() => {
     patchCurrent({ marked: true })
-    goTo(Math.min(TOTAL, currentNoRef.current + 1))
-  }, [goTo, patchCurrent])
+    goTo(Math.min(total, currentNoRef.current + 1))
+  }, [goTo, patchCurrent, total])
 
   const previous = useCallback(() => {
     goTo(Math.max(1, currentNoRef.current - 1))

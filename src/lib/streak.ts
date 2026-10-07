@@ -42,6 +42,7 @@ export type StreakCell = {
   questions: number
   accuracy: number | null
   score: number | null
+  scoreMax: number | null
 }
 
 export type StreakWeek = {
@@ -55,6 +56,7 @@ export type StreakAttempt = {
   accuracy?: number
   attempted?: number
   total?: number
+  maxMarks?: number
 }
 
 export type StreakOptions = {
@@ -189,6 +191,7 @@ export function buildStreak(
   const questions = new Map<string, number>()
   const bestAccuracy = new Map<string, number>()
   const bestScore = new Map<string, number>()
+  const bestScoreMax = new Map<string, number>()
   for (const attempt of attempts) {
     const key = dayKey(attempt.submittedAt)
     counts.set(key, (counts.get(key) ?? 0) + 1)
@@ -197,7 +200,11 @@ export function buildStreak(
       bestAccuracy.set(key, Math.max(bestAccuracy.get(key) ?? 0, attempt.accuracy))
     }
     if (attempt.total !== undefined) {
-      bestScore.set(key, Math.max(bestScore.get(key) ?? 0, attempt.total))
+      const current = bestScore.get(key)
+      if (current === undefined || attempt.total > current) {
+        bestScore.set(key, attempt.total)
+        bestScoreMax.set(key, attempt.maxMarks ?? 300)
+      }
     }
   }
 
@@ -229,6 +236,7 @@ export function buildStreak(
         questions: questions.get(cursor) ?? 0,
         accuracy: bestAccuracy.get(cursor) ?? null,
         score: bestScore.get(cursor) ?? null,
+        scoreMax: bestScoreMax.get(cursor) ?? null,
       })
       cursor = shift(cursor, 1)
     }

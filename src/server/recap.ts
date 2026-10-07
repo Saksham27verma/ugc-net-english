@@ -1,6 +1,7 @@
 import "server-only"
 import type { WeeklyRecap } from "@/lib/motivation"
 import { buildStreak, dayKey, shiftDayKey, weekdayOf } from "@/lib/streak"
+import { resultFacts } from "@/lib/exams"
 import type { Result } from "@/lib/types"
 import { ensureSchema, hasDatabase } from "./db"
 import { LEARNER_ID } from "./learner"
@@ -91,6 +92,7 @@ function toAttempt(item: Result) {
     accuracy: item.accuracy,
     attempted: item.attempted,
     total: item.total,
+    maxMarks: resultFacts(item).maxMarks,
   }
 }
 

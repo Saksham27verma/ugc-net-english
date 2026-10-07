@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useMemo } from "react"
 import { CUT_OFF_NOTE } from "@/lib/bands"
+import { resultFacts } from "@/lib/exams"
 import { formatClock } from "@/lib/clock"
 import type { Result } from "@/lib/types"
 
@@ -15,6 +16,7 @@ export function ResultClient({ result, note }: { result: Result; note?: string |
       .slice(0, 3)
   }, [result])
 
+  const facts = resultFacts(result)
   const units = result.byUnit
     .slice()
     .sort((a, b) => {
@@ -34,10 +36,12 @@ export function ResultClient({ result, note }: { result: Result; note?: string |
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <p className="text-xs uppercase tracking-[0.18em] text-muted">Set {result.setId}</p>
+        <p className="text-xs uppercase tracking-[0.18em] text-muted">
+          {facts.label} · Set {facts.setNumber}
+        </p>
         <p className="mt-2 font-serif text-7xl font-semibold leading-none tracking-tight">
           {result.total}
-          <span className="ml-2 text-3xl font-normal text-muted">/ 300</span>
+          <span className="ml-2 text-3xl font-normal text-muted">/ {facts.maxMarks}</span>
         </p>
         <p className="mt-3 text-lg">{result.band}</p>
         <p className="mt-2 max-w-xl text-sm text-muted">{CUT_OFF_NOTE}</p>
@@ -47,14 +51,14 @@ export function ResultClient({ result, note }: { result: Result; note?: string |
             {result.overtimeMs > 0 ? (
               <span className="text-red"> · {formatClock(result.overtimeMs)} overtime</span>
             ) : (
-              <span className="text-muted"> · within 180 minutes</span>
+              <span className="text-muted"> · within {facts.durationMinutes} minutes</span>
             )}
           </p>
         ) : null}
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <Stat label="Paper I" value={`${result.paper1} / 100`} />
-          <Stat label="Paper II" value={`${result.paper2} / 200`} />
+          <Stat label="Paper I" value={`${result.paper1} / ${facts.paper1Max}`} />
+          <Stat label="Paper II" value={`${result.paper2} / ${facts.paper2Max}`} />
           <Stat label="Attempted" value={String(result.attempted)} />
           <Stat label="Accuracy" value={`${result.accuracy.toFixed(1)}%`} />
         </div>

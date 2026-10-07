@@ -183,7 +183,7 @@ function cellTooltip(cell: StreakCell): string {
   const questions = cell.questions > 0 ? `${cell.questions} questions` : papers
   const score =
     cell.score !== null
-      ? `${cell.score} / 300`
+      ? `${cell.score} / ${cell.scoreMax ?? 300}`
       : cell.accuracy !== null
         ? `${cell.accuracy.toFixed(0)}%`
         : papers

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { formatClock, remainingMs } from "@/lib/clock"
+import { EXAMS, markingLine, resultFacts, type ExamId } from "@/lib/exams"
 import { paperShortTitle } from "@/lib/paper"
 import { createAttempt, clearActive, markHistorySynced, readActive, readHistory, shouldSyncLocalHistory, writeActive } from "@/lib/storage"
 import { StreakCard } from "@/components/home/StreakCard"
@@ -102,12 +103,12 @@ export function HomeClient({
     <div className="min-h-dvh">
       <header className="border-b border-line bg-gradient-to-b from-surface to-background">
         <div className="mx-auto max-w-5xl px-4 py-8">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted">Subject Code 30</p>
-          <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight">UGC NET English</h1>
+          <p className="text-xs uppercase tracking-[0.18em] text-muted">English</p>
+          <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight">UGC NET and UPPSC</h1>
           <p className="mt-2 font-serif text-lg text-accent">{examLine(examDays)}</p>
           <p className="mt-2 max-w-2xl text-sm text-muted">
-            Full-length mock papers. 150 questions, 180 minutes, 300 marks. No negative marking.
-            Weekly target stays {streak.weeklyGoal} of 7 days.
+            Full-length mocks for both exams. Each keeps its own sets, timer, and marking. Weekly target stays{" "}
+            {streak.weeklyGoal} of 7 days.
           </p>
         </div>
       </header>
@@ -123,22 +124,19 @@ export function HomeClient({
         {recap ? <WeeklyRecapCard recap={recap} /> : null}
         <RewardLadder items={ladder} />
 
-        <section className="mt-8 grid gap-4 md:grid-cols-2">
-          {papers.length === 0 ? (
-            <p className="text-sm text-muted">No papers are in the database yet.</p>
-          ) : (
-            papers.map((paper) => (
-              <SetCard
-                key={paper.setId}
-                paper={paper}
-                history={history}
-                active={active}
-                remaining={active?.setId === paper.setId ? activeRemaining : 0}
-                onStart={() => start(paper.setId)}
-              />
-            ))
-          )}
-        </section>
+        <div className="mt-8 space-y-10">
+          {(["ugc-net", "uppsc"] as const).map((exam) => (
+            <ExamGroup
+              key={exam}
+              exam={exam}
+              papers={papers.filter((paper) => paper.exam === exam)}
+              history={history}
+              active={active}
+              activeRemaining={activeRemaining}
+              onStart={start}
+            />
+          ))}
+        </div>
 
         <section className="mt-12">
           <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted">Attempt history</h2>
@@ -165,8 +163,9 @@ export function HomeClient({
           <div className="relative w-[min(28rem,calc(100%-2rem))] rounded-2xl border border-line bg-surface p-6 shadow-lg">
             <h2 className="text-lg font-semibold">Discard the in-progress attempt?</h2>
             <p className="mt-2 text-sm text-muted">
-              A paper is already in progress. Starting Set {pendingSetId} will discard that attempt. This cannot be
-              undone.
+              A paper is already in progress. Starting{" "}
+              {paperShortTitle(papers.find((item) => item.setId === pendingSetId) ?? { setId: pendingSetId })} will
+              discard that attempt. This cannot be undone.
             </p>
             <div className="mt-5 flex justify-end gap-2">
               <button type="button" className="border border-line px-4 py-2 text-sm" onClick={() => setPendingSetId(null)}>
@@ -184,6 +183,50 @@ export function HomeClient({
         </div>
       ) : null}
     </div>
+  )
+}
+
+function ExamGroup({
+  exam,
+  papers,
+  history,
+  active,
+  activeRemaining,
+  onStart,
+}: {
+  exam: ExamId
+  papers: PaperSummary[]
+  history: Result[]
+  active: Attempt | null
+  activeRemaining: number
+  onStart: (setId: number) => void
+}) {
+  const profile = EXAMS[exam]
+  const blurb = `${profile.questionCount} questions · ${profile.durationMinutes} minutes · ${profile.maxMarks} marks · ${markingLine(profile.marksPerCorrect, profile.marksPerWrong)}. Paper I is ${profile.paper1Count} questions, Paper II is ${profile.paper2Count}.`
+
+  return (
+    <section>
+      <div className="mb-4">
+        <h2 className="font-serif text-2xl font-semibold">{profile.label}</h2>
+        <p className="mt-1 text-sm text-muted">{blurb}</p>
+      </div>
+      {papers.length === 0 ? (
+        <p className="text-sm text-muted">No {profile.label} papers yet. Import one from the admin page.</p>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2">
+          {papers.map((paper) => (
+            <SetCard
+              key={paper.setId}
+              paper={paper}
+              history={history}
+              active={active}
+              remaining={active?.setId === paper.setId ? activeRemaining : 0}
+              onStart={() => onStart(paper.setId)}
+            />
+          ))}
+        </div>
+      )}
+    </section>
   )
 }
 
@@ -206,12 +249,16 @@ function SetCard({
 
   return (
     <article className="rounded-2xl border border-line bg-surface p-5 shadow-sm">
-      <h2 className="font-serif text-xl font-semibold">{paperShortTitle(paper)}</h2>
-      <p className="mt-1 text-sm text-muted">150 questions · 180 minutes · 300 marks</p>
+      <p className="text-xs uppercase tracking-[0.18em] text-muted">{EXAMS[paper.exam].label}</p>
+      <h2 className="mt-1 font-serif text-xl font-semibold">Set {paper.setNumber}</h2>
+      <p className="mt-1 text-sm text-muted">
+        {paper.questionCount} questions · {paper.durationMinutes} minutes · {paper.maxMarks} marks ·{" "}
+        {markingLine(paper.marksPerCorrect, paper.marksPerWrong)}
+      </p>
       <dl className="mt-4 flex gap-6 text-sm">
         <div>
           <dt className="text-muted">Best score</dt>
-          <dd className="font-semibold">{attempts.length ? `${best} / 300` : "—"}</dd>
+          <dd className="font-semibold">{attempts.length ? `${best} / ${paper.maxMarks}` : "—"}</dd>
         </div>
         <div>
           <dt className="text-muted">Attempts</dt>
@@ -249,7 +296,7 @@ function HistoryTable({
 }) {
   const titles = useMemo(() => {
     const map = new Map<number, string>()
-    for (const paper of papers) map.set(paper.setId, `Set ${paper.setId}`)
+    for (const paper of papers) map.set(paper.setId, paperShortTitle(paper))
     return map
   }, [papers])
 
@@ -274,8 +321,10 @@ function HistoryTable({
           {history.map((item) => (
             <tr key={item.attemptId} className="border-b border-line last:border-b-0">
               <td className="px-3 py-2">{submittedFormatter.format(new Date(item.submittedAt))}</td>
-              <td className="px-3 py-2">{titles.get(item.setId) ?? `Set ${item.setId}`}</td>
-              <td className="px-3 py-2 font-medium">{item.total} / 300</td>
+              <td className="px-3 py-2">{titles.get(item.setId) ?? paperShortTitle(item)}</td>
+              <td className="px-3 py-2 font-medium">
+                {item.total} / {resultFacts(item).maxMarks}
+              </td>
               <td className="px-3 py-2">{item.accuracy.toFixed(1)}%</td>
               <td className="px-3 py-2">
                 {item.elapsedMs

@@ -22,8 +22,8 @@ const mono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "UGC NET English — Mock Test",
-  description: "Self-hosted full-length mock tests for UGC NET English (Subject Code 30).",
+  title: "UGC NET and UPPSC — Mock Tests",
+  description: "Full-length mock tests for UGC NET English and UPPSC Assistant Professor.",
 }
 
 export default function RootLayout({

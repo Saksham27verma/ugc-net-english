@@ -17,25 +17,29 @@ export function Palette({
   attempt,
   currentNo,
   onJump,
+  paper1,
+  paper2,
 }: {
   attempt: Attempt
   currentNo: number
   onJump: (no: number) => void
+  paper1: { start: number; end: number }
+  paper2: { start: number; end: number }
 }) {
   return (
     <div className="flex flex-col gap-4">
       <PaletteGroup
         label="Paper I"
-        start={1}
-        end={50}
+        start={paper1.start}
+        end={paper1.end}
         attempt={attempt}
         currentNo={currentNo}
         onJump={onJump}
       />
       <PaletteGroup
         label="Paper II"
-        start={51}
-        end={150}
+        start={paper2.start}
+        end={paper2.end}
         attempt={attempt}
         currentNo={currentNo}
         onJump={onJump}

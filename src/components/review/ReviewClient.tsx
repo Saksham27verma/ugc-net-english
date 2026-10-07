@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useMemo, useState } from "react"
 import { Markdown } from "@/components/Markdown"
-import { locateQuestion } from "@/lib/paper"
+import { locateQuestion, paperShortTitle } from "@/lib/paper"
 import type { Paper, Result } from "@/lib/types"
 
 type Filter = "all" | "wrong" | "unattempted" | "marked" | string
@@ -42,7 +42,7 @@ export function ReviewClient({ result, paper }: { result: Result; paper: Paper }
           <Link href={`/result/${result.attemptId}`} className="text-muted hover:text-foreground">
             ← Result
           </Link>
-          <p className="font-medium">Review · Set {result.setId}</p>
+          <p className="font-medium">Review · {paperShortTitle(paper)}</p>
         </div>
       </header>
 

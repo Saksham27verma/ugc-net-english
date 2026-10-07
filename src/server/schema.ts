@@ -6,6 +6,8 @@ export async function migrate(sql: Sql): Promise<void> {
   await sql`
     CREATE TABLE IF NOT EXISTS papers (
       set_id integer PRIMARY KEY,
+      exam text NOT NULL DEFAULT 'ugc-net',
+      set_number integer,
       title text NOT NULL,
       duration_minutes integer NOT NULL DEFAULT 180,
       marks_per_correct integer NOT NULL DEFAULT 2,
@@ -14,6 +16,19 @@ export async function migrate(sql: Sql): Promise<void> {
       created_at timestamptz NOT NULL DEFAULT now(),
       updated_at timestamptz NOT NULL DEFAULT now()
     )
+  `
+  await sql`ALTER TABLE papers ADD COLUMN IF NOT EXISTS exam text NOT NULL DEFAULT 'ugc-net'`
+  await sql`ALTER TABLE papers ADD COLUMN IF NOT EXISTS set_number integer`
+  await sql`UPDATE papers SET set_number = set_id WHERE set_number IS NULL`
+  await sql`ALTER TABLE papers ALTER COLUMN set_number SET NOT NULL`
+  await sql`ALTER TABLE papers DROP CONSTRAINT IF EXISTS papers_exam_check`
+  await sql`
+    ALTER TABLE papers
+    ADD CONSTRAINT papers_exam_check CHECK (exam IN ('ugc-net', 'uppsc'))
+  `
+  await sql`
+    CREATE UNIQUE INDEX IF NOT EXISTS papers_exam_set_number_idx
+      ON papers (exam, set_number)
   `
   await sql`
     CREATE TABLE IF NOT EXISTS answer_keys (

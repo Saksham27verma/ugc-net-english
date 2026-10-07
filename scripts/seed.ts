@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs"
 import { join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { neon } from "@neondatabase/serverless"
-import { parseMarkdownPaper, SET_FILENAME_RE, setIdFromFilename } from "../src/lib/parse-paper"
+import { examFromFilename, parseMarkdownPaper, SET_FILENAME_RE } from "../src/lib/parse-paper"
 import { configureNeonFetch } from "../src/server/neon-fetch"
 import { migrate } from "../src/server/schema"
 
@@ -51,15 +51,19 @@ async function main(): Promise<void> {
   }
 
   for (const file of files) {
-    const setId = setIdFromFilename(file)
-    if (setId == null) continue
+    const fromFile = examFromFilename(file)
+    if (!fromFile || fromFile.exam !== "ugc-net") continue
     const source = readFileSync(join(contentDir, file), "utf8")
-    const { paper, key, distribution } = parseMarkdownPaper(source, setId)
+    const { paper, key, distribution } = parseMarkdownPaper(source, fromFile.setNumber, fromFile.exam, fromFile.setNumber)
     await sql.transaction((txn) => [
       txn`
-        INSERT INTO papers (set_id, title, duration_minutes, marks_per_correct, paper, source_filename, updated_at)
+        INSERT INTO papers (
+          set_id, exam, set_number, title, duration_minutes, marks_per_correct, paper, source_filename, updated_at
+        )
         VALUES (
           ${paper.setId},
+          ${paper.exam},
+          ${paper.setNumber},
           ${paper.title},
           ${paper.durationMinutes},
           ${paper.marksPerCorrect},
@@ -68,6 +72,8 @@ async function main(): Promise<void> {
           now()
         )
         ON CONFLICT (set_id) DO UPDATE SET
+          exam = EXCLUDED.exam,
+          set_number = EXCLUDED.set_number,
           title = EXCLUDED.title,
           duration_minutes = EXCLUDED.duration_minutes,
           marks_per_correct = EXCLUDED.marks_per_correct,
@@ -84,7 +90,7 @@ async function main(): Promise<void> {
       `,
     ])
     console.log(
-      `Seeded set ${setId} (${file})  1=${distribution[1]} 2=${distribution[2]} 3=${distribution[3]} 4=${distribution[4]}`,
+      `Seeded ${paper.exam} set ${paper.setNumber} (${file})  1=${distribution[1]} 2=${distribution[2]} 3=${distribution[3]} 4=${distribution[4]}`,
     )
   }
 }

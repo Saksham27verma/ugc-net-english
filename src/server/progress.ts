@@ -1,6 +1,7 @@
 import "server-only"
 import type { ComebackInfo, WeeklyRecap } from "@/lib/motivation"
 import { buildStreak, dayKey, type FreezeInfo, type StreakData } from "@/lib/streak"
+import { resultFacts } from "@/lib/exams"
 import type { Result } from "@/lib/types"
 import { syncComeback } from "./comebacks"
 import { syncFreezes } from "./freezes"
@@ -25,6 +26,7 @@ export async function loadProgress(now = Date.now()): Promise<Progress> {
       accuracy: item.accuracy,
       attempted: item.attempted,
       total: item.total,
+      maxMarks: resultFacts(item).maxMarks,
     })),
     now,
     { frozenDays: freeze.frozenDays },

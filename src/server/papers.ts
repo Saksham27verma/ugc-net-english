@@ -1,4 +1,5 @@
 import "server-only"
+import { EXAMS, isExamId, type ExamId } from "@/lib/exams"
 import type { KeyFile, Paper, PaperSummary, Result } from "@/lib/types"
 import { ensureSchema, hasDatabase } from "./db"
 
@@ -8,49 +9,111 @@ function requireDatabase(): void {
   }
 }
 
-function asPaper(raw: unknown, setId: number): Paper {
+function asExam(value: unknown): ExamId {
+  return isExamId(value) ? value : "ugc-net"
+}
+
+function asPaper(
+  raw: unknown,
+  row: { set_id: unknown; exam: unknown; set_number: unknown; duration_minutes: unknown; marks_per_correct: unknown },
+): Paper {
   const paper = raw as Paper
-  if (!paper || paper.setId !== setId || paper.durationMinutes !== 180) {
+  const setId = Number(row.set_id)
+  const exam = asExam(row.exam ?? paper?.exam)
+  const profile = EXAMS[exam]
+  if (!paper || !Array.isArray(paper.sections)) {
     throw new Error(`Stored paper for set ${setId} is invalid`)
   }
-  return paper
+  const durationMinutes = Number(row.duration_minutes ?? paper.durationMinutes)
+  const marksPerCorrect = Number(row.marks_per_correct ?? paper.marksPerCorrect)
+  if (durationMinutes !== profile.durationMinutes || marksPerCorrect !== profile.marksPerCorrect) {
+    throw new Error(`Stored paper for set ${setId} is invalid`)
+  }
+  return {
+    ...paper,
+    setId,
+    exam,
+    setNumber: Number(row.set_number ?? paper.setNumber ?? setId),
+    durationMinutes,
+    marksPerCorrect,
+    marksPerWrong: paper.marksPerWrong ?? profile.marksPerWrong,
+  }
+}
+
+function summaryFromRow(row: {
+  set_id: unknown
+  exam: unknown
+  set_number: unknown
+  title: unknown
+  duration_minutes: unknown
+  marks_per_correct: unknown
+  updated_at: unknown
+}): PaperSummary {
+  const exam = asExam(row.exam)
+  const profile = EXAMS[exam]
+  return {
+    setId: Number(row.set_id),
+    exam,
+    setNumber: Number(row.set_number),
+    title: String(row.title),
+    durationMinutes: Number(row.duration_minutes),
+    marksPerCorrect: Number(row.marks_per_correct),
+    marksPerWrong: profile.marksPerWrong,
+    questionCount: profile.questionCount,
+    maxMarks: profile.maxMarks,
+    updatedAt: row.updated_at instanceof Date ? row.updated_at.toISOString() : String(row.updated_at),
+  }
 }
 
 export async function listPapers(): Promise<PaperSummary[]> {
   requireDatabase()
   const sql = await ensureSchema()
   const rows = await sql`
-    SELECT set_id, title, duration_minutes, updated_at
+    SELECT set_id, exam, set_number, title, duration_minutes, marks_per_correct, updated_at
     FROM papers
-    ORDER BY set_id
+    ORDER BY exam, set_number
   `
-  return rows.map((row) => ({
-    setId: Number(row.set_id),
-    title: String(row.title),
-    durationMinutes: 180 as const,
-    updatedAt: row.updated_at instanceof Date ? row.updated_at.toISOString() : String(row.updated_at),
-  }))
+  return rows.map((row) => summaryFromRow(row))
 }
 
 export async function getPaperFromStore(setId: number): Promise<Paper | undefined> {
   requireDatabase()
   const sql = await ensureSchema()
-  const rows = await sql`SELECT paper FROM papers WHERE set_id = ${setId} LIMIT 1`
+  const rows = await sql`
+    SELECT set_id, exam, set_number, duration_minutes, marks_per_correct, paper
+    FROM papers
+    WHERE set_id = ${setId}
+    LIMIT 1
+  `
   if (rows.length === 0) return undefined
-  return asPaper(rows[0].paper, setId)
+  return asPaper(rows[0].paper, rows[0])
 }
 
-export async function paperExists(setId: number): Promise<boolean> {
+export async function findSetId(exam: ExamId, setNumber: number): Promise<number | null> {
   requireDatabase()
   const sql = await ensureSchema()
-  const rows = await sql`SELECT 1 FROM papers WHERE set_id = ${setId} LIMIT 1`
-  return rows.length > 0
+  const rows = await sql`
+    SELECT set_id FROM papers
+    WHERE exam = ${exam} AND set_number = ${setNumber}
+    LIMIT 1
+  `
+  if (rows.length === 0) return null
+  return Number(rows[0].set_id)
 }
 
 export async function nextSetId(): Promise<number> {
   requireDatabase()
   const sql = await ensureSchema()
   const rows = await sql`SELECT COALESCE(MAX(set_id), 0) AS max FROM papers`
+  return Number(rows[0]?.max ?? 0) + 1
+}
+
+export async function nextSetNumber(exam: ExamId): Promise<number> {
+  requireDatabase()
+  const sql = await ensureSchema()
+  const rows = await sql`
+    SELECT COALESCE(MAX(set_number), 0) AS max FROM papers WHERE exam = ${exam}
+  `
   return Number(rows[0]?.max ?? 0) + 1
 }
 
@@ -63,9 +126,13 @@ export async function upsertPaper(input: {
   const { paper, key, sourceFilename } = input
   await sql.transaction((txn) => [
     txn`
-      INSERT INTO papers (set_id, title, duration_minutes, marks_per_correct, paper, source_filename, updated_at)
+      INSERT INTO papers (
+        set_id, exam, set_number, title, duration_minutes, marks_per_correct, paper, source_filename, updated_at
+      )
       VALUES (
         ${paper.setId},
+        ${paper.exam},
+        ${paper.setNumber},
         ${paper.title},
         ${paper.durationMinutes},
         ${paper.marksPerCorrect},
@@ -74,6 +141,8 @@ export async function upsertPaper(input: {
         now()
       )
       ON CONFLICT (set_id) DO UPDATE SET
+        exam = EXCLUDED.exam,
+        set_number = EXCLUDED.set_number,
         title = EXCLUDED.title,
         duration_minutes = EXCLUDED.duration_minutes,
         marks_per_correct = EXCLUDED.marks_per_correct,

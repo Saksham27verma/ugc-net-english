@@ -1,10 +1,11 @@
 "use server"
 
-import { PaperParseError, parseMarkdownPaper, setIdFromFilename } from "@/lib/parse-paper"
+import { EXAMS, isExamId, type ExamId } from "@/lib/exams"
+import { PaperParseError, examFromFilename, parseMarkdownPaper } from "@/lib/parse-paper"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import { clearAdminCookie, isAdmin, passwordIsValid, setAdminCookie } from "./admin-auth"
-import { nextSetId, paperExists, upsertPaper } from "./papers"
+import { findSetId, nextSetId, nextSetNumber, upsertPaper } from "./papers"
 
 const MAX_UPLOAD_BYTES = 2_000_000
 
@@ -12,6 +13,10 @@ export type UploadState = {
   ok: boolean
   message: string
   setId?: number
+}
+
+function paperLabel(exam: ExamId, setNumber: number): string {
+  return `${EXAMS[exam].label} Set ${setNumber}`
 }
 
 export async function loginAdmin(_prev: { error: string } | null, formData: FormData) {
@@ -45,21 +50,34 @@ export async function uploadPaper(_prev: UploadState | null, formData: FormData)
   }
 
   const replace = formData.get("replace") === "on"
-  const rawSetId = String(formData.get("setId") ?? "").trim()
-  let setId = rawSetId ? Number(rawSetId) : setIdFromFilename(file.name)
-  if (setId == null || Number.isNaN(setId)) {
-    setId = await nextSetId()
+  const rawExam = String(formData.get("exam") ?? "").trim()
+  let exam: ExamId = isExamId(rawExam) ? rawExam : "ugc-net"
+  const next = {
+    "ugc-net": await nextSetNumber("ugc-net"),
+    uppsc: await nextSetNumber("uppsc"),
   }
-  if (!Number.isInteger(setId) || setId < 1) {
+  const rawSetNumber = String(formData.get("setNumber") ?? "").trim()
+  let setNumber = rawSetNumber ? Number(rawSetNumber) : next[exam]
+  const fromFile = examFromFilename(file.name)
+  if (fromFile) {
+    const leftDefaults = exam === "ugc-net" && setNumber === next["ugc-net"]
+    if (leftDefaults) {
+      exam = fromFile.exam
+      setNumber = fromFile.setNumber
+    } else if (fromFile.exam === exam && setNumber === next[exam]) {
+      setNumber = fromFile.setNumber
+    }
+  }
+  if (!Number.isInteger(setNumber) || setNumber < 1) {
     return { ok: false, message: "Set number must be a positive integer." }
   }
 
-  const exists = await paperExists(setId)
-  if (exists && !replace) {
+  const existingId = await findSetId(exam, setNumber)
+  if (existingId != null && !replace) {
     return {
       ok: false,
-      message: `Set ${setId} already exists. Tick “Replace if this set number already exists” to overwrite it.`,
-      setId,
+      message: `${paperLabel(exam, setNumber)} already exists. Tick “Replace if this set number already exists” to overwrite it.`,
+      setId: existingId,
     }
   }
 
@@ -71,7 +89,8 @@ export async function uploadPaper(_prev: UploadState | null, formData: FormData)
   }
 
   try {
-    const parsed = parseMarkdownPaper(source, setId)
+    const setId = existingId ?? (await nextSetId())
+    const parsed = parseMarkdownPaper(source, setId, exam, setNumber)
     await upsertPaper({
       paper: parsed.paper,
       key: parsed.key,
@@ -80,12 +99,13 @@ export async function uploadPaper(_prev: UploadState | null, formData: FormData)
     revalidatePath("/")
     revalidatePath("/admin")
     revalidatePath(`/exam/${setId}`)
+    const label = paperLabel(exam, setNumber)
     return {
       ok: true,
       setId,
-      message: exists
-        ? `Replaced Set ${setId}: ${parsed.paper.title}`
-        : `Imported Set ${setId}: ${parsed.paper.title}`,
+      message: existingId != null
+        ? `Replaced ${label}: ${parsed.paper.title}`
+        : `Imported ${label}: ${parsed.paper.title}`,
     }
   } catch (error) {
     const message = error instanceof PaperParseError || error instanceof Error ? error.message : "Parse failed."

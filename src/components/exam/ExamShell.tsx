@@ -5,7 +5,8 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { Markdown } from "@/components/Markdown"
 import { Palette, PaletteLegend } from "@/components/exam/Palette"
 import { formatClock, formatTimer, timerTone, timerWarning } from "@/lib/clock"
-import { firstUnansweredInSection, locateQuestion, paperShortTitle } from "@/lib/paper"
+import { markingLine } from "@/lib/exams"
+import { firstUnansweredInSection, locateQuestion, paperShortTitle, questionTotal, sectionRange } from "@/lib/paper"
 import { answeredCount, getResponse, markedCount, statusCounts } from "@/lib/status"
 import { clearActive } from "@/lib/storage"
 import { useExam } from "@/lib/use-exam"
@@ -83,7 +84,7 @@ export function ExamShell({ paper }: { paper: Paper }) {
       }
       if (event.key === "ArrowRight") {
         event.preventDefault()
-        goTo(Math.min(150, currentNo + 1))
+        goTo(Math.min(questionTotal(paper), currentNo + 1))
         return
       }
       if (event.key === "m" || event.key === "M") {
@@ -93,7 +94,7 @@ export function ExamShell({ paper }: { paper: Paper }) {
     }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
-  }, [attempt, submitOpen, select, saveAndNext, previous, goTo, currentNo, saveAndMark])
+  }, [attempt, submitOpen, select, saveAndNext, previous, goTo, currentNo, saveAndMark, paper])
 
   if (!attempt || !located || !response) {
     return (
@@ -103,10 +104,13 @@ export function ExamShell({ paper }: { paper: Paper }) {
     )
   }
 
-  const counts = statusCounts(attempt)
-  const answered = answeredCount(attempt)
-  const marked = markedCount(attempt)
-  const notAnswered = 150 - answered
+  const total = questionTotal(paper)
+  const paper1Range = sectionRange(paper, 1)
+  const paper2Range = sectionRange(paper, 2)
+  const counts = statusCounts(attempt, total)
+  const answered = answeredCount(attempt, total)
+  const marked = markedCount(attempt, total)
+  const notAnswered = total - answered
   const tone = timerTone(remaining)
   const warning = timerWarning(remaining)
   const timer = formatTimer(remaining)
@@ -201,7 +205,9 @@ export function ExamShell({ paper }: { paper: Paper }) {
                   : "border-transparent text-muted"
               }`}
             >
-              {paperNo === 1 ? "Paper I (1–50)" : "Paper II (51–150)"}
+              {paperNo === 1
+                ? `Paper I (${paper1Range.start}–${paper1Range.end})`
+                : `Paper II (${paper2Range.start}–${paper2Range.end})`}
             </button>
           )
         })}
@@ -235,7 +241,7 @@ export function ExamShell({ paper }: { paper: Paper }) {
                 <p className="font-sans text-xs tracking-wide text-muted">
                   {located.unit.name}
                   <span className="mx-2 text-line">·</span>
-                  +2 marks · no negative marking
+                  {markingLine(paper.marksPerCorrect, paper.marksPerWrong)}
                 </p>
               </div>
               {actionRow}
@@ -281,7 +287,13 @@ export function ExamShell({ paper }: { paper: Paper }) {
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">Question palette</p>
           <PaletteLegend counts={counts} />
           <div className="mt-4">
-            <Palette attempt={attempt} currentNo={currentNo} onJump={goTo} />
+            <Palette
+              attempt={attempt}
+              currentNo={currentNo}
+              onJump={goTo}
+              paper1={paper1Range}
+              paper2={paper2Range}
+            />
           </div>
         </aside>
       </div>
@@ -306,6 +318,8 @@ export function ExamShell({ paper }: { paper: Paper }) {
               <Palette
                 attempt={attempt}
                 currentNo={currentNo}
+                paper1={paper1Range}
+                paper2={paper2Range}
                 onJump={(n) => {
                   goTo(n)
                   setPaletteOpen(false)
@@ -323,7 +337,10 @@ export function ExamShell({ paper }: { paper: Paper }) {
       >
         <h2 className="font-sans text-lg font-semibold">Submit paper?</h2>
         <p className="mt-2 text-sm text-muted">
-          Once submitted, this attempt cannot be reopened. Unanswered questions will score zero.
+          Once submitted, this attempt cannot be reopened.{" "}
+          {paper.marksPerWrong > 0
+            ? `Wrong answers score −${paper.marksPerWrong}. Unanswered questions score zero.`
+            : "Unanswered questions will score zero."}
         </p>
         {timer.overtime ? (
           <p className="mt-2 text-sm text-red">

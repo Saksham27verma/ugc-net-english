@@ -2,7 +2,7 @@ import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import type { KeyFile, Paper } from "../src/lib/types"
-import { parseMarkdownPaper, printVerify, SET_FILENAME_RE, setIdFromFilename } from "../src/lib/parse-paper"
+import { examFromFilename, parseMarkdownPaper, printVerify, SET_FILENAME_RE } from "../src/lib/parse-paper"
 
 const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)))
 const CONTENT_DIR = join(ROOT, "content")
@@ -63,10 +63,15 @@ function main(): void {
 
   const setIds: number[] = []
   for (const file of files) {
-    const setId = setIdFromFilename(file)
-    if (setId == null) fail(`Cannot derive set id from filename "${file}"`)
+    const fromFile = examFromFilename(file)
+    if (!fromFile || fromFile.exam !== "ugc-net") fail(`Cannot derive a UGC NET set from filename "${file}"`)
     const source = readFileSync(join(CONTENT_DIR, file), "utf8")
-    const { paper, key, distribution } = parseMarkdownPaper(source, setId)
+    const { paper, key, distribution } = parseMarkdownPaper(
+      source,
+      fromFile.setNumber,
+      fromFile.exam,
+      fromFile.setNumber,
+    )
     writeFileSync(join(DATA_DIR, `paper-${paper.setId}.json`), `${JSON.stringify(paper, null, 2)}\n`, "utf8")
     writeFileSync(join(KEYS_DIR, `key-${paper.setId}.json`), `${JSON.stringify(key, null, 2)}\n`, "utf8")
     setIds.push(paper.setId)

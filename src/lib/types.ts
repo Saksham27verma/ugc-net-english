@@ -1,3 +1,5 @@
+import type { ExamId } from "./exams"
+
 export type Selected = 1 | 2 | 3 | 4 | null
 
 export type QuestionStatus =
@@ -29,16 +31,25 @@ export type PaperSection = {
 
 export type Paper = {
   setId: number
+  exam: ExamId
+  setNumber: number
   title: string
-  durationMinutes: 180
-  marksPerCorrect: 2
+  durationMinutes: number
+  marksPerCorrect: number
+  marksPerWrong: number
   sections: PaperSection[]
 }
 
 export type PaperSummary = {
   setId: number
+  exam: ExamId
+  setNumber: number
   title: string
-  durationMinutes: 180
+  durationMinutes: number
+  marksPerCorrect: number
+  marksPerWrong: number
+  questionCount: number
+  maxMarks: number
   updatedAt?: string
 }
 
@@ -86,6 +97,12 @@ export type ResultQuestion = {
 export type Result = {
   attemptId: string
   setId: number
+  exam?: ExamId
+  setNumber?: number
+  maxMarks?: number
+  paper1Max?: number
+  paper2Max?: number
+  durationMinutes?: number
   total: number
   paper1: number
   paper2: number

@@ -109,9 +109,9 @@ function renderUnits(units: UnitSpec[]): string {
     .join("\n\n---\n\n")
 }
 
-function quickKey(): string {
+function quickKey(count: number): string {
   const pairs: string[] = []
-  for (let n = 1; n <= 150; n += 1) {
+  for (let n = 1; n <= count; n += 1) {
     pairs.push(`${n}:1`)
   }
   const lines: string[] = []
@@ -121,9 +121,9 @@ function quickKey(): string {
   return lines.join("\n")
 }
 
-function explanations(): string {
+function explanations(count: number): string {
   const lines: string[] = []
-  for (let n = 1; n <= 150; n += 1) {
+  for (let n = 1; n <= count; n += 1) {
     lines.push(`**Q.${n} ${EM_DASH} (1)** Replace this explanation for Q.${n}.`)
   }
   return lines.join("\n\n")
@@ -195,7 +195,7 @@ Replace every “Replace this …” placeholder before uploading.
       "# ANSWER KEY",
       "",
       "```",
-      quickKey(),
+      quickKey(150),
       "```",
       "",
       "### Score interpretation (out of 300)",
@@ -211,14 +211,130 @@ Replace every “Replace this …” placeholder before uploading.
       "",
       "## Explanations — Paper I",
       "",
-      explanations()
+      explanations(150)
         .split("\n\n")
         .slice(0, 50)
         .join("\n\n"),
       "",
       "## Explanations — Paper II (English)",
       "",
-      explanations().split("\n\n").slice(50).join("\n\n"),
+      explanations(150).split("\n\n").slice(50).join("\n\n"),
+      "",
+    ].join("\n")
+  )
+}
+
+const UPPSC_PAPER_I: UnitSpec[] = [
+  { name: "Paper I — Unit 1", firstQ: 1, lastQ: 5 },
+  { name: "Paper I — Unit 2", firstQ: 6, lastQ: 10 },
+  { name: "Paper I — Unit 3", firstQ: 11, lastQ: 15 },
+  { name: "Paper I — Unit 4", firstQ: 16, lastQ: 20 },
+  { name: "Paper I — Unit 5", firstQ: 21, lastQ: 25 },
+  { name: "Paper I — Unit 6", firstQ: 26, lastQ: 30 },
+]
+
+const UPPSC_PAPER_II: UnitSpec[] = [
+  { name: "Paper II — Unit 1", firstQ: 31, lastQ: 40 },
+  { name: "Paper II — Unit 2", firstQ: 41, lastQ: 50 },
+  { name: "Paper II — Unit 3", firstQ: 51, lastQ: 60 },
+  { name: "Paper II — Unit 4", firstQ: 61, lastQ: 70 },
+  { name: "Paper II — Unit 5", firstQ: 71, lastQ: 80 },
+  { name: "Paper II — Unit 6", firstQ: 81, lastQ: 90 },
+  { name: "Paper II — Unit 7", firstQ: 91, lastQ: 100 },
+  { name: "Paper II — Unit 8", firstQ: 101, lastQ: 110 },
+  { name: "Paper II — Unit 9", firstQ: 111, lastQ: 120 },
+]
+
+function buildUppsc(): string {
+  const guide = `<!--
+UPPSC Assistant Professor — Markdown paper template
+====================================================
+Rename this file to UPPSC-Assistant-Professor-Practice-Set-N.md (N = set number)
+or choose UPPSC and enter the set number on the admin upload form.
+
+Required shape (the importer rejects anything else):
+- UTF-8 Markdown
+- Exactly 120 questions, each with four options labelled 1. 2. 3. 4. in that order
+- Two sections, in this order, using an em dash (—):
+  # SECTION A — PAPER I : GENERAL STUDIES (Q.1–Q.30)
+  # SECTION B — PAPER II : SUBJECT (Q.31–Q.120)
+- Unit headings must use an en dash (–) in the range: ## Unit name (Q.1–Q.5)
+- Unit ranges must tile 1…120 with no gaps or overlaps
+- Paper I must be exactly Q.1–Q.30. Paper II must be exactly Q.31–Q.120
+- Passages are optional. Put any Markdown before the first **Q.n** of a unit
+- One "# ANSWER KEY" heading, then a fenced quick-key of 120 pairs n:1-4
+- Then 120 explanation lines exactly like:
+  **Q.1 — (3)** explanation text…
+  The number in parentheses must match the quick key
+- Do not put answers or explanations in the question section
+- Rename or split the placeholder units. Keep the 30 / 90 split
+
+Replace every “Replace this …” placeholder before uploading.
+-->
+
+`
+  const explained = explanations(120).split("\n\n")
+  return (
+    guide +
+    [
+      "# UPPSC — ASSISTANT PROFESSOR — FULL-LENGTH PRACTICE PAPER : **SET N**",
+      "",
+      "| | |",
+      "|---|---|",
+      "| **Total Questions** | 120 (all compulsory) |",
+      "| **Structure** | Q.1–Q.30 → Paper I • Q.31–Q.120 → Paper II |",
+      "| **Marks** | +3 per correct answer • −1 per wrong answer • **Maximum Marks: 360** |",
+      "| **Negative Marking** | −1 for each wrong answer • unattempted scores 0 |",
+      "| **Duration** | **120 minutes** — single continuous session |",
+      "| **Question Type** | MCQ with four options; exactly one correct answer |",
+      "",
+      "### Instructions",
+      "1. Replace the title SET N with the real set number.",
+      "2. Replace every placeholder stem, option, and explanation.",
+      "3. Keep the heading punctuation: section headings use —, unit ranges use –.",
+      "4. Keep exactly 120 questions and 120 matching key/explanation pairs.",
+      "5. You can rename units and change their ranges, as long as Paper I stays Q.1–Q.30 and Paper II stays Q.31–Q.120.",
+      "",
+      "---",
+      "",
+      `# SECTION A ${EM_DASH} PAPER I : GENERAL STUDIES (Q.1${EN_DASH}Q.30)`,
+      "",
+      renderUnits(UPPSC_PAPER_I),
+      "",
+      "---",
+      "",
+      `# SECTION B ${EM_DASH} PAPER II : SUBJECT (Q.31${EN_DASH}Q.120)`,
+      "",
+      renderUnits(UPPSC_PAPER_II),
+      "",
+      "> **END OF QUESTION PAPER**",
+      "",
+      "---",
+      "",
+      "# ANSWER KEY",
+      "",
+      "```",
+      quickKey(120),
+      "```",
+      "",
+      "### Score interpretation (out of 360)",
+      "",
+      "| Score | Band |",
+      "|---|---|",
+      "| 252+ | Strong range |",
+      "| 198–251 | Competitive range |",
+      "| 144–197 | Borderline; revise weak units |",
+      "| Below 144 | Foundation-building needed |",
+      "",
+      "---",
+      "",
+      "## Explanations — Paper I",
+      "",
+      explained.slice(0, 30).join("\n\n"),
+      "",
+      "## Explanations — Paper II",
+      "",
+      explained.slice(30).join("\n\n"),
       "",
     ].join("\n")
   )
@@ -227,9 +343,12 @@ Replace every “Replace this …” placeholder before uploading.
 function main(): void {
   const targetDir = join(ROOT, "public/templates")
   mkdirSync(targetDir, { recursive: true })
-  const dest = join(targetDir, "UGC-NET-English-Practice-Set-TEMPLATE.md")
-  writeFileSync(dest, build(), "utf8")
-  console.log(`Wrote ${dest}`)
+  const ugc = join(targetDir, "UGC-NET-English-Practice-Set-TEMPLATE.md")
+  const uppsc = join(targetDir, "UPPSC-Assistant-Professor-Practice-Set-TEMPLATE.md")
+  writeFileSync(ugc, build(), "utf8")
+  writeFileSync(uppsc, buildUppsc(), "utf8")
+  console.log(`Wrote ${ugc}`)
+  console.log(`Wrote ${uppsc}`)
 }
 
 main()

@@ -1,14 +1,10 @@
+import { EXAMS, isExamId, type ExamId, type ExamProfile } from "./exams"
 import type { KeyEntry, Paper, PaperQuestion, PaperSection, PaperUnit } from "./types"
 
 export const EN_DASH = "\u2013"
 export const EM_DASH = "\u2014"
-export const QUESTION_COUNT = 150
-export const REQUIRED_PASSAGE_RANGES: [number, number][] = [
-  [1, 5],
-  [46, 50],
-  [141, 145],
-  [146, 150],
-]
+export const QUESTION_COUNT = EXAMS["ugc-net"].questionCount
+export const REQUIRED_PASSAGE_RANGES = EXAMS["ugc-net"].requiredPassages
 
 const SECTION_RE = new RegExp(`^# SECTION (A|B) ${EM_DASH} (.+)$`, "m")
 const UNIT_RE = new RegExp(`^## (.+?) \\(Q\\.(\\d+)${EN_DASH}Q\\.(\\d+)\\)$`, "m")
@@ -19,6 +15,7 @@ const OPTION_START_RE = /^[1-4]\.\s/m
 const QUICK_KEY_RE = /(\d+):([1-4])/g
 const EXPLANATION_RE = new RegExp(`^\\*\\*Q\\.(\\d+) ${EM_DASH} \\(([1-4])\\)\\*\\*\\s+(.+)$`, "gm")
 export const SET_FILENAME_RE = /Practice-Set-(\d+)\.md$/i
+const UPPSC_FILENAME_RE = /UPPSC-.*Practice-Set-(\d+)\.md$/i
 
 export class PaperParseError extends Error {
   constructor(message: string) {
@@ -159,14 +156,14 @@ function parseSections(paperPart: string, setId: number): PaperSection[] {
   return sections
 }
 
-function parseQuickKey(keyPart: string, setId: number): Map<number, 1 | 2 | 3 | 4> {
+function parseQuickKey(keyPart: string, setId: number, questionCount: number): Map<number, 1 | 2 | 3 | 4> {
   const fence = keyPart.match(/```[^\n]*\n([\s\S]*?)```/)
   if (!fence) {
     fail(`Set ${setId}: no fenced quick-key block found`)
   }
   const pairs = [...fence[1].matchAll(QUICK_KEY_RE)]
-  if (pairs.length !== QUESTION_COUNT) {
-    fail(`Set ${setId}: expected ${QUESTION_COUNT} quick-key entries, found ${pairs.length}`)
+  if (pairs.length !== questionCount) {
+    fail(`Set ${setId}: expected ${questionCount} quick-key entries, found ${pairs.length}`)
   }
   const map = new Map<number, 1 | 2 | 3 | 4>()
   for (const match of pairs) {
@@ -177,7 +174,7 @@ function parseQuickKey(keyPart: string, setId: number): Map<number, 1 | 2 | 3 | 
     }
     map.set(no, answer)
   }
-  for (let n = 1; n <= QUESTION_COUNT; n += 1) {
+  for (let n = 1; n <= questionCount; n += 1) {
     if (!map.has(n)) {
       fail(`Set ${setId}: missing quick-key entry for Q.${n}`)
     }
@@ -188,10 +185,11 @@ function parseQuickKey(keyPart: string, setId: number): Map<number, 1 | 2 | 3 | 
 function parseExplanations(
   keyPart: string,
   setId: number,
+  questionCount: number,
 ): Map<number, { answer: 1 | 2 | 3 | 4; explanation: string }> {
   const matches = [...keyPart.matchAll(EXPLANATION_RE)]
-  if (matches.length !== QUESTION_COUNT) {
-    fail(`Set ${setId}: expected ${QUESTION_COUNT} explanations, found ${matches.length}`)
+  if (matches.length !== questionCount) {
+    fail(`Set ${setId}: expected ${questionCount} explanations, found ${matches.length}`)
   }
   const map = new Map<number, { answer: 1 | 2 | 3 | 4; explanation: string }>()
   for (const match of matches) {
@@ -206,7 +204,7 @@ function parseExplanations(
     }
     map.set(no, { answer, explanation })
   }
-  for (let n = 1; n <= QUESTION_COUNT; n += 1) {
+  for (let n = 1; n <= questionCount; n += 1) {
     if (!map.has(n)) {
       fail(`Set ${setId}: missing explanation for Q.${n}`)
     }
@@ -214,7 +212,7 @@ function parseExplanations(
   return map
 }
 
-function assertQuestionCoverage(sections: PaperSection[], setId: number): PaperQuestion[] {
+function assertQuestionCoverage(sections: PaperSection[], setId: number, questionCount: number): PaperQuestion[] {
   const all: PaperQuestion[] = []
   const ranges: { name: string; firstQ: number; lastQ: number }[] = []
 
@@ -233,7 +231,7 @@ function assertQuestionCoverage(sections: PaperSection[], setId: number): PaperQ
   for (const range of ranges) {
     if (range.firstQ !== expected) {
       fail(
-        `Set ${setId}: unit ranges do not tile 1…${QUESTION_COUNT} (gap or overlap at Q.${expected}, next unit "${range.name}" starts at ${range.firstQ})`,
+        `Set ${setId}: unit ranges do not tile 1…${questionCount} (gap or overlap at Q.${expected}, next unit "${range.name}" starts at ${range.firstQ})`,
       )
     }
     if (range.lastQ < range.firstQ) {
@@ -241,12 +239,12 @@ function assertQuestionCoverage(sections: PaperSection[], setId: number): PaperQ
     }
     expected = range.lastQ + 1
   }
-  if (expected !== QUESTION_COUNT + 1) {
-    fail(`Set ${setId}: units end at Q.${expected - 1}, expected ${QUESTION_COUNT}`)
+  if (expected !== questionCount + 1) {
+    fail(`Set ${setId}: units end at Q.${expected - 1}, expected ${questionCount}`)
   }
 
-  if (all.length !== QUESTION_COUNT) {
-    fail(`Set ${setId}: expected ${QUESTION_COUNT} questions, found ${all.length}`)
+  if (all.length !== questionCount) {
+    fail(`Set ${setId}: expected ${questionCount} questions, found ${all.length}`)
   }
   const seen = new Set<number>()
   for (const q of all) {
@@ -258,7 +256,7 @@ function assertQuestionCoverage(sections: PaperSection[], setId: number): PaperQ
     }
     seen.add(q.no)
   }
-  for (let n = 1; n <= QUESTION_COUNT; n += 1) {
+  for (let n = 1; n <= questionCount; n += 1) {
     if (!seen.has(n)) {
       fail(`Set ${setId}: missing question Q.${n}`)
     }
@@ -266,9 +264,32 @@ function assertQuestionCoverage(sections: PaperSection[], setId: number): PaperQ
   return all
 }
 
-function assertRequiredPassages(sections: PaperSection[], setId: number): void {
+function questionNumbers(section: PaperSection): number[] {
+  return section.units.flatMap((unit) => unit.questions.map((question) => question.no))
+}
+
+function assertPaperSplit(sections: PaperSection[], profile: ExamProfile, setId: number): void {
+  const paper1 = questionNumbers(sections[0])
+  const paper2 = questionNumbers(sections[1])
+  const paper1End = profile.paper1Count
+  const paper2Start = profile.paper1Count + 1
+  if (paper1.length !== profile.paper1Count || paper1[0] !== 1 || paper1[paper1.length - 1] !== paper1End) {
+    fail(`Set ${setId}: Paper I must be Q.1–Q.${paper1End} (${profile.paper1Count} questions)`)
+  }
+  if (
+    paper2.length !== profile.paper2Count ||
+    paper2[0] !== paper2Start ||
+    paper2[paper2.length - 1] !== profile.questionCount
+  ) {
+    fail(
+      `Set ${setId}: Paper II must be Q.${paper2Start}–Q.${profile.questionCount} (${profile.paper2Count} questions)`,
+    )
+  }
+}
+
+function assertRequiredPassages(sections: PaperSection[], setId: number, ranges: [number, number][]): void {
   const units = sections.flatMap((section) => section.units)
-  for (const [firstQ, lastQ] of REQUIRED_PASSAGE_RANGES) {
+  for (const [firstQ, lastQ] of ranges) {
     const unit = units.find((u) => u.firstQ === firstQ && u.lastQ === lastQ)
     if (!unit) {
       fail(`Set ${setId}: expected a unit covering Q.${firstQ}–Q.${lastQ} for a required passage`)
@@ -290,10 +311,30 @@ export function setIdFromFilename(fileName: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-export function parseMarkdownPaper(source: string, setId: number): ParsedPaper {
+export function examFromFilename(fileName: string): { exam: ExamId; setNumber: number } | null {
+  const uppsc = fileName.match(UPPSC_FILENAME_RE)
+  if (uppsc) return { exam: "uppsc", setNumber: Number(uppsc[1]) }
+  const ugc = fileName.match(SET_FILENAME_RE)
+  if (ugc) return { exam: "ugc-net", setNumber: Number(ugc[1]) }
+  return null
+}
+
+export function parseMarkdownPaper(
+  source: string,
+  setId: number,
+  exam: ExamId = "ugc-net",
+  setNumber = setId,
+): ParsedPaper {
+  if (!isExamId(exam)) {
+    fail(`Unknown exam "${String(exam)}"`)
+  }
   if (!Number.isInteger(setId) || setId < 1) {
     fail(`Set id must be a positive integer (got ${setId})`)
   }
+  if (!Number.isInteger(setNumber) || setNumber < 1) {
+    fail(`Set number must be a positive integer (got ${setNumber})`)
+  }
+  const profile = EXAMS[exam]
   const parts = source.split(/^# ANSWER KEY/m)
   if (parts.length !== 2) {
     fail(`Set ${setId}: expected exactly one "# ANSWER KEY" split, found ${parts.length - 1}`)
@@ -305,16 +346,17 @@ export function parseMarkdownPaper(source: string, setId: number): ParsedPaper {
   }
   const title = titleMatch[1].replace(/\*\*/g, "").trim()
   const sections = parseSections(paperPart, setId)
-  assertQuestionCoverage(sections, setId)
-  assertRequiredPassages(sections, setId)
+  assertQuestionCoverage(sections, setId, profile.questionCount)
+  assertPaperSplit(sections, profile, setId)
+  assertRequiredPassages(sections, setId, profile.requiredPassages)
 
-  const quickKey = parseQuickKey(keyPart, setId)
-  const explanations = parseExplanations(keyPart, setId)
+  const quickKey = parseQuickKey(keyPart, setId, profile.questionCount)
+  const explanations = parseExplanations(keyPart, setId, profile.questionCount)
 
   const key: Record<string, KeyEntry> = {}
   const distribution: Record<1 | 2 | 3 | 4, number> = { 1: 0, 2: 0, 3: 0, 4: 0 }
 
-  for (let n = 1; n <= QUESTION_COUNT; n += 1) {
+  for (let n = 1; n <= profile.questionCount; n += 1) {
     const quick = quickKey.get(n)
     const explained = explanations.get(n)
     if (!quick || !explained) {
@@ -331,9 +373,12 @@ export function parseMarkdownPaper(source: string, setId: number): ParsedPaper {
 
   const paper: Paper = {
     setId,
+    exam,
+    setNumber,
     title,
-    durationMinutes: 180,
-    marksPerCorrect: 2,
+    durationMinutes: profile.durationMinutes,
+    marksPerCorrect: profile.marksPerCorrect,
+    marksPerWrong: profile.marksPerWrong,
     sections,
   }
 

@@ -36,12 +36,29 @@ async function main(): Promise<void> {
   )
   const keys = await sql`SELECT set_id FROM answer_keys ORDER BY set_id`
   console.log("keys", keys.map((row) => Number(row.set_id)))
-  const template = readFileSync(
+  const ugcTemplate = readFileSync(
     join(ROOT, "public/templates/UGC-NET-English-Practice-Set-TEMPLATE.md"),
     "utf8",
   )
-  const parsed = parseMarkdownPaper(template, 99)
-  console.log("template_questions", parsed.paper.sections.flatMap((s) => s.units.flatMap((u) => u.questions)).length)
+  const ugc = parseMarkdownPaper(ugcTemplate, 99)
+  console.log(
+    "ugc_template",
+    ugc.paper.exam,
+    ugc.paper.sections.flatMap((s) => s.units.flatMap((u) => u.questions)).length,
+  )
+  const uppscTemplate = readFileSync(
+    join(ROOT, "public/templates/UPPSC-Assistant-Professor-Practice-Set-TEMPLATE.md"),
+    "utf8",
+  )
+  const uppsc = parseMarkdownPaper(uppscTemplate, 99, "uppsc", 1)
+  console.log(
+    "uppsc_template",
+    uppsc.paper.exam,
+    uppsc.paper.durationMinutes,
+    uppsc.paper.marksPerCorrect,
+    uppsc.paper.marksPerWrong,
+    uppsc.paper.sections.flatMap((s) => s.units.flatMap((u) => u.questions)).length,
+  )
 }
 
 main().catch((error: unknown) => {
